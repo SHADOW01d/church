@@ -1,0 +1,918 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | School Connectivity Kondoa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/static/css/_shared.ed4f4ee6ba3e.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: "DM Sans", sans-serif;
+    }
+    .brand-serif {
+      font-family: "Fraunces", serif;
+    }
+    .prose-content h2,
+    .prose-content h3,
+    .prose-content h4 {
+      color: #0f172a;
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .prose-content p,
+    .prose-content li {
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .prose-content ul,
+    .prose-content ol {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .prose-content a {
+      color: #0369a1;
+      text-decoration: underline;
+    }
+  </style>
+  
+  
+<style>
+  /* Custom styles only for complex animations and carousel-specific behaviors */
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+  
+  .animate-blink {
+    animation: blink 2s infinite;
+  }
+  
+  @keyframes ping-slow {
+    0% { box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3); }
+    50% { box-shadow: 0 0 0 8px rgba(96, 165, 250, 0.1); }
+    100% { box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3); }
+  }
+  
+  .animate-ping-slow {
+    animation: ping-slow 2s infinite;
+  }
+  
+  .carousel-progress {
+    transition: width 0.1s linear;
+  }
+  
+  .dot {
+    transition: all 0.3s;
+  }
+  
+  /* Map grid background */
+  .map-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  #news {
+    scroll-margin-top: 5rem;
+  }
+
+  @keyframes partner-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .partners-marquee {
+    overflow: hidden;
+  }
+
+  .partners-track {
+    display: flex;
+    width: max-content;
+    animation: partner-scroll 28s linear infinite;
+  }
+
+  .partners-marquee:hover .partners-track,
+  .partners-marquee:focus-within .partners-track {
+    animation-play-state: paused;
+  }
+
+  .partner-logo-card {
+    width: clamp(200px, 20vw, 300px);
+      aspect-ratio: 3 / 2; 
+
+  }
+  
+  /* Mobile carousel optimizations */
+  @media (max-width: 768px) {
+    .carousel-caption h1 {
+      font-size: 1.75rem !important;
+      line-height: 1.3 !important;
+    }
+    
+    .carousel-caption p {
+      font-size: 0.9rem !important;
+    }
+    
+    .carousel-buttons {
+      gap: 0.75rem;
+    }
+    
+    .carousel-buttons a {
+      padding: 0.5rem 1rem !important;
+      font-size: 0.8rem !important;
+    }
+    
+    .carousel-nav-btn {
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+    
+    .carousel-nav-btn svg {
+      width: 0.875rem !important;
+      height: 0.875rem !important;
+    }
+  }
+  
+  /* Ensure slides have proper aspect ratio on mobile */
+.carousel-slide {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  z-index: 0;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+  
+  @media (max-width: 640px) {
+    section:first-of-type {
+      height: 70vh !important;
+      min-height: 480px !important;
+    }
+  }
+</style>
+
+</head>
+<body class="bg-slate-50 text-slate-900">
+  
+
+
+<nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3">
+      <div class="w-20 h-20 flex items-center justify-center">
+        <img src="/static/media/udomLogo.cc7b833c9394.png" alt="School Connectivity Logo" class="object-contai drop-shadow-sm">
+      </div>
+      <div>
+        <div class="text-lg font-bold">School Connectivity</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-wide">
+          Tanzania· East Africa
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-1">
+      <a href="/" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/">Home</a>
+      <a href="/about" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/about">About the Project</a>
+      <a href="/team" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/team">Team</a>
+      <a href="/news" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/news" data-section-target="news">News</a>
+      <a href="/publications" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/publications">Publications</a>
+      <a href="/contact" class="nav-link-desktop px-3 py-1.5 rounded transition-colors" data-path="/contact">Contact Us</a>
+    </div>
+
+    <!-- Mobile menu button (hamburger) -->
+    <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <svg class="w-6 h-6 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+
+  </div>
+</nav>
+
+<!-- Mobile Sidebar Overlay -->
+<div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300 md:hidden"></div>
+
+<!-- Mobile Sidebar (slides from right) -->
+<div id="mobileSidebar" class="fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out md:hidden">
+  <div class="flex flex-col h-full">
+    <!-- Sidebar Header -->
+    <div class="flex items-center justify-between p-5 border-b border-slate-200">
+      <div>
+        <div class="text-sm font-semibold text-slate-900">School Connectivity</div>
+        <div class="text-[10px] text-slate-500 uppercase tracking-wide">Tanzania · East Africa</div>
+      </div>
+      <button id="closeSidebarBtn" class="p-2 rounded-lg hover:bg-slate-100 transition-colors">
+        <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Sidebar Navigation Links -->
+    <div class="flex-1 py-6 px-4">
+      <div class="flex flex-col gap-2">
+        <a href="/" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/">
+          <span class="font-medium">Home</span>
+        </a>
+        <a href="/about" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/about">
+          <span class="font-medium">About the Project</span>
+        </a>
+        <a href="/team" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/team">
+          <span class="font-medium">Team</span>
+        </a>
+        <a href="/news" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/news" data-section-target="news">
+          <span class="font-medium">News</span>
+        </a>
+        <a href="/publications" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/publications">
+          <span class="font-medium">Publications</span>
+        </a>
+        <a href="/contact" class="nav-link-mobile block px-4 py-3 rounded-lg transition-colors" data-path="/contact">
+          <span class="font-medium">Contact Us</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Sidebar Footer (optional) -->
+    <div class="p-5 border-t border-slate-200">
+      <p class="text-xs text-slate-500">© School Connectivity </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Desktop active link styling */
+  .nav-link-desktop.active {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-weight: 700;
+  }
+  .nav-link-desktop:hover {
+    background-color: #eff6ff;
+    color: #2563eb;
+  }
+  /* Mobile active link styling */
+  .nav-link-mobile.active {
+    background-color: #eff6ff;
+    color: #2563eb;
+  }
+  
+  /* Prevent body scroll when sidebar is open */
+  body.sidebar-open {
+    overflow: hidden;
+  }
+</style>
+
+<script nonce="reOvZvs79LKQibfykFWKhg==">
+  (function() {
+    function initHeaderNavigation() {
+      // Get current page path (remove trailing slash and handle empty root)
+      let currentPath = window.location.pathname;
+      if (currentPath !== '/' && currentPath.endsWith('/')) {
+        currentPath = currentPath.slice(0, -1);
+      }
+    
+    // Function to determine if a link is active
+    function isActive(linkPath, currentPath) {
+      if (linkPath === '/') {
+        return currentPath === '/';
+      }
+      return currentPath === linkPath || currentPath.startsWith(linkPath + '/');
+    }
+    
+    const allNavLinks = document.querySelectorAll('.nav-link-desktop, .nav-link-mobile');
+
+    function setActiveNav(path) {
+      allNavLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('data-path') === path);
+      });
+    }
+
+    // Highlight desktop links
+    const desktopLinks = document.querySelectorAll('.nav-link-desktop');
+    desktopLinks.forEach(link => {
+      const linkPath = link.getAttribute('data-path');
+      if (isActive(linkPath, currentPath)) {
+        link.classList.add('active');
+      }
+    });
+    
+    // Highlight mobile links
+    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+    mobileLinks.forEach(link => {
+      const linkPath = link.getAttribute('data-path');
+      if (isActive(linkPath, currentPath)) {
+        link.classList.add('active');
+      }
+    });
+
+    const newsSection = document.getElementById('news');
+    if (currentPath === '/' && newsSection) {
+      const homePath = '/';
+      const newsPath = '/news';
+      let pendingNewsScroll = window.location.hash === '#news';
+
+      function updateSectionNav() {
+        const marker = 96;
+        const rect = newsSection.getBoundingClientRect();
+        const newsIsActive = rect.top <= marker && rect.bottom > marker;
+        if (pendingNewsScroll && rect.top > marker) {
+          setActiveNav(newsPath);
+          return;
+        }
+        if (newsIsActive || rect.bottom <= marker) {
+          pendingNewsScroll = false;
+        }
+        setActiveNav(newsIsActive ? newsPath : homePath);
+      }
+
+      allNavLinks.forEach(link => {
+        if (link.getAttribute('data-section-target') !== 'news') return;
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          pendingNewsScroll = true;
+          setActiveNav(newsPath);
+          newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.history && window.history.pushState) {
+            window.history.pushState(null, '', '/#news');
+          }
+        });
+      });
+
+      window.addEventListener('scroll', updateSectionNav, { passive: true });
+      window.addEventListener('resize', updateSectionNav);
+      requestAnimationFrame(updateSectionNav);
+    }
+    
+    // Mobile sidebar functionality
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('mobileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+    
+    function openSidebar() {
+      if (sidebar && overlay) {
+        sidebar.classList.remove('translate-x-full');
+        overlay.classList.remove('hidden');
+        document.body.classList.add('sidebar-open');
+        // Add a small delay to allow the transition to apply
+        setTimeout(() => {
+          overlay.style.opacity = '1';
+        }, 10);
+      }
+    }
+    
+    function closeSidebar() {
+      if (sidebar && overlay) {
+        sidebar.classList.add('translate-x-full');
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+          document.body.classList.remove('sidebar-open');
+        }, 300);
+      }
+    }
+    
+    if (menuBtn) {
+      menuBtn.addEventListener('click', openSidebar);
+    }
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+    
+    if (overlay) {
+      overlay.addEventListener('click', closeSidebar);
+    }
+    
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('translate-x-full')) {
+        closeSidebar();
+      }
+    });
+    
+    // Close sidebar when a mobile link is clicked (navigation)
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        closeSidebar();
+      });
+    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeaderNavigation);
+    } else {
+      initHeaderNavigation();
+    }
+  })();
+</script>
+
+  <main>
+    
+
+<!-- HERO CAROUSEL - Mobile optimized -->
+<section class="relative h-[78vh] min-h-[520px] max-h-[760px] overflow-hidden" id="heroCarousel">
+  
+  <!-- Slides Container -->
+  <div class="relative w-full h-full" id="carouselTrack">
+    
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700">
+        <img src="/static/media/kondoa-still-02.b24aa264eecf.jpg" alt="Students in a classroom with laptops" class="w-full h-full object-cover object-center" fetchpriority="high" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,28,0.72)] via-[rgba(5,12,28,0.45)] to-[rgba(5,12,28,0.15)]"></div>
+      </div>
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700">
+        <img data-src="/static/media/img-4323.7795ba019ebe.jpg" alt="School building in Africa" class="w-full h-full object-cover object-center" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,28,0.72)] via-[rgba(5,12,28,0.45)] to-[rgba(5,12,28,0.15)]"></div>
+      </div>
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700">
+        <img data-src="/static/media/img-4321.5310a16a6094.jpg" alt="Children learning with technology" class="w-full h-full object-cover object-center" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,28,0.72)] via-[rgba(5,12,28,0.45)] to-[rgba(5,12,28,0.15)]"></div>
+      </div>
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700">
+        <img data-src="/static/media/img-4322.c166145ac1ca.jpg" alt="Teacher and students in class" class="w-full h-full object-cover object-center" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,28,0.72)] via-[rgba(5,12,28,0.45)] to-[rgba(5,12,28,0.15)]"></div>
+      </div>
+      <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700">
+        <img data-src="/static/media/img-4265-converted.d7662866604e.jpg" alt="Students collaborating" class="w-full h-full object-cover object-center" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-r from-[rgba(5,12,28,0.72)] via-[rgba(5,12,28,0.45)] to-[rgba(5,12,28,0.15)]"></div>
+      </div>
+    
+  </div>
+
+  <div class="absolute inset-0 z-10 flex items-center px-4 md:px-8">
+    <div class="max-w-[1200px] mx-auto w-full carousel-caption">
+      <h1 class="font-bold text-white leading-[1.2] max-w-[680px] mb-4 md:mb-5 text-[clamp(1.75rem,5vw,4rem)] tracking-tight">
+        Connecting Every School in <em class="not-italic border-b-2 border-white/50 pb-px">Tanzania</em> to the Internet
+      </h1>
+      <p class="text-white/85 text-sm md:text-lg leading-relaxed mb-6 md:mb-8 max-w-[540px] drop-shadow-md">
+        A community-driven initiative to bring reliable internet connectivity to every school in Tanzania empowering students with digital access to quality education.
+      </p>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons - Mobile friendly -->
+  <button id="prevBtn" class="carousel-nav-btn absolute top-1/2 -translate-y-1/2 left-3 md:left-6 z-20 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center cursor-pointer transition-all hover:bg-white/28" aria-label="Previous slide">
+    <svg class="w-4 h-4 md:w-[18px] md:h-[18px] fill-white" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <button id="nextBtn" class="carousel-nav-btn absolute top-1/2 -translate-y-1/2 right-3 md:right-6 z-20 w-9 h-9 md:w-11 md:h-11 rounded-full bg-white/15 backdrop-blur-md border border-white/35 flex items-center justify-center cursor-pointer transition-all hover:bg-white/28" aria-label="Next slide">
+    <svg class="w-4 h-4 md:w-[18px] md:h-[18px] fill-white" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+  </button>
+
+  <!-- Dots Indicator -->
+  <div id="carouselDots" class="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2"></div>
+
+  <!-- Progress Bar -->
+  <div id="carouselProgress" class="absolute bottom-0 left-0 h-0.5 bg-white/85 z-20 w-0"></div>
+</section>
+
+
+
+<!-- VIDEO SECTION -->
+<section class="py-12 md:py-24 px-6 bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-16">
+      
+      <!-- Video Column: Now 7/12 width on desktop -->
+      <div class="w-full md:w-7/12 order-2 md:order-1">
+        <div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-slate-100 group">
+          <iframe 
+            class="w-full h-full" 
+            src="https://www.youtube.com/embed/w9it_QbAf9M?si=SOgDwYxgpMQXQrtQ" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Content Column: Now 5/12 width on desktop -->
+      <div class="w-full md:w-5/12 order-1 md:order-2 space-y-6">
+        <div>
+          <span class="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full">
+            Project Impact
+          </span>
+          <h2 class="text-2xl md:text-4xl font-extrabold text-[#0a1628] leading-[1.1] mb-6">
+            See the Project <br class="hidden lg:block"> in Action
+          </h2>
+          <p class="text-[#4a5a7a] text-base md:text-lg leading-relaxed">
+            Watch how the Kondoa School Connectivity initiative is transforming education through reliable internet access and community-driven innovation.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+          <a href="/about" class="inline-flex items-center justify-center w-full py-2 px-4 bg-blue-600 hover:bg-blue-800 hover:text-white border border-slate-200 hover:border-blue-600 text-white text-sm font-medium rounded-lg transition-colors">
+            Learn more
+            <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- NEWS PREVIEW SECTION -->
+<section id="news" class="py-12 md:py-20 px-4 bg-[#f1f5f9]">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="flex flex-wrap justify-between items-end gap-4 mb-8 md:mb-10">
+      <div>
+        <div class="text-[11px] font-semibold tracking-[0.09em] uppercase text-blue-600 mb-2">Latest updates</div>
+        <h2 class="text-2xl md:text-4xl font-bold text-[#0a1628] tracking-tight">News & Stories</h2>
+      </div>
+      <a href="/news" class="inline-block px-4 py-2 border border-blue-300 text-blue-600 text-sm font-medium rounded-lg hover:bg-blue-50 transition-colors">View all</a>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7">
+      
+        <p class="col-span-3 text-center text-slate-400 text-base">No news available at the moment.</p>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- STATS STRIP -->
+<section class="bg-white border-y border-black/[0.07]">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-10 md:py-14">
+    <div class="">
+    <h2 class="text-3xl md:text-4xl lg:text-4xl font-bold text-slate-900 mb-6">Project Progress</h2>
+    <p class="text-slate-600 text-base md:text-lg leading-relaxed max-w-3xl mb-12">
+      See the School Connectivity achievements in collaboration with partners since launching
+    </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      
+        <div class="group relative bg-white rounded-xl p-5 text-center transition-all duration-200 overflow-hidden">
+          
+          <div class="text-3xl md:text-5xl font-bold text-[#0a1628] tracking-tight">50</div>
+          <div class="md:text-sm font-medium text-slate-500 mt-1.5 leading-snug">Total schools</div>
+          
+          <!-- Short Blue Underline -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 bg-blue-600 rounded-t-full transition-all duration-300 group-hover:w-12"></div>
+          
+        </div>
+      
+        <div class="group relative bg-white rounded-xl p-5 text-center transition-all duration-200 overflow-hidden">
+          
+          <div class="text-3xl md:text-5xl font-bold text-[#0a1628] tracking-tight">5</div>
+          <div class="md:text-sm font-medium text-slate-500 mt-1.5 leading-snug">Schools connected</div>
+          
+          <!-- Short Blue Underline -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 bg-blue-600 rounded-t-full transition-all duration-300 group-hover:w-12"></div>
+          
+        </div>
+      
+        <div class="group relative bg-white rounded-xl p-5 text-center transition-all duration-200 overflow-hidden">
+          
+          <div class="text-3xl md:text-5xl font-bold text-[#0a1628] tracking-tight">5</div>
+          <div class="md:text-sm font-medium text-slate-500 mt-1.5 leading-snug">Communities served</div>
+          
+          <!-- Short Blue Underline -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 bg-blue-600 rounded-t-full transition-all duration-300 group-hover:w-12"></div>
+          
+        </div>
+      
+        <div class="group relative bg-white rounded-xl p-5 text-center transition-all duration-200 overflow-hidden">
+          
+          <div class="text-3xl md:text-5xl font-bold text-[#0a1628] tracking-tight">100+</div>
+          <div class="md:text-sm font-medium text-slate-500 mt-1.5 leading-snug">Students benefiting</div>
+          
+          <!-- Short Blue Underline -->
+          <div class="absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 bg-blue-600 rounded-t-full transition-all duration-300 group-hover:w-12"></div>
+          
+        </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- PARTNERS SECTION -->
+<section class="py-14 md:py-20 px-4 bg-white border-t border-slate-100">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <div class="text-sm font-semibold tracking-wider uppercase text-[#3b82f6] mb-3">Collaboration</div>
+      <h2 class="text-2xl md:text-4xl font-bold text-[#0a1628] mb-4 tracking-tight">Our Partners</h2>
+      <p class="text-[#4a5a7a] text-base md:text-lg leading-relaxed">This initiative is made possible through collaboration with government bodies, international organisations, and local implementing partners.</p>
+    </div>
+
+    <div class="partners-marquee py-4" aria-label="Project partners">
+      <div class="partners-track gap-6">
+        <a href="https://www.unicef.org/tanzania/" target="_blank" rel="noopener" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white text-center transition hover:-translate-y-1 hover:shadow-lg">
+          <img src="/static/media/unicef-logo.131a53feb074.png" alt="UNICEF Tanzania Logo" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="https://www.udom.ac.tz/" target="_blank" rel="noopener" class="partner-logo-card group flex flex-col items-center justify-center rounded-xl bg-white text-center transition hover:-translate-y-1 hover:shadow-lg">
+          <img src="/static/media/udomLogo.cc7b833c9394.png" alt="University of Dodoma Logo" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="/about/" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lg">
+          <img src="/static/media/Kondoa2.8e113d17ff0e.png" alt="Kondoa Community Network Cooperative Logo" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="https://www.airtel.co.tz/" target="_blank" rel="noopener" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lg">
+          <img src="/static/media/airtel_logo.e03d97b45d5c.png" alt="Airtel Tanzania Logo" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="https://www.unicef.org/tanzania/" target="_blank" rel="noopener" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lg" aria-hidden="true" tabindex="-1">
+          <img src="/static/media/unicef-logo.131a53feb074.png" alt="" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="https://www.udom.ac.tz/" target="_blank" rel="noopener" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lg" aria-hidden="true" tabindex="-1">
+          <img src="/static/media/udomLogo.cc7b833c9394.png" alt="" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="/about/" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 hover:shadow-lg" aria-hidden="true" tabindex="-1">
+          <img src="/static/media/Kondoa2.8e113d17ff0e.png" alt="" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+        <a href="https://www.airtel.co.tz/" target="_blank" rel="noopener" class="partner-logo-card group flex min-h-[170px] flex-col items-center justify-center rounded-xl bg-white p-6 text-center transition hover:-translate-y-1 " aria-hidden="true" tabindex="-1">
+          <img src="/static/media/airtel_logo.e03d97b45d5c.png" alt="" class="h-16 md:h-24 object-contain transition duration-300 group-hover:scale-105">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="py-12 md:py-20 px-4 bg-[#0d2d62]">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-sm font-semibold tracking-wider uppercase text-[#93b4ff] mb-3">
+       Map
+    </div>
+
+    <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+      Explore Kondoa - Dodoma map
+    </h2>
+
+    <p class="text-white/80 text-base md:text-lg max-w-2xl mb-8 md:mb-12 leading-relaxed">
+      A  Google Map showing Kondoa - Dodoma, Tanzania geography.
+    </p>
+
+    <div class="relative border border-white/10 rounded-xl h-[280px] md:h-[450px] overflow-hidden">
+      
+      <iframe
+        src="https://www.google.com/maps?q=Kondoa,Dodoma,Tanzania&z=14&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="py-12 md:py-18 px-4 text-center bg-white">
+  <h2 class="text-2xl md:text-4xl font-bold text-[#0a1628] mb-4 tracking-tight">Let's build a connected future together</h2>
+  <p class="text-[#2c3e50] text-base md:text-lg max-w-xl mx-auto mb-8 md:mb-9 leading-relaxed">Join governments, NGOs, and partners working to bring digital opportunity to every child in Kondoa.</p>
+  <a href="/contact/" class="inline-block px-6 md:px-8 py-3 md:py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-800 transition-colors text-sm md:text-base">Get Involved</a>
+</section>
+
+
+  </main>
+  
+<footer class="bg-[#0d2d62] text-slate-400 mt-20">
+  <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row md:justify-between gap-8">
+
+    <!-- Column 1: Project info (Fully Centered) -->
+    <div class="flex flex-col items-center text-center md:w-1/4 ">
+      <div class="mb-4 h-32 w-32">
+        <img src="/static/media/udomLogo.cc7b833c9394.png" alt="UDOM Logo" class="h-full w-full object-contain rounded-sm mx-auto">
+      </div>
+      <p class="text-sm leading-relaxed max-w-[200px]">
+        School Connectivity
+      </p>
+    </div>
+
+    <!-- Right Side Wrapper: Groups links/contact closer together -->
+    <div class="flex-1 grid grid-cols-1 sm:grid-cols-4 gap-8 md:gap-4">
+      
+      <!-- Column 2: Useful Links -->
+      <div class="md:pl-8">
+        <h4 class="text-white text-sm font-semibold mb-4">Useful Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/publications" class="hover:text-white transition-colors">Annual Reports</a></li>
+          <li><a href="/about" class="hover:text-white transition-colors">Project Dashboard</a></li>
+          <li><a href="/admin" class="hover:text-white transition-colors">Login</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Information -->
+      <div>
+        <h4 class="text-white text-sm font-semibold mb-4">Contact Us</h4>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <a href="mailto:info@schoolconnectivity.udom.ac.tz" class="hover:text-white transition-colors break-all">info@schoolconnectivity.udom.ac.tz</a>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            <a href="tel:+255784423615" class="hover:text-white transition-colors">+255 784 423 615</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Social Media -->
+      <div class="text-center">
+        <h4 class="text-white text-sm font-semibold mb-4">Follow Us</h4>
+        <div class="flex gap-4 md:justify-center">
+          <!-- x -->
+          <a href="https://www.x.com/udomofficial" class="hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/udomtheofficial" class="hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20h8.5A4.25 4.25 0 0020.5 15.25v-8.5A4.25 4.25 0 0016.25 3h-8.5zM12 7a5 5 0 110 10A5 5 0 0112 7zm0 1.5a3.5 3.5 0 100 7a3.5 3.5 0 000-7zm4-1a1 .1-.1v2a1 .1-.1h-2a1 .1-.1v-2a1 .1-.1h2z"/></svg>
+          </a>
+
+          <!-- facebook  -->
+          <a href="https://www.facebook.com/udomofficial" class="hover:text-white transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@udomtv7232" class="hover:text-red-500 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 5: Visitors -->
+       <div class="">  
+        <h4 class="text-white text-sm font-semibold mb-4">Visitors</h4>
+        <div class="text-sm space-y-2">
+          
+          <p>Today Visitors: <span id="online-visitors" class="font-bold">23</span></p>
+          <p>This Month Visitors: <span id="total-visitors" class="font-bold">183</span></p>
+          <p>Total Visitors: <span id="total-visitors" class="font-bold">202</span></p>
+          
+        </div>
+       </div>
+
+    </div>
+  </div>
+
+  <div class="text-center text-xs py-4 border-t border-white/10">
+    © 2026 School Connectivity . All rights reserved.
+  </div>
+</footer>
+  <script src="/static/js/app.d41d8cd98f00.js"></script>
+  
+<script nonce="reOvZvs79LKQibfykFWKhg==">
+  (function() {
+    // Carousel functionality 
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsEl = document.getElementById('carouselDots');
+    const prog = document.getElementById('carouselProgress');
+    
+    
+    let current = 0;
+    let autoTimer = null;
+    let preloadTimer = null;
+    let progTimer = null;
+    let isTransitioning = false;
+    const INTERVAL = 5000;
+    const PRELOAD_LEAD_TIME = 1200;
+
+    function loadSlideImage(index) {
+      if (!slides.length) return;
+
+      const slide = slides[(index + slides.length) % slides.length];
+      const image = slide.querySelector('img[data-src]');
+      if (!image) return;
+
+      image.src = image.dataset.src;
+      image.removeAttribute('data-src');
+    }
+    
+    // Build dots
+    if (dotsEl && slides.length > 0) {
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300 ' + (i === 0 ? '!w-5 md:!w-6 !rounded-md bg-white' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+    }
+    
+    function updateDots() {
+      const allDots = document.querySelectorAll('.dot');
+      allDots.forEach((d, i) => {
+        if (i === current) {
+          d.classList.add('!w-5', 'md:!w-6', '!rounded-md', 'bg-white');
+          d.classList.remove('bg-white/40');
+        } else {
+          d.classList.remove('!w-5', 'md:!w-6', '!rounded-md', 'bg-white');
+          d.classList.add('bg-white/40');
+        }
+      });
+    }
+    
+    function goTo(n) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Remove active from current
+      slides[current].classList.remove('active');
+
+      current = (n + slides.length) % slides.length;
+      loadSlideImage(current);
+
+      // Add active to new slide
+      slides[current].classList.add('active');
+
+      updateDots();
+      resetProgress();
+      scheduleNextPreload();
+
+      setTimeout(() => { isTransitioning = false; }, 700);
+    }
+
+    function startAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        if (!isTransitioning) {
+          goTo(current + 1);
+        }
+      }, INTERVAL);
+      scheduleNextPreload();
+    }
+
+    function scheduleNextPreload() {
+      if (preloadTimer) clearTimeout(preloadTimer);
+      preloadTimer = setTimeout(() => {
+        loadSlideImage(current + 1);
+      }, Math.max(INTERVAL - PRELOAD_LEAD_TIME, 0));
+    }
+    
+    function resetProgress() {
+      if (progTimer) clearInterval(progTimer);
+      if (prog) {
+        prog.style.transition = 'none';
+        prog.style.width = '0';
+        // Force reflow
+        prog.offsetHeight;
+        prog.style.transition = `width ${INTERVAL}ms linear`;
+        prog.style.width = '100%';
+      }
+    }
+    
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (autoTimer) clearInterval(autoTimer);
+        goTo(current - 1);
+        startAuto();
+      });
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (autoTimer) clearInterval(autoTimer);
+        goTo(current + 1);
+        startAuto();
+      });
+    }
+
+    
+    // Initialize
+    if (slides.length > 0) {
+      slides[0].classList.add('active');
+      updateDots();
+      resetProgress();
+      startAuto();
+    }
+  })();
+</script>
+
+</body>
+</html>
+

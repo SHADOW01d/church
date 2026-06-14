@@ -1,0 +1,2678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gilgal Dominion Center – Dodoma, Tanzania</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8A6820;
+    --deep-blue: #0A1628;
+    --navy: #0F2044;
+    --mid-blue: #1A3A6A;
+    --sky: #1E6FA0;
+    --white: #FFFFFF;
+    --off-white: #F8F5EE;
+    --cream: #EDE5D0;
+    --text-muted: #A09070;
+    --dove: #E8F4FC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--deep-blue);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* PAGE SYSTEM */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,22,40,0.97);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--deep-blue);
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.2;
+    letter-spacing: 1px;
+  }
+
+  .nav-logo-sub {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark)) !important;
+    color: var(--deep-blue) !important;
+    font-weight: 700 !important;
+    padding: 9px 20px !important;
+    border-radius: 4px !important;
+  }
+
+  .nav-cta:hover {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold)) !important;
+    transform: translateY(-1px);
+    color: var(--deep-blue) !important;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links {
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      background: rgba(10,22,40,0.98);
+      flex-direction: column;
+      gap: 0;
+      padding: 1rem 0;
+      transform: translateY(-120%);
+      transition: transform 0.3s;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .nav-links.open { transform: translateY(0); }
+    .nav-links a { padding: 14px 2rem; width: 100%; border-radius: 0; }
+  }
+
+  /* ===================== HOME PAGE ===================== */
+
+  /* HERO SLIDESHOW */
+  .hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slides-container {
+    position: absolute;
+    inset: 0;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .slide.active { opacity: 1; }
+
+  .slide-1 {
+    background: linear-gradient(160deg, #0A1628 0%, #1A3A6A 40%, #1E6FA0 70%, #0A2040 100%);
+  }
+  .slide-2 {
+    background: linear-gradient(160deg, #1A0A28 0%, #3A1A6A 40%, #6A1E9A 70%, #200A40 100%);
+  }
+  .slide-3 {
+    background: linear-gradient(160deg, #001830 0%, #0A4070 40%, #1080B0 70%, #002040 100%);
+  }
+
+  /* Dove animations on slides */
+  .dove-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .dove {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0;
+    animation: doveFloat 8s ease-in-out infinite;
+    filter: brightness(2);
+  }
+
+  .dove:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; font-size: 50px; }
+  .dove:nth-child(2) { top: 35%; left: 25%; animation-delay: 1.5s; font-size: 35px; }
+  .dove:nth-child(3) { top: 15%; left: 50%; animation-delay: 3s; font-size: 45px; }
+  .dove:nth-child(4) { top: 50%; left: 70%; animation-delay: 2s; font-size: 30px; }
+  .dove:nth-child(5) { top: 25%; left: 80%; animation-delay: 4s; font-size: 40px; }
+
+  @keyframes doveFloat {
+    0% { opacity: 0; transform: translateY(20px) translateX(0) scale(0.8); }
+    20% { opacity: 0.9; }
+    50% { opacity: 0.9; transform: translateY(-30px) translateX(20px) scale(1); }
+    80% { opacity: 0.7; transform: translateY(-60px) translateX(40px) scale(0.9); }
+    100% { opacity: 0; transform: translateY(-100px) translateX(60px) scale(0.7); }
+  }
+
+  /* Light rays */
+  .light-rays {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.15) 0%, transparent 70%);
+    animation: pulse-rays 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-rays {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.5) 60%, rgba(10,22,40,0.95) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+    margin-top: 70px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.5);
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease 0.3s both;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    text-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    animation: fadeInDown 1s ease 0.5s both;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    animation: fadeInDown 1s ease 0.7s both;
+    letter-spacing: 1px;
+  }
+
+  .hero-verse {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    animation: fadeInDown 1s ease 0.9s both;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 1s ease 1.1s both;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--deep-blue);
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.4);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 15px 35px;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: all 0.3s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  /* Slide indicators */
+  .slide-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+  }
+
+  .slide-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .slide-dot.active {
+    background: var(--gold);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* SERVICE TIMES STRIP */
+  .service-strip {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--deep-blue);
+  }
+
+  .service-item-icon {
+    font-size: 20px;
+  }
+
+  .service-item-text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .service-item-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  .gold-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem 0;
+  }
+
+  /* ABOUT SECTION */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .about-image-frame {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--navy), var(--mid-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-image-placeholder {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .church-building-svg {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .about-image-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    pointer-events: none;
+  }
+
+  .about-frame-corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: var(--gold);
+    border-style: solid;
+    border-width: 0;
+  }
+
+  .about-frame-corner.tl { top: 10px; left: 10px; border-top-width: 2px; border-left-width: 2px; }
+  .about-frame-corner.tr { top: 10px; right: 10px; border-top-width: 2px; border-right-width: 2px; }
+  .about-frame-corner.bl { bottom: 10px; left: 10px; border-bottom-width: 2px; border-left-width: 2px; }
+  .about-frame-corner.br { bottom: 10px; right: 10px; border-bottom-width: 2px; border-right-width: 2px; }
+
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* PASTORS */
+  .pastors-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 600px) {
+    .pastors-grid { grid-template-columns: 1fr; }
+  }
+
+  .pastor-card {
+    background: linear-gradient(145deg, rgba(26,58,106,0.4), rgba(15,32,68,0.8));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .pastor-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .pastor-image {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pastor-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/2;
+    background: linear-gradient(135deg, var(--navy), var(--mid-blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .pastor-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--deep-blue);
+  }
+
+  .pastor-info {
+    padding: 1.5rem;
+  }
+
+  .pastor-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .pastor-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .pastor-bio {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+  }
+
+  /* SERMONS */
+  .sermons-bg {
+    background: linear-gradient(180deg, transparent, rgba(26,58,106,0.2), transparent);
+  }
+
+  .sermons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .sermon-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .sermon-card:hover {
+    background: rgba(201,168,76,0.05);
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .sermon-type {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--deep-blue);
+    background: var(--gold);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+  }
+
+  .sermon-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .sermon-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .sermon-play {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: gap 0.3s;
+  }
+
+  .sermon-play:hover { gap: 12px; }
+
+  .play-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* EVENTS */
+  .events-list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .event-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .event-item:hover {
+    border-color: rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .event-date-box {
+    text-align: center;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border-radius: 8px;
+    padding: 0.75rem 0.5rem;
+    color: var(--deep-blue);
+  }
+
+  .event-date-day {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+  }
+
+  .event-date-month {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .event-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+
+  .event-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .event-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .event-item { grid-template-columns: 70px 1fr; }
+    .event-tag { display: none; }
+  }
+
+  /* MAP SECTION */
+  .map-section {
+    background: var(--navy);
+    padding: 5rem 2rem;
+  }
+
+  .map-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .map-container {
+    margin-top: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.3);
+    position: relative;
+  }
+
+  .map-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    display: block;
+    filter: saturate(0.8) contrast(1.1);
+  }
+
+  .map-info-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .map-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .map-info-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .map-info-text h4 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .map-info-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #060D1A;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  .footer-brand-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-brand-tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-verse {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-style: italic;
+    border-left: 2px solid var(--gold-dark);
+    padding-left: 1rem;
+  }
+
+  .footer-col-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.5px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+
+  /* ===================== INNER PAGES ===================== */
+  .inner-page {
+    padding-top: 70px;
+    min-height: 100vh;
+  }
+
+  .page-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--mid-blue) 50%, var(--deep-blue) 100%);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%);
+  }
+
+  .page-hero-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-hero-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* JOIN US PAGE */
+  .join-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .join-intro {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .join-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .join-step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .join-step:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-4px);
+  }
+
+  .join-step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--deep-blue);
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+
+  .join-step h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .join-step p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .join-form {
+    background: rgba(26,58,106,0.25);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .join-form h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .join-form p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  .form-group select option {
+    background: var(--navy);
+    color: var(--white);
+  }
+
+  .form-group textarea { min-height: 100px; resize: vertical; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .form-row { grid-template-columns: 1fr; }
+    .join-form { padding: 2rem 1.5rem; }
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--deep-blue);
+    font-family: 'Raleway', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,0.35);
+  }
+
+  /* GIVE PAGE */
+  .give-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .give-intro {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .giving-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .give-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s;
+  }
+
+  .give-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-4px);
+  }
+
+  .give-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .give-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .give-card .amount {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .give-card p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .give-bank-info {
+    background: linear-gradient(135deg, rgba(26,58,106,0.5), rgba(15,32,68,0.8));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .give-bank-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .bank-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 500px) {
+    .bank-detail-grid { grid-template-columns: 1fr; }
+  }
+
+  .bank-detail {
+    padding: 1rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+  }
+
+  .bank-detail-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .bank-detail-value {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .scripture-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-top: 3rem;
+    text-align: center;
+  }
+
+  .scripture-box blockquote {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .scripture-box cite {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .contact-info h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-item-text h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .contact-item-text p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  /* PRAYER REQUEST PAGE */
+  .prayer-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .prayer-intro {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.9;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .prayer-form {
+    background: rgba(26,58,106,0.2);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    padding: 3rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Success message */
+  .success-msg {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .success-msg.show { display: block; }
+
+  .success-msg h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .success-msg p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MINI PHOTO GALLERY (hero slides as colored panels with cross symbols) */
+  .cross-decor {
+    position: absolute;
+    opacity: 0.06;
+    font-size: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: serif;
+    color: var(--white);
+    user-select: none;
+    pointer-events: none;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-icon">✝</div>
+    <div>
+      <div class="nav-logo-text">Gilgal Dominion</div>
+      <div class="nav-logo-sub">Center · Dodoma</div>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a onclick="showPage('home')" data-page="home" class="active">Home</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About Us</a></li>
+    <li><a onclick="showPage('sermons')" data-page="sermons">Sermons</a></li>
+    <li><a onclick="showPage('events')" data-page="events">Events</a></li>
+    <li><a onclick="showPage('prayer')" data-page="prayer">Prayer Request</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+    <li><a onclick="showPage('join')" data-page="join">Join Us</a></li>
+    <li><a onclick="showPage('give')" data-page="give" class="nav-cta">Give / Toa</a></li>
+  </ul>
+
+  <div class="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ==================== HOME PAGE ==================== -->
+<div class="page active" id="page-home">
+
+  <!-- HERO SLIDESHOW -->
+  <div class="hero">
+    <div class="slides-container">
+      <div class="slide slide-1 active">
+        <div class="dove-container">
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+        </div>
+        <div class="light-rays"></div>
+        <span class="cross-decor">✝</span>
+      </div>
+      <div class="slide slide-2">
+        <div class="dove-container">
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+        </div>
+        <div class="light-rays"></div>
+        <span class="cross-decor">✝</span>
+      </div>
+      <div class="slide slide-3">
+        <div class="dove-container">
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+          <div class="dove">🕊</div>
+        </div>
+        <div class="light-rays"></div>
+        <span class="cross-decor">✝</span>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">🕊 Mahali Ambapo Mtu Anafaa</div>
+      <h1 class="hero-title">
+        <span>Gilgal</span><br>Dominion Center
+      </h1>
+      <p class="hero-subtitle">Where Every Soul Belongs • Dodoma, Tanzania</p>
+      <p class="hero-verse">"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you." — Jeremiah 29:11</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="showPage('join')">Join Our Family</button>
+        <button class="btn-outline" onclick="showPage('give')">Give / Toa Sadaka</button>
+      </div>
+    </div>
+
+    <div class="slide-dots" id="slideDots">
+      <div class="slide-dot active" onclick="goToSlide(0)"></div>
+      <div class="slide-dot" onclick="goToSlide(1)"></div>
+      <div class="slide-dot" onclick="goToSlide(2)"></div>
+    </div>
+  </div>
+
+  <!-- SERVICE TIMES STRIP -->
+  <div class="service-strip">
+    <div class="service-item">
+      <span class="service-item-icon">🌅</span>
+      <div>
+        <div class="service-item-label">Sunday Service</div>
+        <div class="service-item-text">8:00 AM & 10:30 AM</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-item-icon">📖</span>
+      <div>
+        <div class="service-item-label">Bible Study</div>
+        <div class="service-item-text">Wednesday 6:00 PM</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-item-icon">🙏</span>
+      <div>
+        <div class="service-item-label">Prayer Meeting</div>
+        <div class="service-item-text">Friday 6:30 PM</div>
+      </div>
+    </div>
+    <div class="service-item">
+      <span class="service-item-icon">📍</span>
+      <div>
+        <div class="service-item-label">Location</div>
+        <div class="service-item-text">Dodoma, Tanzania</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WELCOME SECTION -->
+  <div style="background: linear-gradient(180deg, var(--deep-blue), var(--navy));">
+    <div class="section">
+      <div class="about-grid">
+        <div class="reveal">
+          <span class="section-label">Welcome to Gilgal</span>
+          <h2 class="section-title">A Place Where<br>You Truly Belong</h2>
+          <div class="gold-divider"></div>
+          <p class="section-desc">
+            Gilgal Dominion Center is a vibrant, Spirit-filled church in the heart of Dodoma, Tanzania. We are a family of believers united by faith, love, and the purpose of transforming lives through the power of God's Word.
+          </p>
+          <p class="section-desc" style="margin-top: 1rem;">
+            Whether you are new to faith or a seasoned believer, there is a home here for you. Our doors are open to all — come and experience the love of Christ in our community.
+          </p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Members</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Years of Ministry</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">10+</span>
+              <span class="stat-label">Ministries</span>
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top: 2rem;" onclick="showPage('about')">Learn More About Us</button>
+        </div>
+
+        <div class="about-image-frame reveal">
+          <div class="about-frame-corner tl"></div>
+          <div class="about-frame-corner tr"></div>
+          <div class="about-frame-corner bl"></div>
+          <div class="about-frame-corner br"></div>
+          <div class="about-image-placeholder">
+            <svg class="church-building-svg" viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Sky -->
+              <rect width="320" height="240" fill="#0F2044"/>
+              <!-- Stars -->
+              <circle cx="30" cy="20" r="1.5" fill="#C9A84C" opacity="0.6"/>
+              <circle cx="80" cy="35" r="1" fill="#C9A84C" opacity="0.4"/>
+              <circle cx="150" cy="15" r="1.5" fill="#C9A84C" opacity="0.5"/>
+              <circle cx="250" cy="25" r="1" fill="#C9A84C" opacity="0.6"/>
+              <circle cx="300" cy="40" r="1.5" fill="#C9A84C" opacity="0.3"/>
+              <!-- Doves -->
+              <text x="60" y="55" fill="white" font-size="18" opacity="0.8">🕊</text>
+              <text x="180" y="45" fill="white" font-size="14" opacity="0.6">🕊</text>
+              <text x="240" y="60" fill="white" font-size="16" opacity="0.7">🕊</text>
+              <!-- Church building -->
+              <!-- Main building -->
+              <rect x="80" y="130" width="160" height="110" fill="#1A3A6A"/>
+              <rect x="80" y="130" width="160" height="110" fill="url(#bld)"/>
+              <!-- Roof -->
+              <polygon points="60,130 260,130 230,90 90,90" fill="#C9A84C" opacity="0.9"/>
+              <!-- Tower -->
+              <rect x="135" y="50" width="50" height="80" fill="#0F2044"/>
+              <polygon points="130,52 190,52 160,20" fill="#C9A84C"/>
+              <!-- Cross on tower -->
+              <rect x="156" y="22" width="8" height="22" fill="white"/>
+              <rect x="148" y="28" width="24" height="6" fill="white"/>
+              <!-- Windows -->
+              <rect x="95" y="150" width="30" height="40" rx="15" fill="#C9A84C" opacity="0.7"/>
+              <rect x="145" y="150" width="30" height="40" rx="15" fill="#C9A84C" opacity="0.7"/>
+              <rect x="195" y="150" width="30" height="40" rx="15" fill="#C9A84C" opacity="0.7"/>
+              <!-- Door -->
+              <rect x="140" y="195" width="40" height="45" rx="20" fill="#C9A84C" opacity="0.9"/>
+              <!-- Light from windows -->
+              <ellipse cx="110" cy="145" rx="20" ry="8" fill="#F0D080" opacity="0.3"/>
+              <ellipse cx="160" cy="145" rx="20" ry="8" fill="#F0D080" opacity="0.3"/>
+              <ellipse cx="210" cy="145" rx="20" ry="8" fill="#F0D080" opacity="0.3"/>
+              <!-- Ground -->
+              <rect x="0" y="200" width="320" height="40" fill="#08121E"/>
+              <defs>
+                <linearGradient id="bld" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1A3A6A"/>
+                  <stop offset="100%" stop-color="#0F2044"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <p style="color: var(--gold); font-family: 'Cinzel', serif; font-size: 14px; margin-top: 10px; letter-spacing: 1px;">Gilgal Dominion Center</p>
+            <p style="color: var(--text-muted); font-size: 12px; letter-spacing: 2px;">DODOMA, TANZANIA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASTORS PREVIEW -->
+  <div style="background: var(--navy); padding: 5rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 3rem;" class="reveal">
+        <span class="section-label">Our Leadership</span>
+        <h2 class="section-title" style="text-align:center;">Meet Our Pastors</h2>
+        <div class="gold-divider" style="margin: 1rem auto;"></div>
+      </div>
+      <div class="pastors-grid">
+        <div class="pastor-card reveal">
+          <div class="pastor-image-placeholder">
+            <div class="pastor-avatar">EP</div>
+            <p style="color: var(--text-muted); font-size: 13px; letter-spacing: 1px;">Senior Pastor</p>
+          </div>
+          <div class="pastor-info">
+            <div class="pastor-title">Senior Pastor & Founder</div>
+            <div class="pastor-name">Ps. Emmanuel Mwanga</div>
+            <p class="pastor-bio">With over 20 years of ministry experience, Pastor Emmanuel is a visionary leader and anointed preacher whose passion is to see souls transformed by the power of God's Word. He founded Gilgal Dominion Center with the vision of building a church that truly welcomes every person.</p>
+          </div>
+        </div>
+        <div class="pastor-card reveal">
+          <div class="pastor-image-placeholder">
+            <div class="pastor-avatar">GP</div>
+            <p style="color: var(--text-muted); font-size: 13px; letter-spacing: 1px;">Associate Pastor</p>
+          </div>
+          <div class="pastor-info">
+            <div class="pastor-title">Associate Pastor</div>
+            <div class="pastor-name">Ps. Grace Mwanga</div>
+            <p class="pastor-bio">Pastor Grace leads our women's ministry, children's church, and counseling department. Her gentle spirit and deep faith have touched thousands of lives across Dodoma. She is a gifted teacher with a heart for family restoration and healing.</p>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.5rem;">
+        <button class="btn-outline" onclick="showPage('about')">Read Full Bios →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECENT SERMONS PREVIEW -->
+  <div class="sermons-bg" style="padding: 5rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom: 2.5rem;" class="reveal">
+        <div>
+          <span class="section-label">Latest Messages</span>
+          <h2 class="section-title">Recent Sermons</h2>
+        </div>
+        <button class="btn-outline" onclick="showPage('sermons')">All Sermons →</button>
+      </div>
+      <div class="sermons-grid">
+        <div class="sermon-card reveal">
+          <span class="sermon-type">Sunday Message</span>
+          <div class="sermon-title">Walking in Divine Dominion</div>
+          <div class="sermon-meta">Ps. Emmanuel Mwanga &nbsp;•&nbsp; June 1, 2025</div>
+          <div class="sermon-play">
+            <div class="play-btn">▶</div>
+            Listen Now
+          </div>
+        </div>
+        <div class="sermon-card reveal">
+          <span class="sermon-type">Bible Study</span>
+          <div class="sermon-title">Crossing Your Gilgal: New Beginnings</div>
+          <div class="sermon-meta">Ps. Grace Mwanga &nbsp;•&nbsp; May 28, 2025</div>
+          <div class="sermon-play">
+            <div class="play-btn">▶</div>
+            Listen Now
+          </div>
+        </div>
+        <div class="sermon-card reveal">
+          <span class="sermon-type">Special Service</span>
+          <div class="sermon-title">The Power of Covenant Prayer</div>
+          <div class="sermon-meta">Ps. Emmanuel Mwanga &nbsp;•&nbsp; May 25, 2025</div>
+          <div class="sermon-play">
+            <div class="play-btn">▶</div>
+            Listen Now
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPCOMING EVENTS PREVIEW -->
+  <div style="background: var(--navy); padding: 5rem 2rem;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom: 2.5rem;" class="reveal">
+        <div>
+          <span class="section-label">What's Coming</span>
+          <h2 class="section-title">Upcoming Events</h2>
+        </div>
+        <button class="btn-outline" onclick="showPage('events')">All Events →</button>
+      </div>
+      <div class="events-list">
+        <div class="event-item reveal">
+          <div class="event-date-box">
+            <span class="event-date-day">15</span>
+            <span class="event-date-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h3>Dominion Conference 2025</h3>
+            <p>📍 Gilgal Main Auditorium &nbsp;•&nbsp; 9:00 AM – 9:00 PM</p>
+          </div>
+          <span class="event-tag">Conference</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box">
+            <span class="event-date-day">22</span>
+            <span class="event-date-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h3>Youth Breakthrough Night</h3>
+            <p>📍 Main Hall &nbsp;•&nbsp; 6:00 PM – 10:00 PM</p>
+          </div>
+          <span class="event-tag">Youth</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box">
+            <span class="event-date-day">29</span>
+            <span class="event-date-month">Jun</span>
+          </div>
+          <div class="event-info">
+            <h3>Women's Fellowship — Hallelujah Sisters</h3>
+            <p>📍 Prayer Garden &nbsp;•&nbsp; 10:00 AM – 2:00 PM</p>
+          </div>
+          <span class="event-tag">Women</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP SECTION -->
+  <div class="map-section">
+    <div class="map-inner">
+      <div class="reveal" style="text-align:center; margin-bottom: 2rem;">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title" style="text-align:center;">We Are In Dodoma</h2>
+        <p style="font-family: 'Crimson Pro', serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 500px; margin: 0.5rem auto 0;">Come worship with us. You are always welcome at Gilgal Dominion Center.</p>
+      </div>
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127325.98885025743!2d35.66926895!3d-6.17220755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18379bb0a97d0375%3A0xeae5a75f54b2c53f!2sDodoma%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <div class="map-info-bar">
+        <div class="map-info-item reveal">
+          <div class="map-info-icon">📍</div>
+          <div class="map-info-text">
+            <h4>Address</h4>
+            <p>Gilgal Dominion Center<br>Dodoma, Tanzania</p>
+          </div>
+        </div>
+        <div class="map-info-item reveal">
+          <div class="map-info-icon">📞</div>
+          <div class="map-info-text">
+            <h4>Phone</h4>
+            <p>+255 700 000 000<br>+255 754 000 000</p>
+          </div>
+        </div>
+        <div class="map-info-item reveal">
+          <div class="map-info-icon">✉️</div>
+          <div class="map-info-text">
+            <h4>Email</h4>
+            <p>info@gilgaldominion.co.tz</p>
+          </div>
+        </div>
+        <div class="map-info-item reveal">
+          <div class="map-info-icon">🕐</div>
+          <div class="map-info-text">
+            <h4>Service Times</h4>
+            <p>Sun: 8am & 10:30am<br>Wed Bible Study: 6pm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">✝ Gilgal Dominion Center</div>
+        <div class="footer-brand-tagline">Mahali Ambapo Mtu Anafaa</div>
+        <div class="footer-verse">
+          "I press toward the goal for the prize of the upward call of God in Christ Jesus."<br>
+          — Philippians 3:14
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">About Us</a></li>
+          <li><a onclick="showPage('sermons')">Sermons</a></li>
+          <li><a onclick="showPage('events')">Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('join')">Join Us</a></li>
+          <li><a onclick="showPage('give')">Give / Toa</a></li>
+          <li><a onclick="showPage('prayer')">Prayer Request</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Service Times</div>
+        <ul class="footer-links" style="gap: 0.8rem;">
+          <li><span style="color:var(--gold);">Sunday</span> 8:00 AM & 10:30 AM</li>
+          <li><span style="color:var(--gold);">Wednesday</span> Bible Study 6:00 PM</li>
+          <li><span style="color:var(--gold);">Friday</span> Prayer 6:30 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Gilgal Dominion Center, Dodoma, Tanzania. All rights reserved.</p>
+      <div class="social-links">
+        <a class="social-link" href="#" title="Facebook">f</a>
+        <a class="social-link" href="#" title="YouTube">▶</a>
+        <a class="social-link" href="#" title="WhatsApp">W</a>
+        <a class="social-link" href="#" title="Instagram">📷</a>
+      </div>
+    </div>
+  </footer>
+</div><!-- end home page -->
+
+
+<!-- ==================== ABOUT PAGE ==================== -->
+<div class="page" id="page-about">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">Our Story & Vision</span>
+      <h1 class="page-hero-title">About Gilgal Dominion Center</h1>
+      <p class="page-hero-desc">A community rooted in faith, driven by love, and committed to seeing every person discover their God-given purpose.</p>
+    </div>
+
+    <div class="section" style="max-width:900px;">
+      <div class="reveal" style="margin-bottom: 3rem;">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">From a Small Gathering to a Growing Kingdom</h2>
+        <div class="gold-divider"></div>
+        <p class="section-desc" style="max-width:100%; margin-bottom:1.2rem;">
+          Gilgal Dominion Center was founded with a singular vision: to create a church where every person, regardless of background, social status, or history, would find a warm welcome and life-changing encounter with Jesus Christ.
+        </p>
+        <p class="section-desc" style="max-width:100%; margin-bottom:1.2rem;">
+          The name "Gilgal" carries deep biblical significance — it was the place where the children of Israel rolled away the reproach of Egypt (Joshua 5:9), a place of new beginnings, divine commissioning, and fresh consecration. That is the spirit that drives everything we do at this church.
+        </p>
+        <p class="section-desc" style="max-width:100%;">
+          Today, Gilgal Dominion Center is one of Dodoma's most vibrant faith communities, with ministries spanning children, youth, women, men, evangelism, and community outreach. We believe the church is not a building — it is a living, breathing family of God's people.
+        </p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin: 3rem 0;" class="reveal">
+        <div style="background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius:10px; padding:1.5rem; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.5rem;">🎯</div>
+          <h3 style="font-family:'Cinzel',serif; color:var(--gold); margin-bottom:0.5rem;">Our Vision</h3>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.65); font-size:1rem; line-height:1.6;">To be a church that transforms Dodoma — and all of Tanzania — through the power of the Gospel.</p>
+        </div>
+        <div style="background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius:10px; padding:1.5rem; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.5rem;">💡</div>
+          <h3 style="font-family:'Cinzel',serif; color:var(--gold); margin-bottom:0.5rem;">Our Mission</h3>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.65); font-size:1rem; line-height:1.6;">To make disciples, equip believers, serve communities, and exalt the name of Jesus Christ above all.</p>
+        </div>
+        <div style="background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.25); border-radius:10px; padding:1.5rem; text-align:center;">
+          <div style="font-size:2rem; margin-bottom:0.5rem;">📖</div>
+          <h3 style="font-family:'Cinzel',serif; color:var(--gold); margin-bottom:0.5rem;">Our Values</h3>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.65); font-size:1rem; line-height:1.6;">Faith, Family, Excellence, Integrity, and the Uncompromising Authority of God's Word.</p>
+        </div>
+      </div>
+
+      <!-- PASTORS FULL BIOS -->
+      <div class="reveal" style="margin-top: 4rem;">
+        <span class="section-label">Leadership</span>
+        <h2 class="section-title">Our Pastors</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <div class="pastors-grid" style="margin-top: 2rem;">
+        <div class="pastor-card reveal">
+          <div class="pastor-image-placeholder">
+            <div class="pastor-avatar" style="width:100px; height:100px; font-size:36px;">EP</div>
+            <div style="margin-top:8px; text-align:center;">
+              <p style="color:var(--gold); font-family:'Cinzel',serif; font-size:1rem;">Ps. Emmanuel Mwanga</p>
+              <p style="color:var(--text-muted); font-size:12px; letter-spacing:1px;">Senior Pastor</p>
+            </div>
+          </div>
+          <div class="pastor-info">
+            <div class="pastor-title">Senior Pastor & Founder</div>
+            <div class="pastor-name">Ps. Emmanuel Mwanga</div>
+            <p class="pastor-bio" style="margin-bottom:1rem;">
+              Pastor Emmanuel Mwanga holds a Bachelor of Theology from the Africa Inland Church University and has ministered across Tanzania, Kenya, and Uganda. He founded Gilgal Dominion Center over 15 years ago after a powerful divine encounter that commissioned him to build a church for "the forgotten and the overlooked."
+            </p>
+            <p class="pastor-bio">
+              Known for his dynamic preaching, prophetic insight, and deep compassion, Pastor Emmanuel is married and has three children. He also serves on the board of the Tanzania Evangelical Council of Churches.
+            </p>
+          </div>
+        </div>
+
+        <div class="pastor-card reveal">
+          <div class="pastor-image-placeholder">
+            <div class="pastor-avatar" style="width:100px; height:100px; font-size:36px; background: linear-gradient(135deg, #9A6CBF, #6A3A9A);">GP</div>
+            <div style="margin-top:8px; text-align:center;">
+              <p style="color:var(--gold); font-family:'Cinzel',serif; font-size:1rem;">Ps. Grace Mwanga</p>
+              <p style="color:var(--text-muted); font-size:12px; letter-spacing:1px;">Associate Pastor</p>
+            </div>
+          </div>
+          <div class="pastor-info">
+            <div class="pastor-title">Associate Pastor & Women's Ministry Director</div>
+            <div class="pastor-name">Ps. Grace Mwanga</div>
+            <p class="pastor-bio" style="margin-bottom:1rem;">
+              Pastor Grace is a licensed counselor and ordained minister with a heart for women, families, and children. She holds a Diploma in Christian Counseling and has walked with hundreds of families through healing, restoration, and spiritual growth.
+            </p>
+            <p class="pastor-bio">
+              She leads our "Hallelujah Sisters" women's fellowship, oversees Sunday school and children's church, and conducts weekly inner healing sessions. Her gentle authority and prophetic gifting make her a beloved shepherd in the Gilgal family.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 4rem;"></div>
+  </div>
+</div><!-- end about -->
+
+
+<!-- ==================== SERMONS PAGE ==================== -->
+<div class="page" id="page-sermons">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">The Word of God</span>
+      <h1 class="page-hero-title">Sermons & Messages</h1>
+      <p class="page-hero-desc">Be nourished by God's Word. Browse our library of sermons, teachings, and special messages from our pastors.</p>
+    </div>
+
+    <div class="section">
+      <div style="display: flex; gap: 1rem; flex-wrap:wrap; margin-bottom: 2.5rem;" class="reveal">
+        <button onclick="filterSermons('all')" id="filter-all" style="background:var(--gold); color:var(--deep-blue); border:none; padding:10px 22px; border-radius:25px; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">All</button>
+        <button onclick="filterSermons('sunday')" id="filter-sunday" style="background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.2); padding:10px 22px; border-radius:25px; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">Sunday Services</button>
+        <button onclick="filterSermons('bible')" id="filter-bible" style="background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.2); padding:10px 22px; border-radius:25px; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">Bible Study</button>
+        <button onclick="filterSermons('special')" id="filter-special" style="background:transparent; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.2); padding:10px 22px; border-radius:25px; font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; cursor:pointer; transition:all 0.3s;">Special Services</button>
+      </div>
+
+      <div class="sermons-grid" id="sermonsList">
+        <div class="sermon-card" data-cat="sunday">
+          <span class="sermon-type">Sunday Message</span>
+          <div class="sermon-title">Walking in Divine Dominion</div>
+          <div class="sermon-meta">Ps. Emmanuel Mwanga &nbsp;•&nbsp; June 1, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">God has ordained you to walk in dominion over every area of your life. Discover the keys to living in your God-given authority.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+        <div class="sermon-card" data-cat="bible">
+          <span class="sermon-type">Bible Study</span>
+          <div class="sermon-title">Crossing Your Gilgal: New Beginnings</div>
+          <div class="sermon-meta">Ps. Grace Mwanga &nbsp;•&nbsp; May 28, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">As the Israelites rolled away reproach at Gilgal, God is calling you to a fresh start. This message will shift your spiritual atmosphere.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+        <div class="sermon-card" data-cat="special">
+          <span class="sermon-type">Special Service</span>
+          <div class="sermon-title">The Power of Covenant Prayer</div>
+          <div class="sermon-meta">Ps. Emmanuel Mwanga &nbsp;•&nbsp; May 25, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">Prayer is not a ritual — it is a covenant conversation with the living God. Learn to pray prayers that move heaven and change earth.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+        <div class="sermon-card" data-cat="sunday">
+          <span class="sermon-type">Sunday Message</span>
+          <div class="sermon-title">The Anointing That Breaks Every Yoke</div>
+          <div class="sermon-meta">Ps. Emmanuel Mwanga &nbsp;•&nbsp; May 18, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">Isaiah 10:27 declares that the anointing destroys the yoke. Experience a fresh impartation of God's power in this powerful Sunday message.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+        <div class="sermon-card" data-cat="bible">
+          <span class="sermon-type">Bible Study</span>
+          <div class="sermon-title">Faith That Moves Mountains</div>
+          <div class="sermon-meta">Ps. Grace Mwanga &nbsp;•&nbsp; May 14, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">Jesus said faith the size of a mustard seed moves mountains. This teaching will challenge and deepen your trust in God's Word.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+        <div class="sermon-card" data-cat="special">
+          <span class="sermon-type">Special Service</span>
+          <div class="sermon-title">From Barrenness to Fruitfulness</div>
+          <div class="sermon-meta">Ps. Grace Mwanga &nbsp;•&nbsp; May 10, 2025</div>
+          <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); font-size:1rem; line-height:1.6; margin-bottom:1rem;">God specialises in bringing life where there was none. A powerful testimony-filled service about God's miracle-working power.</p>
+          <div class="sermon-play"><div class="play-btn">▶</div> Listen Now</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end sermons -->
+
+
+<!-- ==================== EVENTS PAGE ==================== -->
+<div class="page" id="page-events">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">Stay Connected</span>
+      <h1 class="page-hero-title">Events & Programmes</h1>
+      <p class="page-hero-desc">From conferences to fellowship gatherings, there is always something happening at Gilgal Dominion Center. Come and be part of it.</p>
+    </div>
+
+    <div class="section">
+      <div class="events-list">
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">15</span><span class="event-date-month">Jun</span></div>
+          <div class="event-info">
+            <h3>Dominion Conference 2025</h3>
+            <p>📍 Main Auditorium &nbsp;•&nbsp; 9:00 AM – 9:00 PM &nbsp;•&nbsp; 3 Days of Power & Glory</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">A three-day interdenominational conference featuring worship, teaching, and prophetic ministry. Guest speakers from across East Africa. All welcome. Free entry.</p>
+          </div>
+          <span class="event-tag">Conference</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">22</span><span class="event-date-month">Jun</span></div>
+          <div class="event-info">
+            <h3>Youth Breakthrough Night</h3>
+            <p>📍 Main Hall &nbsp;•&nbsp; 6:00 PM – 10:00 PM</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">A powerful night of worship, prayer, and the Word designed specifically for the youth of Dodoma. Come with your friends!</p>
+          </div>
+          <span class="event-tag">Youth</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">29</span><span class="event-date-month">Jun</span></div>
+          <div class="event-info">
+            <h3>Women's Fellowship — Hallelujah Sisters</h3>
+            <p>📍 Prayer Garden &nbsp;•&nbsp; 10:00 AM – 2:00 PM</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">Monthly gathering of women from all walks of life. Worship, testimony, teaching, and fellowship. Bring a friend!</p>
+          </div>
+          <span class="event-tag">Women</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">6</span><span class="event-date-month">Jul</span></div>
+          <div class="event-info">
+            <h3>Marriage Enrichment Seminar</h3>
+            <p>📍 Fellowship Hall &nbsp;•&nbsp; 9:00 AM – 4:00 PM</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">For couples at every stage of marriage. Led by Ps. Emmanuel & Grace Mwanga. Registration required. Refreshments provided.</p>
+          </div>
+          <span class="event-tag">Family</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">20</span><span class="event-date-month">Jul</span></div>
+          <div class="event-info">
+            <h3>Community Outreach Day — Dodoma City</h3>
+            <p>📍 Various Locations, Dodoma &nbsp;•&nbsp; 8:00 AM – 5:00 PM</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">Food distribution, free medical check-ups, evangelism, and prayer for the Dodoma community. Volunteers welcome.</p>
+          </div>
+          <span class="event-tag">Outreach</span>
+        </div>
+        <div class="event-item reveal">
+          <div class="event-date-box"><span class="event-date-day">3</span><span class="event-date-month">Aug</span></div>
+          <div class="event-info">
+            <h3>Men's Breakfast & Bible Study</h3>
+            <p>📍 Main Hall &nbsp;•&nbsp; 7:00 AM – 10:00 AM</p>
+            <p style="margin-top:4px; font-size:12px; color:rgba(255,255,255,0.4);">Breakfast, fellowship, and practical Bible teaching for men. Discuss real-life challenges through the lens of Scripture.</p>
+          </div>
+          <span class="event-tag">Men</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end events -->
+
+
+<!-- ==================== PRAYER REQUEST PAGE ==================== -->
+<div class="page" id="page-prayer">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">We Stand With You</span>
+      <h1 class="page-hero-title">Prayer Requests</h1>
+      <p class="page-hero-desc">You do not have to carry your burdens alone. Submit your prayer request and our prayer team will intercede for you.</p>
+    </div>
+
+    <div class="prayer-content">
+      <div class="scripture-box reveal" style="margin-bottom: 3rem;">
+        <blockquote>"Therefore I tell you, whatever you ask for in prayer, believe that you have received it, and it will be yours."</blockquote>
+        <cite>Mark 11:24</cite>
+      </div>
+
+      <p class="prayer-intro reveal">
+        At Gilgal Dominion Center, we believe in the power of unified prayer. Our dedicated prayer team reads every request and lifts each need before the throne of God. Your request is confidential and treated with the utmost care and sensitivity.
+      </p>
+
+      <div class="prayer-form reveal">
+        <h2 style="font-family:'Cinzel',serif; color:var(--gold); text-align:center; margin-bottom:0.5rem; font-size:1.4rem;">Submit Your Prayer Request</h2>
+        <p style="font-family:'Crimson Pro',serif; color:rgba(255,255,255,0.55); text-align:center; margin-bottom:2rem; font-size:1rem;">All requests are kept confidential.</p>
+
+        <div id="prayerFormContent">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Your full name (optional)">
+          </div>
+          <div class="form-group">
+            <label>Contact (optional)</label>
+            <input type="text" placeholder="Phone or email — only if you want a follow-up">
+          </div>
+          <div class="form-group">
+            <label>Prayer Category</label>
+            <select>
+              <option>— Select a category —</option>
+              <option>Healing & Health</option>
+              <option>Family & Marriage</option>
+              <option>Financial Breakthrough</option>
+              <option>Salvation of a Loved One</option>
+              <option>Career & Education</option>
+              <option>Spiritual Growth</option>
+              <option>Protection & Safety</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Prayer Request</label>
+            <textarea placeholder="Share your prayer need here. Be as specific as you like — God hears every word." style="min-height:140px;"></textarea>
+          </div>
+          <div class="form-group" style="display:flex; align-items:flex-start; gap:10px;">
+            <input type="checkbox" id="anon" style="width:20px; height:20px; margin-top:2px; flex-shrink:0; accent-color:var(--gold);">
+            <label for="anon" style="font-size:13px; color:rgba(255,255,255,0.6); letter-spacing:0; text-transform:none; font-weight:400;">I want my request to remain completely anonymous — do not share it publicly</label>
+          </div>
+          <button class="submit-btn" onclick="submitPrayer()">🙏 Send My Prayer Request</button>
+        </div>
+
+        <div class="success-msg" id="prayerSuccess">
+          <div style="font-size:3rem; margin-bottom:1rem;">🕊</div>
+          <h3>Your Request Has Been Received</h3>
+          <p>Our prayer team will intercede for you. God hears every prayer. Be encouraged — you are not alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end prayer -->
+
+
+<!-- ==================== JOIN US PAGE ==================== -->
+<div class="page" id="page-join">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">You Belong Here</span>
+      <h1 class="page-hero-title">Join Our Church Family</h1>
+      <p class="page-hero-desc">Gilgal Dominion Center is a place where you are known, loved, and needed. Take the first step toward belonging.</p>
+    </div>
+
+    <div class="join-content">
+      <p class="join-intro reveal">
+        The name of our church — Gilgal — means <em>"the reproach has been rolled away."</em> Whatever your past, whatever your story, you are welcome here. We are not a perfect church, but we are a church that loves perfectly because we follow the One who is perfect love.
+      </p>
+
+      <div class="join-steps">
+        <div class="join-step reveal">
+          <div class="join-step-num">1</div>
+          <h3>Visit a Sunday Service</h3>
+          <p>The best way to start is simply to come. Sunday services are at 8:00 AM and 10:30 AM. Expect warm greetings, powerful worship, and life-changing teaching.</p>
+        </div>
+        <div class="join-step reveal">
+          <div class="join-step-num">2</div>
+          <h3>Attend New Members Orientation</h3>
+          <p>We run a free monthly "Foundations" class for new attendees — a 4-week journey through faith, church life, and your identity in Christ. No obligations.</p>
+        </div>
+        <div class="join-step reveal">
+          <div class="join-step-num">3</div>
+          <h3>Connect in a Life Group</h3>
+          <p>Get rooted in community through our small groups that meet throughout Dodoma every week. This is where real friendships and growth happen.</p>
+        </div>
+        <div class="join-step reveal">
+          <div class="join-step-num">4</div>
+          <h3>Discover Your Ministry</h3>
+          <p>Every believer has gifts and a calling. We will help you find your place of service — from worship, to children's ministry, to outreach and more.</p>
+        </div>
+      </div>
+
+      <div class="join-form reveal">
+        <h2>Register Your Interest</h2>
+        <p>Fill in your details and our welcome team will reach out to you personally.</p>
+
+        <div id="joinFormContent">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" placeholder="First name">
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" placeholder="Last name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="+255 7XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Age Group</label>
+            <select>
+              <option>— Select —</option>
+              <option>Under 18</option>
+              <option>18–25 (Youth)</option>
+              <option>26–35</option>
+              <option>36–50</option>
+              <option>50+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>What Brings You Here?</label>
+            <select>
+              <option>— Select —</option>
+              <option>I'm new to church</option>
+              <option>I'm a believer looking for a church home</option>
+              <option>I was invited by a friend/family member</option>
+              <option>I found you online</option>
+              <option>I want to reconnect with God</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Anything Else You'd Like to Share?</label>
+            <textarea placeholder="Any questions, prayer needs, or things you'd like us to know as we welcome you..."></textarea>
+          </div>
+          <button class="submit-btn" onclick="submitJoin()">✝ I Want to Join the Family</button>
+        </div>
+
+        <div class="success-msg" id="joinSuccess">
+          <div style="font-size:3rem; margin-bottom:1rem;">🙌</div>
+          <h3>Welcome to the Family!</h3>
+          <p>We are so glad you reached out. Someone from our welcome team will contact you within 24 hours. See you on Sunday!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end join -->
+
+
+<!-- ==================== GIVE PAGE ==================== -->
+<div class="page" id="page-give">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">Honor God With Your Substance</span>
+      <h1 class="page-hero-title">Give / Toa Sadaka</h1>
+      <p class="page-hero-desc">Your generosity fuels the mission. Every shilling given is a seed sown into God's Kingdom work in Dodoma and beyond.</p>
+    </div>
+
+    <div class="give-content">
+      <div class="scripture-box reveal">
+        <blockquote>"Give, and it will be given to you. A good measure, pressed down, shaken together and running over, will be poured into your lap."</blockquote>
+        <cite>Luke 6:38</cite>
+      </div>
+
+      <p class="give-intro reveal" style="margin-top: 3rem;">
+        Giving is an act of worship. When you sow into the work of Gilgal Dominion Center, you are partnering with God to transform lives, fund outreaches, support the poor, and carry the Gospel across Tanzania. Thank you for your faithfulness.
+      </p>
+
+      <div class="giving-options">
+        <div class="give-card reveal">
+          <span class="give-card-icon">🌾</span>
+          <h3>Tithes (Zaka)</h3>
+          <div class="amount">10%</div>
+          <p>The tithe is 10% of your income — the first fruits belonging to God. Bring your tithes to honor the Lord and open the windows of heaven over your life (Malachi 3:10).</p>
+          <button class="btn-primary" style="font-size:12px; padding:12px 24px;" onclick="showGiveForm('tithe')">Give Tithe Online</button>
+        </div>
+        <div class="give-card reveal">
+          <span class="give-card-icon">💛</span>
+          <h3>Offerings (Sadaka)</h3>
+          <div class="amount">Any Amount</div>
+          <p>A freewill offering from a cheerful heart. God loves a cheerful giver (2 Cor 9:7). Give what you have purposed in your heart, with joy and expectation.</p>
+          <button class="btn-primary" style="font-size:12px; padding:12px 24px;" onclick="showGiveForm('offering')">Give Offering Online</button>
+        </div>
+        <div class="give-card reveal">
+          <span class="give-card-icon">🏗️</span>
+          <h3>Building Fund</h3>
+          <div class="amount">Partner With Us</div>
+          <p>Help us complete the expansion of our main sanctuary and children's wing. Every contribution is a brick in God's house in Dodoma.</p>
+          <button class="btn-primary" style="font-size:12px; padding:12px 24px;" onclick="showGiveForm('building')">Give to Building Fund</button>
+        </div>
+        <div class="give-card reveal">
+          <span class="give-card-icon">🌍</span>
+          <h3>Missions & Outreach</h3>
+          <div class="amount">Reach the Lost</div>
+          <p>Support our evangelism teams, community feeding programs, and missions work across rural Tanzania. Your gift puts the Gospel in unreached hands.</p>
+          <button class="btn-primary" style="font-size:12px; padding:12px 24px;" onclick="showGiveForm('missions')">Support Missions</button>
+        </div>
+      </div>
+
+      <div class="give-bank-info reveal">
+        <h2>Bank Transfer Details — Dodoma, Tanzania</h2>
+        <div class="bank-detail-grid">
+          <div class="bank-detail">
+            <div class="bank-detail-label">Bank Name</div>
+            <div class="bank-detail-value">CRDB Bank</div>
+          </div>
+          <div class="bank-detail">
+            <div class="bank-detail-label">Account Name</div>
+            <div class="bank-detail-value">Gilgal Dominion Center</div>
+          </div>
+          <div class="bank-detail">
+            <div class="bank-detail-label">Account Number</div>
+            <div class="bank-detail-value">0150 4001 7000 0001</div>
+          </div>
+          <div class="bank-detail">
+            <div class="bank-detail-label">Branch</div>
+            <div class="bank-detail-value">Dodoma Main Branch</div>
+          </div>
+          <div class="bank-detail">
+            <div class="bank-detail-label">Mobile Money (M-Pesa)</div>
+            <div class="bank-detail-value">+255 700 000 000</div>
+          </div>
+          <div class="bank-detail">
+            <div class="bank-detail-label">Tigo Pesa / Airtel Money</div>
+            <div class="bank-detail-value">+255 754 000 000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Online Give Form -->
+      <div id="giveFormSection" style="display:none; background:rgba(26,58,106,0.2); border:1px solid rgba(201,168,76,0.2); border-radius:16px; padding:2.5rem; max-width:500px; margin:0 auto;">
+        <h2 style="font-family:'Cinzel',serif; color:var(--gold); text-align:center; margin-bottom:1.5rem;" id="giveFormTitle">Give Online</h2>
+        <div id="giveFormBody">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+255 7XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label>Amount (TZS)</label>
+            <input type="number" placeholder="e.g. 10000" min="500">
+          </div>
+          <div class="form-group">
+            <label>Payment Method</label>
+            <select>
+              <option>M-Pesa</option>
+              <option>Tigo Pesa</option>
+              <option>Airtel Money</option>
+              <option>Bank Transfer</option>
+            </select>
+          </div>
+          <button class="submit-btn" onclick="submitGive()">💛 Complete My Gift</button>
+        </div>
+        <div class="success-msg" id="giveSuccess">
+          <div style="font-size:3rem; margin-bottom:1rem;">🌟</div>
+          <h3>God Bless Your Generosity!</h3>
+          <p>Your gift has been received. A confirmation will be sent to your phone. Thank you for investing in God's Kingdom in Dodoma.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end give -->
+
+
+<!-- ==================== CONTACT PAGE ==================== -->
+<div class="page" id="page-contact">
+  <div class="inner-page">
+    <div class="page-hero">
+      <span class="page-hero-label">Get in Touch</span>
+      <h1 class="page-hero-title">Contact Us</h1>
+      <p class="page-hero-desc">We would love to hear from you. Reach out and our team will respond as quickly as possible.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h2>How to Reach Us</h2>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <h4>Address</h4>
+            <p>Gilgal Dominion Center<br>Dodoma, Tanzania</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <h4>Phone</h4>
+            <p>+255 700 000 000<br>+255 754 000 000</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">✉️</div>
+          <div class="contact-item-text">
+            <h4>Email</h4>
+            <p>info@gilgaldominion.co.tz<br>pastor@gilgaldominion.co.tz</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div class="contact-item-text">
+            <h4>Office Hours</h4>
+            <p>Mon–Fri: 9:00 AM – 5:00 PM<br>Saturday: 9:00 AM – 1:00 PM</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📱</div>
+          <div class="contact-item-text">
+            <h4>WhatsApp</h4>
+            <p>+255 700 000 000<br>(Quick messages only)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="join-form" style="max-width:100%; margin:0;">
+          <h2 style="font-size:1.3rem;">Send Us a Message</h2>
+          <p style="font-size:0.95rem;">We usually respond within 24 hours.</p>
+          <div id="contactFormContent">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="First name">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Last name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email or Phone</label>
+              <input type="text" placeholder="How we can reach you back">
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <select>
+                <option>— What is this about? —</option>
+                <option>General Inquiry</option>
+                <option>Prayer Request</option>
+                <option>Visit the Church</option>
+                <option>Pastoral Counseling</option>
+                <option>Events & Programs</option>
+                <option>Giving & Finance</option>
+                <option>Media / Press</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea placeholder="Your message..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+          </div>
+          <div class="success-msg" id="contactSuccess">
+            <div style="font-size:3rem; margin-bottom:1rem;">✉️</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. We will respond to you soon. God bless you!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map on contact page too -->
+    <div style="padding: 0 2rem 5rem; max-width:1000px; margin: 0 auto;">
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127325.98885025743!2d35.66926895!3d-6.17220755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x18379bb0a97d0375%3A0xeae5a75f54b2c53f!2sDodoma%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div><!-- end contact -->
+
+
+<script>
+// ============ PAGE ROUTING ============
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('data-page') === name);
+  });
+  window.scrollTo({ top: 0 });
+  // Close mobile nav
+  document.getElementById('navLinks').classList.remove('open');
+  // Init reveals for new page
+  setTimeout(initReveal, 100);
+}
+
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ============ SLIDESHOW ============
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slide-dot');
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+setInterval(() => {
+  goToSlide((currentSlide + 1) % slides.length);
+}, 5000);
+
+// ============ SCROLL REVEAL ============
+function initReveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+}
+
+initReveal();
+
+// ============ SERMON FILTER ============
+function filterSermons(cat) {
+  const cards = document.querySelectorAll('#sermonsList .sermon-card');
+  cards.forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+  document.querySelectorAll('[id^="filter-"]').forEach(btn => {
+    btn.style.background = 'transparent';
+    btn.style.color = 'rgba(255,255,255,0.6)';
+    btn.style.border = '1px solid rgba(255,255,255,0.2)';
+  });
+  const active = document.getElementById('filter-' + cat);
+  if (active) {
+    active.style.background = 'var(--gold)';
+    active.style.color = 'var(--deep-blue)';
+    active.style.border = 'none';
+  }
+}
+
+// ============ FORMS ============
+function submitPrayer() {
+  document.getElementById('prayerFormContent').style.display = 'none';
+  document.getElementById('prayerSuccess').classList.add('show');
+}
+
+function submitJoin() {
+  document.getElementById('joinFormContent').style.display = 'none';
+  document.getElementById('joinSuccess').classList.add('show');
+}
+
+function submitContact() {
+  document.getElementById('contactFormContent').style.display = 'none';
+  document.getElementById('contactSuccess').classList.add('show');
+}
+
+function showGiveForm(type) {
+  const labels = {
+    tithe: 'Give Your Tithe (Zaka)',
+    offering: 'Give an Offering (Sadaka)',
+    building: 'Give to the Building Fund',
+    missions: 'Support Missions & Outreach'
+  };
+  document.getElementById('giveFormTitle').textContent = labels[type] || 'Give Online';
+  document.getElementById('giveFormSection').style.display = 'block';
+  document.getElementById('giveFormBody').style.display = 'block';
+  document.getElementById('giveSuccess').classList.remove('show');
+  document.getElementById('giveFormSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function submitGive() {
+  document.getElementById('giveFormBody').style.display = 'none';
+  document.getElementById('giveSuccess').classList.add('show');
+}
+</script>
+</body>
+</html>

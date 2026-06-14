@@ -1,0 +1,2910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gilgal Dominion Center – Mahali Ambapo Mtu Anafaa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F5C842;
+    --gold-dark: #A07010;
+    --sky: #1a6fa8;
+    --sky-light: #5bb8f5;
+    --sky-deep: #0a3d6b;
+    --white: #ffffff;
+    --cream: #fdf8ee;
+    --charcoal: #1a1a2e;
+    --dove: #f0f6ff;
+    --text-dark: #1c1c2e;
+    --text-muted: #5a6a7a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10, 61, 107, 0.97);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--gold);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo .cross {
+    width: 36px;
+    height: 36px;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .nav-logo .cross::before,
+  .nav-logo .cross::after {
+    content: '';
+    position: absolute;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .nav-logo .cross::before {
+    width: 6px; height: 36px;
+    left: 50%; transform: translateX(-50%);
+  }
+
+  .nav-logo .cross::after {
+    width: 30px; height: 6px;
+    top: 30%; left: 50%; transform: translateX(-50%);
+  }
+
+  .nav-logo-text {
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-logo-text span {
+    display: block;
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold-light);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--sky-deep) !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 700 !important;
+    transition: background 0.3s, transform 0.2s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold-light) !important;
+    transform: translateY(-1px);
+    color: var(--sky-deep) !important;
+  }
+
+  .nav-cta::after { display: none !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 26px; height: 2px;
+    background: var(--gold-light);
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: #062a50;
+  }
+
+  /* ─── SLIDESHOW ─── */
+  .hero-slideshow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out;
+  }
+
+  .slide.active { opacity: 1; }
+
+  .slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(6,42,80,0.72) 0%,
+      rgba(13,79,130,0.55) 40%,
+      rgba(10,61,107,0.65) 100%
+    );
+  }
+
+  .slide-1 { background-image: url('https://images.unsplash.com/photo-1438032992991-995b7058bbb3?w=1600&q=85'); }
+  .slide-2 { background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1600&q=85'); }
+  .slide-3 { background-image: url('https://images.unsplash.com/photo-1523803326055-9b756a935e0f?w=1600&q=85'); }
+  .slide-4 { background-image: url('https://images.unsplash.com/photo-1545128485-c400e7702796?w=1600&q=85'); }
+  .slide-5 { background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=85'); }
+
+  .slide-dots {
+    position: absolute;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .slide-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(212,160,23,0.5);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .slide-dot.active {
+    background: var(--gold-light);
+    transform: scale(1.4);
+    border-color: var(--gold-light);
+  }
+
+  .slide-arrows {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  .slide-arrow {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: all;
+    transition: background 0.3s;
+  }
+
+  .slide-arrow:hover { background: rgba(212,160,23,0.35); }
+  .slide-arrow svg { fill: var(--gold-light); }
+
+  .hero-sky {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(91,184,245,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 60%, rgba(212,160,23,0.04) 0%, transparent 60%);
+  }
+
+  .hero-clouds {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.07);
+    border-radius: 50px;
+    filter: blur(1px);
+    animation: cloudDrift linear infinite;
+  }
+
+  .cloud-1 { width: 300px; height: 60px; top: 20%; left: -300px; animation-duration: 35s; animation-delay: 0s; }
+  .cloud-2 { width: 200px; height: 40px; top: 35%; left: -200px; animation-duration: 50s; animation-delay: -12s; }
+  .cloud-3 { width: 400px; height: 80px; top: 55%; left: -400px; animation-duration: 42s; animation-delay: -25s; }
+  .cloud-4 { width: 250px; height: 50px; top: 70%; left: -250px; animation-duration: 60s; animation-delay: -8s; }
+
+  @keyframes cloudDrift {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 500px)); }
+  }
+
+  .dove-fly {
+    position: absolute;
+    opacity: 0.15;
+    animation: doveFloat ease-in-out infinite;
+    z-index: 3;
+  }
+
+  .dove-fly svg { fill: white; }
+
+  .dove-1 { top: 18%; left: 8%; animation-duration: 7s; animation-delay: 0s; }
+  .dove-2 { top: 28%; right: 10%; animation-duration: 9s; animation-delay: -3s; transform: scaleX(-1); }
+  .dove-3 { top: 60%; left: 15%; animation-duration: 11s; animation-delay: -6s; }
+  .dove-4 { top: 45%; right: 6%; animation-duration: 8s; animation-delay: -1s; transform: scaleX(-1); }
+  .dove-5 { bottom: 20%; left: 40%; animation-duration: 13s; animation-delay: -4s; }
+
+  @keyframes doveFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    33% { transform: translateY(-18px) rotate(3deg); }
+    66% { transform: translateY(10px) rotate(-2deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    padding: 8rem 2rem 4rem;
+    animation: heroReveal 1.4s ease both;
+  }
+
+  @keyframes heroReveal {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.35em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before,
+  .hero-eyebrow::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+
+  .hero-eyebrow::after {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.4);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-title .gold { color: var(--gold-light); }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    color: var(--sky-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .hero-tagline {
+    font-family: 'Lato', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-tagline strong {
+    color: var(--gold-light);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--sky-deep);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(212,160,23,0.4);
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(212,160,23,0.5);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.3s, background 0.3s, transform 0.2s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold-light);
+    background: rgba(212,160,23,0.1);
+    transform: translateY(-3px);
+    color: var(--gold-light);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'Cinzel', serif;
+    animation: scrollBounce 2.5s ease-in-out infinite;
+  }
+
+  .scroll-arrow {
+    width: 20px; height: 20px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── SERVICE TIMES STRIP ─── */
+  .service-strip {
+    background: var(--gold);
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sky-deep);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .service-item svg { flex-shrink: 0; }
+
+  /* ─── SECTION SHARED ─── */
+  section { position: relative; }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 40px; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--sky-deep);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  .divider-gold {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 3px;
+    margin: 1.5rem 0;
+  }
+
+  /* ─── WELCOME ─── */
+  .welcome {
+    padding: 6rem 2rem;
+    background: var(--white);
+  }
+
+  .welcome-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .welcome-image {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(10,61,107,0.2);
+  }
+
+  .welcome-image img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .welcome-image:hover img { transform: scale(1.03); }
+
+  .welcome-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212,160,23,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .welcome-badge {
+    position: absolute;
+    bottom: -1.5rem; right: -1.5rem;
+    width: 130px; height: 130px;
+    background: var(--sky-deep);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-light);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    border: 4px solid var(--gold);
+    box-shadow: 0 8px 24px rgba(10,61,107,0.35);
+  }
+
+  .welcome-badge .yr { font-size: 2rem; font-weight: 700; line-height: 1; }
+  .welcome-badge .lbl { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  .welcome-verse {
+    background: linear-gradient(135deg, var(--sky-deep), var(--sky));
+    color: var(--white);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-left: 4px solid var(--gold);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .welcome-verse cite {
+    display: block;
+    margin-top: 0.8rem;
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── MINISTRIES ─── */
+  .ministries {
+    padding: 6rem 2rem;
+    background: var(--cream);
+  }
+
+  .ministries-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ministries-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .ministries-header .section-label {
+    justify-content: center;
+  }
+
+  .ministries-header .section-label::before { display: none; }
+
+  .ministries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .ministry-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(10,61,107,0.08);
+    transition: transform 0.35s, box-shadow 0.35s;
+    border-bottom: 4px solid transparent;
+  }
+
+  .ministry-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 48px rgba(10,61,107,0.16);
+    border-bottom-color: var(--gold);
+  }
+
+  .ministry-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+
+  .ministry-card:hover .ministry-img { transform: scale(1.04); }
+
+  .ministry-img-wrap { overflow: hidden; }
+
+  .ministry-body {
+    padding: 1.8rem;
+  }
+
+  .ministry-icon {
+    width: 50px; height: 50px;
+    background: var(--sky-deep);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .ministry-icon svg { fill: var(--gold-light); }
+
+  .ministry-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--sky-deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .ministry-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── PASTOR ─── */
+  .pastor {
+    padding: 6rem 2rem;
+    background: linear-gradient(160deg, var(--sky-deep) 0%, var(--sky) 60%, #1e8bc3 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pastor::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(212,160,23,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 80% at 10% 50%, rgba(91,184,245,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .pastor-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pastor-image-wrap {
+    position: relative;
+  }
+
+  .pastor-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    border: 3px solid var(--gold);
+  }
+
+  .pastor-quote-box {
+    position: absolute;
+    bottom: 2rem; left: -3rem;
+    background: var(--gold);
+    color: var(--sky-deep);
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    max-width: 240px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.4;
+    box-shadow: 0 8px 24px rgba(212,160,23,0.4);
+  }
+
+  .pastor-quote-box::before {
+    content: '"';
+    font-size: 3rem;
+    line-height: 0;
+    display: block;
+    margin-bottom: 0.5rem;
+    opacity: 0.4;
+    font-family: Georgia, serif;
+  }
+
+  .pastor-text .section-title { color: var(--white); }
+  .pastor-text .section-label { color: var(--gold-light); }
+  .pastor-text .section-label::before { background: var(--gold-light); }
+  .pastor-text .divider-gold { background: linear-gradient(90deg, var(--gold-light), var(--gold)); }
+
+  .pastor-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .pastor-role {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sky-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .pastor-bio {
+    color: rgba(255,255,255,0.85);
+    line-height: 1.85;
+    font-size: 1rem;
+  }
+
+  .pastor-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+  }
+
+  .stat-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* ─── EVENTS ─── */
+  .events {
+    padding: 6rem 2rem;
+    background: var(--white);
+  }
+
+  .events-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .events-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .event-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    background: var(--dove);
+    border-radius: 10px;
+    padding: 1.8rem;
+    border-left: 5px solid var(--gold);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .event-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(10,61,107,0.1);
+  }
+
+  .event-date {
+    background: var(--sky-deep);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    text-align: center;
+    min-width: 64px;
+    align-self: start;
+  }
+
+  .event-date .day {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    display: block;
+    line-height: 1;
+  }
+
+  .event-date .month {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+  }
+
+  .event-info h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sky-deep);
+    margin-bottom: 0.4rem;
+  }
+
+  .event-meta {
+    font-size: 0.82rem;
+    color: var(--gold-dark);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.04em;
+  }
+
+  .event-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+  /* ─── GALLERY ─── */
+  .gallery {
+    padding: 6rem 2rem;
+    background: var(--cream);
+  }
+
+  .gallery-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .gallery-header .section-label { justify-content: center; }
+  .gallery-header .section-label::before { display: none; }
+  .gallery-header .divider-gold { margin: 1.5rem auto; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+  }
+
+  .g-item {
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+    background: var(--sky-deep);
+  }
+
+  .g-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, opacity 0.4s;
+    opacity: 0.92;
+  }
+
+  .g-item:hover img { transform: scale(1.08); opacity: 1; }
+
+  .g-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(212,160,23,0.2) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+
+  .g-item:hover::after { opacity: 1; }
+
+  .g-1 { grid-column: span 8; grid-row: span 2; aspect-ratio: auto; height: 360px; }
+  .g-2 { grid-column: span 4; height: 170px; }
+  .g-3 { grid-column: span 4; height: 170px; }
+  .g-4 { grid-column: span 4; height: 240px; }
+  .g-5 { grid-column: span 4; height: 240px; }
+  .g-6 { grid-column: span 4; height: 240px; }
+
+  /* ─── GIVE ─── */
+  .give {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #f8f4e8 0%, #fff9ee 50%, #f0f7ff 100%);
+    position: relative;
+  }
+
+  .give::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--sky-light), var(--gold));
+  }
+
+  .give-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .give-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .give-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(10,61,107,0.07);
+    border-top: 4px solid var(--gold);
+    transition: transform 0.3s;
+  }
+
+  .give-card:hover { transform: translateY(-5px); }
+
+  .give-card-icon {
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--sky-deep), var(--sky));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+  }
+
+  .give-card-icon svg { fill: var(--gold-light); }
+
+  .give-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sky-deep);
+    margin-bottom: 0.6rem;
+  }
+
+  .give-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    padding: 6rem 2rem;
+    background: var(--sky-deep);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 80% 30%, rgba(212,160,23,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-info .section-title { color: var(--white); }
+  .contact-info .section-label { color: var(--gold-light); }
+  .contact-info .section-label::before { background: var(--gold-light); }
+  .contact-info .divider-gold { background: linear-gradient(90deg, var(--gold-light), var(--gold)); }
+
+  .contact-details {
+    list-style: none;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .contact-details li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .contact-details .icon {
+    width: 40px; height: 40px;
+    background: rgba(212,160,23,0.15);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-details .icon svg { fill: var(--gold-light); }
+
+  .contact-details strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 2px;
+  }
+
+  .contact-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(6px);
+  }
+
+  .contact-form h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.3s;
+    outline: none;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-group select option { background: var(--sky-deep); color: var(--white); }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--sky-deep);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ─── MAP PLACEHOLDER ─── */
+  .map-section {
+    height: 350px;
+    background: linear-gradient(135deg, var(--sky-deep) 0%, var(--sky) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .map-pin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .map-pin svg { fill: var(--gold-light); filter: drop-shadow(0 4px 12px rgba(212,160,23,0.4)); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(255,255,255,0.7);
+    padding: 4rem 2rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand .logo-text {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-brand .logo-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    max-width: 280px;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .social-link {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(212,160,23,0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .social-link:hover {
+    background: rgba(212,160,23,0.15);
+    border-color: var(--gold);
+  }
+
+  .social-link svg { fill: var(--gold-light); }
+
+  .footer-col h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.6rem; }
+  .footer-col ul a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    transition: color 0.3s;
+  }
+
+  .footer-col ul a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-bottom a { color: var(--gold-light); text-decoration: none; }
+
+  /* ─── ANIMATIONS ON SCROLL ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .welcome-inner,
+    .pastor-inner,
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+    .welcome-badge { right: 0; bottom: -1rem; }
+
+    .pastor-quote-box { position: static; margin-top: 1rem; max-width: 100%; }
+
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--sky-deep);
+      padding: 2rem;
+      gap: 1.5rem;
+      border-top: 2px solid var(--gold);
+    }
+
+    .hamburger { display: flex; }
+
+    .g-1 { grid-column: span 12; height: 260px; }
+    .g-2, .g-3 { grid-column: span 6; height: 160px; }
+    .g-4, .g-5, .g-6 { grid-column: span 4; height: 180px; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner { grid-template-columns: 1fr; }
+    .service-strip { gap: 1.2rem; }
+    .pastor-stats { gap: 1rem; }
+    .g-4, .g-5, .g-6 { grid-column: span 6; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="cross"></div>
+    <div class="nav-logo-text">
+      Gilgal Dominion Center
+      <span>Mahali Ambapo Mtu Anafaa</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#welcome">About</a></li>
+    <li><a href="#ministries">Ministries</a></li>
+    <li><a href="#pastor">Pastor</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#give" onclick="setTimeout(()=>openPage('givePage'),400)">Give</a></li>
+    <li><a href="#contact" class="nav-cta" onclick="setTimeout(()=>openPage('joinPage'),400)">Join Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+
+  <!-- Slideshow Background -->
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="slide slide-1 active"></div>
+    <div class="slide slide-2"></div>
+    <div class="slide slide-3"></div>
+    <div class="slide slide-4"></div>
+    <div class="slide slide-5"></div>
+  </div>
+
+  <!-- Slide Arrows -->
+  <div class="slide-arrows">
+    <div class="slide-arrow" onclick="changeSlide(-1)" aria-label="Previous slide">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </div>
+    <div class="slide-arrow" onclick="changeSlide(1)" aria-label="Next slide">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </div>
+  </div>
+
+  <!-- Slide Dots -->
+  <div class="slide-dots" id="slideDots">
+    <div class="slide-dot active" onclick="goToSlide(0)"></div>
+    <div class="slide-dot" onclick="goToSlide(1)"></div>
+    <div class="slide-dot" onclick="goToSlide(2)"></div>
+    <div class="slide-dot" onclick="goToSlide(3)"></div>
+    <div class="slide-dot" onclick="goToSlide(4)"></div>
+  </div>
+
+  <div class="hero-sky"></div>
+  <div class="hero-clouds">
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+  </div>
+
+  <!-- Decorative doves -->
+  <div class="dove-fly dove-1">
+    <svg width="60" height="45" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
+  </div>
+  <div class="dove-fly dove-2">
+    <svg width="50" height="38" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
+  </div>
+  <div class="dove-fly dove-3">
+    <svg width="45" height="34" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
+  </div>
+  <div class="dove-fly dove-4">
+    <svg width="55" height="42" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
+  </div>
+  <div class="dove-fly dove-5">
+    <svg width="40" height="30" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Welcome to the House of God</div>
+    <h1 class="hero-title">
+      <span class="gold">Gilgal</span> Dominion<br>Center
+    </h1>
+    <p class="hero-subtitle">Kanisa la Nguvu na Imani</p>
+    <p class="hero-tagline"><strong>Mahali Ambapo Mtu Anafaa</strong> — A Place Where Every Person Belongs</p>
+    <div class="hero-buttons">
+      <a href="#welcome" class="btn-primary">Discover Our Mission</a>
+      <a href="#contact" class="btn-outline" onclick="setTimeout(()=>openPage('joinPage'),400)">Plan Your Visit</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-arrow"></div>
+    Scroll Down
+  </div>
+</section>
+
+<!-- ══ SERVICE TIMES STRIP ══ -->
+<div class="service-strip">
+  <div class="service-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <span>Sunday Service — 8:00 AM &amp; 10:30 AM</span>
+  </div>
+  <div class="service-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <span>Wednesday Prayer — 6:30 PM</span>
+  </div>
+  <div class="service-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <span>Friday Youth — 5:00 PM</span>
+  </div>
+</div>
+
+<!-- ══ WELCOME ══ -->
+<section class="welcome" id="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-image fade-up">
+      <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800&q=80" alt="Church Worship Service" loading="lazy">
+      <div class="welcome-badge">
+        <span class="yr">2026</span>
+        <span class="lbl">Est. in<br>Faith</span>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">A Heavenly Place<br>on Earth</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc">
+        Gilgal Dominion Center is a Spirit-filled, Bible-based church community rooted in the love of God and empowered by the Holy Spirit. We are committed to transforming lives, restoring families, and releasing God's people into their divine destiny.
+      </p>
+      <br>
+      <p class="section-desc">
+        Founded on the principle that every person — regardless of background, tribe, or station in life — belongs in God's house. We worship, pray, grow, and serve together as one family united in Christ Jesus.
+      </p>
+      <div class="welcome-verse">
+        "For I know the plans I have for you, declares the Lord — plans to prosper you and not to harm you, plans to give you hope and a future."
+        <cite>— Jeremiah 29:11</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MINISTRIES ══ -->
+<section class="ministries" id="ministries">
+  <div class="ministries-inner">
+    <div class="ministries-header fade-up">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Ministries</h2>
+      <div class="divider-gold" style="margin: 1.5rem auto;"></div>
+      <p class="section-desc" style="margin: 0 auto; text-align: center;">
+        Every ministry arm is designed to meet you where you are and bring you closer to who God created you to be.
+      </p>
+    </div>
+    <div class="ministries-grid">
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80" alt="Worship" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+          </div>
+          <div class="ministry-title">Worship &amp; Arts</div>
+          <p class="ministry-desc">Our worship team leads the congregation into the presence of God through Spirit-filled music, dance, and creative arts that glorify the Lord.</p>
+        </div>
+      </div>
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Youth Ministry" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <div class="ministry-title">Youth &amp; Teens</div>
+          <p class="ministry-desc">Raising a generation of bold, fearless, and faith-driven young people who will impact their schools, cities, and nations for Christ.</p>
+        </div>
+      </div>
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80" alt="Prayer Ministry" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div class="ministry-title">Prayer &amp; Intercession</div>
+          <p class="ministry-desc">Our intercessors stand in the gap for individuals, families, and nations. Prayer is the foundation and heartbeat of everything we do at Gilgal.</p>
+        </div>
+      </div>
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="Children Ministry" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+          </div>
+          <div class="ministry-title">Children's Ministry</div>
+          <p class="ministry-desc">Creating a fun, safe, and Jesus-centered environment where children learn about God's love and grow in faith from their youngest years.</p>
+        </div>
+      </div>
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Outreach" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="ministry-title">Missions &amp; Outreach</div>
+          <p class="ministry-desc">Taking the Gospel beyond the church walls into our communities, streets, and nations — showing God's love through action and compassion.</p>
+        </div>
+      </div>
+      <div class="ministry-card fade-up">
+        <div class="ministry-img-wrap">
+          <img class="ministry-img" src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=80" alt="Women Ministry" loading="lazy">
+        </div>
+        <div class="ministry-body">
+          <div class="ministry-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="ministry-title">Women of Dominion</div>
+          <p class="ministry-desc">Empowering and equipping women to walk in divine purpose, godly character, and kingdom influence in every sphere of life.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PASTOR ══ -->
+<section class="pastor" id="pastor">
+  <div class="pastor-inner">
+    <div class="pastor-image-wrap fade-up">
+      <img class="pastor-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Senior Pastor" loading="lazy">
+      <div class="pastor-quote-box">
+        You are not here by accident. God has a specific plan just for you.
+      </div>
+    </div>
+    <div class="pastor-text fade-up">
+      <div class="section-label">Leadership</div>
+      <h2 class="section-title">Meet Our Pastor</h2>
+      <div class="divider-gold"></div>
+      <div class="pastor-name">Pst. David Mwangi</div>
+      <div class="pastor-role">Senior Pastor &amp; Founder — Gilgal Dominion Center</div>
+      <p class="pastor-bio">
+        With a burning passion for souls and a prophetic voice that shakes nations, Pastor David has dedicated his life to seeing people discover their God-given identity and walk in true freedom. Ordained and anointed, he carries a mantle of healing, deliverance, and apostolic authority that transforms every service into a divine encounter.
+      </p>
+      <br>
+      <p class="pastor-bio">
+        Together with his beloved wife and family, he leads Gilgal Dominion Center with love, wisdom, and an uncompromising commitment to the Word of God. His vision: a church that is a refuge for the broken and a launching pad for champions.
+      </p>
+      <div class="pastor-stats">
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Years in Ministry</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3K+</span>
+          <span class="stat-label">Lives Touched</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">12</span>
+          <span class="stat-label">Nations Reached</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EVENTS ══ -->
+<section class="events" id="events">
+  <div class="events-inner">
+    <div class="events-header">
+      <div>
+        <div class="section-label">What's Coming</div>
+        <h2 class="section-title">Upcoming Events</h2>
+      </div>
+      <a href="#contact" class="btn-primary" style="font-size:0.75rem; padding: 0.75rem 1.8rem;">View All Events</a>
+    </div>
+    <div class="events-grid">
+      <div class="event-card fade-up">
+        <div class="event-date">
+          <span class="day">15</span>
+          <span class="month">Jun 2026</span>
+        </div>
+        <div class="event-info">
+          <h3>Dominion Sunday — Annual Thanksgiving</h3>
+          <div class="event-meta">
+            <span>⏰ 8:00 AM</span>
+            <span>📍 Main Sanctuary</span>
+          </div>
+          <p class="event-desc">A powerful celebration service of gratitude, worship, and the goodness of God in our lives and community.</p>
+        </div>
+      </div>
+      <div class="event-card fade-up">
+        <div class="event-date">
+          <span class="day">22</span>
+          <span class="month">Jun 2026</span>
+        </div>
+        <div class="event-info">
+          <h3>3-Day Healing &amp; Miracle Revival</h3>
+          <div class="event-meta">
+            <span>⏰ 6:00 PM</span>
+            <span>📍 Church Grounds</span>
+          </div>
+          <p class="event-desc">Three nights of signs, wonders, and the miraculous power of God. Bring your family, neighbours, and friends.</p>
+        </div>
+      </div>
+      <div class="event-card fade-up">
+        <div class="event-date">
+          <span class="day">5</span>
+          <span class="month">Jul 2026</span>
+        </div>
+        <div class="event-info">
+          <h3>Youth Encounter Conference</h3>
+          <div class="event-meta">
+            <span>⏰ 10:00 AM</span>
+            <span>📍 Youth Hall</span>
+          </div>
+          <p class="event-desc">An electrifying weekend for young people to encounter God, build friendships, and discover their purpose.</p>
+        </div>
+      </div>
+      <div class="event-card fade-up">
+        <div class="event-date">
+          <span class="day">19</span>
+          <span class="month">Jul 2026</span>
+        </div>
+        <div class="event-info">
+          <h3>Women of Dominion Summit</h3>
+          <div class="event-meta">
+            <span>⏰ 9:00 AM</span>
+            <span>📍 Conference Hall</span>
+          </div>
+          <p class="event-desc">A day of empowerment, mentorship, and divine impartation for women called to lead, serve, and shine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header fade-up">
+      <div class="section-label">Life at Gilgal</div>
+      <h2 class="section-title">Our Gallery</h2>
+      <div class="divider-gold"></div>
+      <p class="section-desc" style="margin: 0 auto; text-align: center;">Moments of grace, worship, and community captured through our journey together.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="g-item g-1">
+        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=900&q=80" alt="Church Worship" loading="lazy">
+      </div>
+      <div class="g-item g-2">
+        <img src="https://images.unsplash.com/photo-1523803326055-9b756a935e0f?w=500&q=80" alt="Prayer" loading="lazy">
+      </div>
+      <div class="g-item g-3">
+        <img src="https://images.unsplash.com/photo-1499652848871-1527a310b13a?w=500&q=80" alt="Community" loading="lazy">
+      </div>
+      <div class="g-item g-4">
+        <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=500&q=80" alt="Fellowship" loading="lazy">
+      </div>
+      <div class="g-item g-5">
+        <img src="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?w=500&q=80" alt="Service" loading="lazy">
+      </div>
+      <div class="g-item g-6">
+        <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=500&q=80" alt="Praise" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GIVE ══ -->
+<section class="give" id="give">
+  <div class="give-inner">
+    <div class="fade-up">
+      <div class="section-label" style="justify-content:center;"><div style="width:40px;height:2px;background:var(--gold);border-radius:2px;display:inline-block;margin-right:0.8rem;"></div>Kingdom Giving</div>
+      <h2 class="section-title">Support the Vision</h2>
+      <div class="divider-gold" style="margin: 1.5rem auto;"></div>
+      <p class="section-desc" style="margin: 0 auto; text-align: center;">
+        Your generosity fuels our mission to reach the lost, feed the poor, and plant the Word of God across nations. Every seed you sow carries eternal fruit.
+      </p>
+    </div>
+    <div class="give-cards">
+      <div class="give-card fade-up">
+        <div class="give-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>
+        </div>
+        <h3>Tithe &amp; Offering</h3>
+        <p>Honor God with your first fruits. Tithing is an act of faith and a covenant with heaven's blessing.</p>
+      </div>
+      <div class="give-card fade-up">
+        <div class="give-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </div>
+        <h3>Building Fund</h3>
+        <p>Partner with us to build a house of prayer that will stand as a beacon for generations to come.</p>
+      </div>
+      <div class="give-card fade-up">
+        <div class="give-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13H7v-2h10v2zm0-4H7V9h10v2z"/></svg>
+        </div>
+        <h3>Missions Fund</h3>
+        <p>Send the Gospel to unreached communities and nations. Every shilling is a soul invested for eternity.</p>
+      </div>
+      <div class="give-card fade-up">
+        <div class="give-card-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/></svg>
+        </div>
+        <h3>Community Care</h3>
+        <p>Help us feed the hungry, clothe the poor, and support the vulnerable in our city and beyond.</p>
+      </div>
+    </div>
+    <div style="margin-top:3rem;">
+      <button onclick="openPage('givePage')" class="btn-primary" style="border:none;cursor:pointer;">Give Online Now ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info fade-up">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Come &amp; Experience<br>God's Presence</h2>
+      <div class="divider-gold"></div>
+      <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem;">
+        Our doors are open to everyone. Whether you are seeking God for the first time or looking for a church family to grow with — you are welcome here.
+      </p>
+      <ul class="contact-details">
+        <li>
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div>
+            <strong>Address</strong>
+            Gilgal Dominion Center<br>Dar es Salaam, Tanzania
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </div>
+          <div>
+            <strong>Phone</strong>
+            +255 700 000 000<br>+255 711 000 000
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
+            <strong>Email</strong>
+            info@gilgaldominion.org<br>pastor@gilgaldominion.org
+          </div>
+        </li>
+        <li>
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </div>
+          <div>
+            <strong>Live Stream</strong>
+            Watch online every Sunday<br>via YouTube &amp; Facebook Live
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-form fade-up">
+      <h3>Plan Your Visit or Send a Message</h3>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full name">
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+255 700 000 000">
+      </div>
+      <div class="form-group">
+        <label>I am interested in...</label>
+        <select>
+          <option>Visiting for the First Time</option>
+          <option>Joining a Ministry</option>
+          <option>Prayer Request</option>
+          <option>Marriage Counselling</option>
+          <option>General Enquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea placeholder="Share anything on your heart..."></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)">Send Message ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAP ══ -->
+<div class="map-section">
+  <div class="map-pin">
+    <svg width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    <div>
+      <div style="font-family:'Cinzel',serif; font-size:1.1rem; letter-spacing:0.12em; color:var(--gold-light);">Gilgal Dominion Center</div>
+      <div style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-top:4px; letter-spacing:0.08em;">Dar es Salaam, Tanzania — Come and Be Blessed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-text">Gilgal Dominion Center</div>
+      <div class="logo-sub">Mahali Ambapo Mtu Anafaa</div>
+      <p>A Spirit-filled, Bible-believing community where every person is welcomed, loved, and released into their God-given destiny. We are one church, one family, one mission.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#welcome">About Us</a></li>
+        <li><a href="#ministries">Ministries</a></li>
+        <li><a href="#pastor">Our Pastor</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#give">Give</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Service Times</h4>
+      <ul>
+        <li><a href="#">Sunday 8:00 AM</a></li>
+        <li><a href="#">Sunday 10:30 AM</a></li>
+        <li><a href="#">Wednesday 6:30 PM</a></li>
+        <li><a href="#">Friday Youth 5:00 PM</a></li>
+        <li><a href="#">Online — Always Live</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ministries</h4>
+      <ul>
+        <li><a href="#">Worship &amp; Arts</a></li>
+        <li><a href="#">Youth &amp; Teens</a></li>
+        <li><a href="#">Children's Ministry</a></li>
+        <li><a href="#">Prayer &amp; Intercession</a></li>
+        <li><a href="#">Women of Dominion</a></li>
+        <li><a href="#">Missions &amp; Outreach</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Gilgal Dominion Center. All rights reserved.</span>
+    <span>Designed with <span style="color:var(--gold-light)">✦</span> for the Glory of God &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></span>
+  </div>
+</footer>
+
+<script>
+  function selectCategory(card, name) {
+    document.querySelectorAll('.give-cat-card').forEach(c => c.classList.remove('active-cat'));
+    card.classList.add('active-cat');
+    document.getElementById('selectedFund').textContent = name;
+  }
+
+  // ── Slideshow ──
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+  let slideTimer = null;
+
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+
+  function changeSlide(dir) {
+    clearInterval(slideTimer);
+    showSlide(currentSlide + dir);
+    startAuto();
+  }
+
+  function goToSlide(n) {
+    clearInterval(slideTimer);
+    showSlide(n);
+    startAuto();
+  }
+
+  function startAuto() {
+    slideTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+  }
+
+  startAuto();
+
+  function toggleMenu() {
+    const links = document.getElementById('navLinks');
+    links.classList.toggle('open');
+  }
+
+  function handleSubmit(btn) {
+    btn.textContent = 'Message Sent! God Bless You ✦';
+    btn.style.background = '#1a6fa8';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(10,61,107,0.99)';
+    } else {
+      nav.style.background = 'rgba(10,61,107,0.97)';
+    }
+  });
+  // ── Page Overlay System ──
+  function openPage(id) {
+    document.getElementById(id).classList.add('page-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePage(id) {
+    document.getElementById(id).classList.remove('page-open');
+    document.body.style.overflow = '';
+  }
+
+  // Give amount selector
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const custom = document.getElementById('customAmount');
+      if (this.dataset.amount === 'custom') {
+        custom.style.display = 'block';
+        custom.focus();
+      } else {
+        custom.style.display = 'none';
+        custom.value = '';
+      }
+    });
+  });
+
+  // Join Us step system
+  let joinStep = 1;
+  function nextJoinStep(n) {
+    document.getElementById('joinStep' + joinStep).style.display = 'none';
+    joinStep = n;
+    document.getElementById('joinStep' + joinStep).style.display = 'block';
+    document.querySelectorAll('.step-indicator').forEach((el, i) => {
+      el.classList.toggle('active', i + 1 <= joinStep);
+    });
+  }
+
+  function submitGive(btn) {
+    const selected = document.querySelector('.amount-btn.selected');
+    if (!selected) { alert('Please select a giving amount.'); return; }
+    btn.textContent = '✦ Thank You! God Bless You ✦';
+    btn.style.background = '#1a6fa8';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Give Now ✦';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+    }, 4000);
+  }
+
+  function submitJoin(btn) {
+    btn.textContent = 'Welcome to the Family! ✦';
+    btn.style.background = '#1a6fa8';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => nextJoinStep(4), 800);
+  }
+</script>
+
+<!-- ══════════════════════════════════════
+     GIVE PAGE OVERLAY
+══════════════════════════════════════ -->
+<div class="fullpage-overlay" id="givePage">
+  <div class="fullpage-inner">
+    <button class="close-page" onclick="closePage('givePage')" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+
+    <div class="fp-hero">
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-content">
+        <div class="fp-eyebrow">Kingdom Generosity</div>
+        <h1 class="fp-title"><span class="gold">Give</span> to the Vision</h1>
+        <p class="fp-subtitle">Every seed you plant carries eternal fruit</p>
+      </div>
+    </div>
+
+    <div class="fp-body">
+
+      <!-- Why Give -->
+      <div class="fp-section">
+        <div class="fp-section-header">
+          <div class="section-label" style="color:var(--gold);">Why We Give</div>
+          <h2 class="fp-section-title">Sowing into God's Kingdom</h2>
+        </div>
+        <p class="fp-desc">At Gilgal Dominion Center, giving is not just a financial act — it is a spiritual discipline and an act of worship. When you give, you are partnering with God's mission to transform lives, restore families, and reach the nations with the Gospel of Jesus Christ.</p>
+        <div class="give-verse-box">
+          <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
+          <cite>— 2 Corinthians 9:7</cite>
+        </div>
+      </div>
+
+      <!-- Give Categories -->
+      <div class="fp-section">
+        <div class="fp-section-header">
+          <div class="section-label" style="color:var(--gold);">Where Your Gift Goes</div>
+          <h2 class="fp-section-title">Choose Your Area of Impact</h2>
+        </div>
+        <div class="give-categories">
+          <div class="give-cat-card active-cat" onclick="selectCategory(this, 'Tithe & Offering')">
+            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            </div>
+            <h3>Tithe &amp; Offering</h3>
+            <p>Your first fruits back to God — the foundation of covenant blessing and kingdom partnership.</p>
+          </div>
+          <div class="give-cat-card" onclick="selectCategory(this, 'Building Fund')">
+            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+            <h3>Building Fund</h3>
+            <p>Help us build a permanent house of prayer that will stand as a beacon of hope for generations.</p>
+          </div>
+          <div class="give-cat-card" onclick="selectCategory(this, 'Missions Fund')">
+            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+            </div>
+            <h3>Missions Fund</h3>
+            <p>Send the Gospel beyond our borders. Reach unreached communities across Tanzania and beyond.</p>
+          </div>
+          <div class="give-cat-card" onclick="selectCategory(this, 'Community Care')">
+            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            </div>
+            <h3>Community Care</h3>
+            <p>Feed the hungry, clothe the vulnerable, and demonstrate God's love through tangible action.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Give Form -->
+      <div class="fp-section give-form-section">
+        <div class="fp-section-header">
+          <div class="section-label" style="color:var(--gold);">Make Your Gift</div>
+          <h2 class="fp-section-title">Give Today</h2>
+        </div>
+        <div class="give-form-wrap">
+          <div class="give-form-left">
+            <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;">Selected fund: <strong id="selectedFund" style="color:var(--sky-deep);">Tithe &amp; Offering</strong></p>
+            <div class="give-amounts">
+              <button class="amount-btn" data-amount="5000">TSh 5,000</button>
+              <button class="amount-btn" data-amount="10000">TSh 10,000</button>
+              <button class="amount-btn" data-amount="20000">TSh 20,000</button>
+              <button class="amount-btn" data-amount="50000">TSh 50,000</button>
+              <button class="amount-btn" data-amount="100000">TSh 100,000</button>
+              <button class="amount-btn" data-amount="custom">Custom Amount</button>
+            </div>
+            <input type="number" id="customAmount" placeholder="Enter amount in TSh" style="display:none;width:100%;margin-top:1rem;padding:0.9rem 1rem;border:1.5px solid var(--gold);border-radius:6px;font-size:1rem;font-family:'Lato',sans-serif;outline:none;">
+          </div>
+          <div class="give-form-right">
+            <div class="give-field-group">
+              <label class="give-label">Full Name</label>
+              <input type="text" class="give-input" placeholder="Your full name">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Phone Number</label>
+              <input type="tel" class="give-input" placeholder="+255 700 000 000">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Payment Method</label>
+              <select class="give-input">
+                <option>M-Pesa</option>
+                <option>Tigo Pesa</option>
+                <option>Airtel Money</option>
+                <option>Bank Transfer</option>
+                <option>Cash at Church</option>
+              </select>
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Give as (optional)</label>
+              <input type="text" class="give-input" placeholder="Anonymous / Your name">
+            </div>
+            <button class="give-submit-btn" onclick="submitGive(this)">Give Now ✦</button>
+          </div>
+        </div>
+
+        <!-- Bank Info -->
+        <div class="bank-info">
+          <h4>💳 Bank Details for Direct Transfer</h4>
+          <div class="bank-grid">
+            <div><strong>Bank:</strong> CRDB Bank Tanzania</div>
+            <div><strong>Account Name:</strong> Gilgal Dominion Center</div>
+            <div><strong>Account No:</strong> 0150123456789</div>
+            <div><strong>Branch:</strong> Dar es Salaam</div>
+            <div><strong>M-Pesa Paybill:</strong> 400200 — Ref: GILGAL</div>
+            <div><strong>Tigo Pesa:</strong> 0714 000 000</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /fp-body -->
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     JOIN US PAGE OVERLAY
+══════════════════════════════════════ -->
+<div class="fullpage-overlay" id="joinPage">
+  <div class="fullpage-inner">
+    <button class="close-page" onclick="closePage('joinPage')" aria-label="Close">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+
+    <div class="fp-hero" style="background-image:url('https://images.unsplash.com/photo-1499652848871-1527a310b13a?w=1600&q=80')">
+      <div class="fp-hero-overlay"></div>
+      <div class="fp-hero-content">
+        <div class="fp-eyebrow">You Belong Here</div>
+        <h1 class="fp-title">Join Our <span class="gold">Family</span></h1>
+        <p class="fp-subtitle">Mahali Ambapo Mtu Anafaa</p>
+      </div>
+    </div>
+
+    <div class="fp-body">
+
+      <!-- Why Join -->
+      <div class="fp-section">
+        <div class="fp-section-header">
+          <div class="section-label" style="color:var(--gold);">A Place to Belong</div>
+          <h2 class="fp-section-title">Why Join Gilgal Dominion Center?</h2>
+        </div>
+        <div class="join-reasons">
+          <div class="join-reason">
+            <div class="join-reason-icon">🕊️</div>
+            <h3>Spirit-Filled Worship</h3>
+            <p>Experience God's presence every Sunday in powerful, anointed worship services that transform hearts.</p>
+          </div>
+          <div class="join-reason">
+            <div class="join-reason-icon">📖</div>
+            <h3>Bible-Based Teaching</h3>
+            <p>Grow in the Word through strong, relevant, and life-changing preaching every week.</p>
+          </div>
+          <div class="join-reason">
+            <div class="join-reason-icon">🤝</div>
+            <h3>Loving Community</h3>
+            <p>Be part of a warm, welcoming family that walks with you through every season of life.</p>
+          </div>
+          <div class="join-reason">
+            <div class="join-reason-icon">🌍</div>
+            <h3>Kingdom Purpose</h3>
+            <p>Discover your God-given gifts and be deployed to make a real difference in your world.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to Join — Steps -->
+      <div class="fp-section">
+        <div class="fp-section-header">
+          <div class="section-label" style="color:var(--gold);">The Journey</div>
+          <h2 class="fp-section-title">How to Connect with Us</h2>
+        </div>
+
+        <!-- Step indicators -->
+        <div class="step-indicators">
+          <div class="step-indicator active">1</div>
+          <div class="step-connector"></div>
+          <div class="step-indicator">2</div>
+          <div class="step-connector"></div>
+          <div class="step-indicator">3</div>
+          <div class="step-connector"></div>
+          <div class="step-indicator">✓</div>
+        </div>
+
+        <!-- Step 1: About You -->
+        <div class="join-step" id="joinStep1">
+          <h3 class="step-title">Tell us about yourself</h3>
+          <div class="join-form-grid">
+            <div class="give-field-group">
+              <label class="give-label">First Name</label>
+              <input type="text" class="give-input" placeholder="Your first name">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Last Name</label>
+              <input type="text" class="give-input" placeholder="Your last name">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Phone Number</label>
+              <input type="tel" class="give-input" placeholder="+255 700 000 000">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Email Address</label>
+              <input type="email" class="give-input" placeholder="your@email.com">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Date of Birth</label>
+              <input type="date" class="give-input">
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Marital Status</label>
+              <select class="give-input">
+                <option>Single</option>
+                <option>Married</option>
+                <option>Widowed</option>
+                <option>Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+          <button class="give-submit-btn" onclick="nextJoinStep(2)">Continue →</button>
+        </div>
+
+        <!-- Step 2: Your Faith -->
+        <div class="join-step" id="joinStep2" style="display:none;">
+          <h3 class="step-title">Your faith journey</h3>
+          <div class="faith-questions">
+            <div class="give-field-group">
+              <label class="give-label">How long have you been a Christian?</label>
+              <select class="give-input">
+                <option>I'm exploring faith</option>
+                <option>Less than 1 year</option>
+                <option>1–5 years</option>
+                <option>5–10 years</option>
+                <option>More than 10 years</option>
+              </select>
+            </div>
+            <div class="give-field-group">
+              <label class="give-label">Have you been baptised?</label>
+              <select class="give-input">
+                <option>Yes — in water</option>
+                <option>Yes — in the Holy Spirit</option>
+                <option>Both water and Holy Spirit</option>
+                <option>Not yet</option>
+              </select>
+            </div>
+            <div class="give-field-group" style="grid-column:1/-1;">
+              <label class="give-label">What are you looking for at Gilgal?</label>
+              <select class="give-input">
+                <option>Spiritual growth &amp; discipleship</option>
+                <option>A church family &amp; community</option>
+                <option>Ministry opportunities to serve</option>
+                <option>Prayer and healing</option>
+                <option>All of the above</option>
+              </select>
+            </div>
+            <div class="give-field-group" style="grid-column:1/-1;">
+              <label class="give-label">Anything you'd like us to pray for you about?</label>
+              <textarea class="give-input" rows="3" placeholder="Share your heart..."></textarea>
+            </div>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+            <button class="give-submit-btn" style="background:var(--sky);flex:1;" onclick="nextJoinStep(1)">← Back</button>
+            <button class="give-submit-btn" style="flex:2;" onclick="nextJoinStep(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Ministry Interest -->
+        <div class="join-step" id="joinStep3" style="display:none;">
+          <h3 class="step-title">Where would you like to serve?</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;">Select all that interest you. You can always change this later.</p>
+          <div class="ministry-checkboxes">
+            <label class="ministry-check"><input type="checkbox"> <span>🎵 Worship &amp; Music</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>🙏 Prayer &amp; Intercession</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>👶 Children's Ministry</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>🔥 Youth Ministry</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>💃 Women of Dominion</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>🌍 Missions &amp; Outreach</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>📺 Media &amp; Livestream</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>🤝 Welcome &amp; Ushering</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>📚 Bible Study &amp; Teaching</span></label>
+            <label class="ministry-check"><input type="checkbox"> <span>🏗️ Administration</span></label>
+          </div>
+          <div class="give-field-group" style="margin-top:1.5rem;">
+            <label class="give-label">How did you hear about us?</label>
+            <select class="give-input">
+              <option>Facebook / Social Media</option>
+              <option>A friend or family member</option>
+              <option>WhatsApp Group</option>
+              <option>YouTube</option>
+              <option>Walked in / Passed by</option>
+              <option>Our website</option>
+            </select>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+            <button class="give-submit-btn" style="background:var(--sky);flex:1;" onclick="nextJoinStep(2)">← Back</button>
+            <button class="give-submit-btn" style="flex:2;" onclick="submitJoin(this)">Complete Registration ✦</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Welcome! -->
+        <div class="join-step" id="joinStep4" style="display:none;">
+          <div class="welcome-success">
+            <div class="success-dove">🕊️</div>
+            <h2 style="font-family:'Cinzel Decorative',serif;color:var(--sky-deep);font-size:2rem;margin-bottom:1rem;">Welcome to the Family!</h2>
+            <p style="font-size:1.1rem;color:var(--text-muted);max-width:500px;margin:0 auto 2rem;line-height:1.8;">We are so excited to have you join us at Gilgal Dominion Center. Our team will reach out to you soon. In the meantime, join us this Sunday!</p>
+            <div class="success-actions">
+              <a href="#events" class="give-submit-btn" style="display:inline-block;text-decoration:none;" onclick="closePage('joinPage')">See Upcoming Events</a>
+              <button class="give-submit-btn" style="background:var(--sky);" onclick="closePage('joinPage')">Back to Home</button>
+            </div>
+            <div class="success-service-box">
+              <strong style="font-family:'Cinzel',serif;color:var(--gold-dark);font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;">Join Us This Sunday</strong>
+              <p style="margin-top:0.5rem;font-size:0.95rem;color:var(--text-dark);">🗓️ Sunday 8:00 AM &amp; 10:30 AM<br>📍 Gilgal Dominion Center, Dar es Salaam</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Overlay Pages ── */
+.fullpage-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: var(--cream);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.fullpage-overlay.page-open {
+  transform: translateX(0);
+}
+
+.fullpage-inner {
+  min-height: 100vh;
+}
+
+.close-page {
+  position: fixed;
+  top: 1.2rem; right: 1.5rem;
+  z-index: 100;
+  width: 44px; height: 44px;
+  background: rgba(10,61,107,0.85);
+  border: 1.5px solid var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-page:hover { background: var(--sky-deep); }
+
+.fp-hero {
+  height: 340px;
+  background-image: url('https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem;
+}
+
+.fp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(6,42,80,0.80) 0%, rgba(10,61,107,0.60) 100%);
+}
+
+.fp-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.fp-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+
+.fp-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.fp-title .gold { color: var(--gold-light); }
+
+.fp-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--sky-light);
+  letter-spacing: 0.12em;
+}
+
+.fp-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.fp-section {
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(10,61,107,0.1);
+}
+
+.fp-section:last-child { border-bottom: none; }
+
+.fp-section-header { margin-bottom: 1.5rem; }
+
+.fp-section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem,3vw,2rem);
+  color: var(--sky-deep);
+  font-weight: 700;
+}
+
+.fp-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.85;
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+}
+
+.give-verse-box {
+  background: linear-gradient(135deg, var(--sky-deep), var(--sky));
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--gold);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 680px;
+}
+
+.give-verse-box cite {
+  display: block;
+  margin-top: 0.8rem;
+  font-style: normal;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+}
+
+/* Give categories */
+.give-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.give-cat-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  border: 2px solid transparent;
+  box-shadow: 0 2px 16px rgba(10,61,107,0.07);
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.give-cat-card:hover, .give-cat-card.active-cat {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(212,160,23,0.18);
+}
+
+.give-cat-icon {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.give-cat-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--sky-deep);
+  margin-bottom: 0.5rem;
+}
+
+.give-cat-card p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Give form */
+.give-form-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.give-amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.amount-btn {
+  padding: 0.75rem 0.5rem;
+  background: var(--white);
+  border: 1.5px solid rgba(10,61,107,0.2);
+  border-radius: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sky-deep);
+  cursor: pointer;
+  transition: all 0.25s;
+  letter-spacing: 0.04em;
+}
+
+.amount-btn:hover, .amount-btn.selected {
+  background: var(--sky-deep);
+  color: var(--gold-light);
+  border-color: var(--sky-deep);
+}
+
+.give-field-group { margin-bottom: 1rem; }
+
+.give-label {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.give-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid rgba(10,61,107,0.18);
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.3s;
+  appearance: none;
+}
+
+.give-input:focus { border-color: var(--gold); }
+
+.give-submit-btn {
+  width: 100%;
+  margin-top: 1rem;
+  background: var(--gold);
+  color: var(--sky-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.give-submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.bank-info {
+  margin-top: 3rem;
+  background: var(--sky-deep);
+  color: white;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.bank-info h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
+}
+
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.8rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.bank-grid strong { color: var(--gold-light); }
+
+/* Join Us styles */
+.join-reasons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.join-reason {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 16px rgba(10,61,107,0.07);
+  border-top: 3px solid var(--gold);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.join-reason:hover { transform: translateY(-4px); }
+
+.join-reason-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+.join-reason h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--sky-deep);
+  margin-bottom: 0.5rem;
+}
+
+.join-reason p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Step indicators */
+.step-indicators {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.step-indicator {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(10,61,107,0.1);
+  border: 2px solid rgba(10,61,107,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.4s;
+  flex-shrink: 0;
+}
+
+.step-indicator.active {
+  background: var(--sky-deep);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: rgba(10,61,107,0.15);
+  min-width: 30px;
+  max-width: 120px;
+}
+
+.step-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--sky-deep);
+  margin-bottom: 1.5rem;
+}
+
+.join-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.faith-questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.ministry-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.ministry-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--white);
+  border: 1.5px solid rgba(10,61,107,0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.ministry-check:hover { border-color: var(--gold); background: #fffbf0; }
+
+.ministry-check input[type=checkbox] {
+  width: 16px; height: 16px;
+  accent-color: var(--sky-deep);
+  flex-shrink: 0;
+}
+
+/* Welcome success */
+.welcome-success {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.success-dove {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  animation: doveFloat 4s ease-in-out infinite;
+}
+
+.success-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.success-actions .give-submit-btn { width: auto; padding: 0.9rem 2rem; }
+
+.success-service-box {
+  background: var(--dove);
+  border: 1.5px solid var(--gold);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  display: inline-block;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .give-form-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  .join-form-grid { grid-template-columns: 1fr; }
+  .faith-questions { grid-template-columns: 1fr; }
+  .fp-hero { height: 220px; padding: 1.5rem; }
+  .give-amounts { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</body>
+</html>

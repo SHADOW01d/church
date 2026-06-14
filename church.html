@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gilgal Dominion Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{--gold:#C9A84C;--gold-light:#e8c87a;--navy:#0B1F3A;--navy-mid:#132a50;--white:#fff;--off-white:#f8f5f0;--text-dark:#1a1a2e;--gray:#666;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Lato',sans-serif;background:var(--off-white);color:var(--text-dark);overflow-x:hidden;}
+
+  /* NAVBAR */
+  nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(11,31,58,0.97);backdrop-filter:blur(10px);border-bottom:2px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:72px;}
+  .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;}
+  .nav-logo-svg{width:48px;height:48px;flex-shrink:0;}
+  .nav-brand-text{display:flex;flex-direction:column;line-height:1.1;}
+  .nav-brand-text span:first-child{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;font-weight:700;letter-spacing:2px;}
+  .nav-brand-text span:last-child{font-family:'Lato',sans-serif;color:#b0c4d8;font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;}
+  .nav-links{display:flex;gap:8px;list-style:none;}
+  .nav-links a{font-family:'Cinzel',serif;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#c8d8e8;text-decoration:none;padding:6px 16px;border-radius:2px;transition:all 0.25s;position:relative;}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width 0.25s;}
+  .nav-links a:hover{color:var(--gold-light);}
+  .nav-links a:hover::after{width:80%;}
+  .nav-links a.active{color:var(--gold);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .hamburger span{width:26px;height:2px;background:var(--gold);display:block;transition:all 0.3s;}
+
+  /* HERO */
+  #home{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .slides{position:absolute;inset:0;}
+  .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;background-size:cover;background-position:center;}
+  .slide.active{opacity:1;}
+  .slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,31,58,0.75) 0%,rgba(11,31,58,0.45) 100%);}
+  .slide-1{background-image:url('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1600&q=80');}
+  .slide-2{background-image:url('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600&q=80');}
+  .slide-3{background-image:url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1600&q=80');}
+  .slide-4{background-image:url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1600&q=80');}
+  .hero-content{position:relative;z-index:10;text-align:center;padding:0 20px;animation:heroFadeIn 1.4s ease forwards;}
+  @keyframes heroFadeIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+  .hero-eyebrow{font-family:'Cinzel',serif;color:var(--gold);letter-spacing:5px;font-size:0.8rem;text-transform:uppercase;margin-bottom:16px;}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,5rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:20px;text-shadow:0 4px 20px rgba(0,0,0,0.4);}
+  .hero-title span{color:var(--gold);}
+  .hero-sub{font-size:1.05rem;color:#d0dde8;max-width:520px;margin:0 auto 36px;font-weight:300;line-height:1.7;}
+  .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn-primary{background:var(--gold);color:var(--navy);font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:2px;padding:14px 36px;border:none;cursor:pointer;text-decoration:none;font-weight:700;border-radius:2px;transition:all 0.25s;box-shadow:0 4px 20px rgba(201,168,76,0.4);}
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .btn-outline{border:2px solid var(--gold);color:var(--gold);font-family:'Cinzel',serif;font-size:0.8rem;letter-spacing:2px;padding:12px 34px;background:transparent;cursor:pointer;text-decoration:none;font-weight:700;border-radius:2px;transition:all 0.25s;}
+  .btn-outline:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
+  .slide-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:10;}
+  .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all 0.25s;border:none;}
+  .dot.active{background:var(--gold);transform:scale(1.3);}
+  .scroll-hint{position:absolute;bottom:32px;right:40px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;}
+  .scroll-hint-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 1.8s ease-in-out infinite;}
+  @keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+  /* SECTIONS */
+  section{padding:90px 40px;}
+  .section-label{font-family:'Cinzel',serif;color:var(--gold);letter-spacing:4px;font-size:0.72rem;text-transform:uppercase;display:block;margin-bottom:12px;}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:20px;}
+  .section-title.light{color:#fff;}
+  .section-divider{width:60px;height:3px;background:var(--gold);margin:0 auto 40px;}
+  .section-divider.left{margin-left:0;}
+
+  /* ABOUT */
+  #about{background:var(--off-white);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;max-width:1100px;margin:0 auto;}
+  .about-img-wrap{position:relative;}
+  .about-img-wrap img{width:100%;height:420px;object-fit:cover;border-radius:4px;box-shadow:12px 16px 40px rgba(11,31,58,0.18);}
+  .about-badge{position:absolute;bottom:-24px;right:-24px;background:var(--gold);color:var(--navy);font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 8px 24px rgba(201,168,76,0.4);line-height:1.1;}
+  .about-badge small{font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;font-family:'Lato',sans-serif;}
+  .about-text p{color:var(--gray);line-height:1.9;margin-bottom:16px;font-size:0.98rem;}
+  .about-values{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .value-pill{background:var(--navy);color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:2px;padding:8px 18px;border-radius:50px;}
+
+  /* PASTORS */
+  #pastors{background:var(--navy);text-align:center;}
+  .pastors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;max-width:900px;margin:0 auto;}
+  .pastor-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.2);border-radius:6px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+  .pastor-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.4);}
+  .pastor-card img{width:100%;height:280px;object-fit:cover;object-position:top;}
+  .pastor-info{padding:24px;}
+  .pastor-info h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;margin-bottom:4px;}
+  .pastor-role{color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:2px;}
+  .pastor-bio{color:#8a9bb0;font-size:0.88rem;margin-top:12px;line-height:1.7;}
+
+  /* SERVICES */
+  #services{background:var(--off-white);text-align:center;}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;max-width:1100px;margin:0 auto;}
+  .service-card{background:#fff;border-radius:6px;padding:36px 24px;box-shadow:0 4px 24px rgba(11,31,58,0.08);border-bottom:3px solid transparent;transition:all 0.3s;}
+  .service-card:hover{border-bottom-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 36px rgba(11,31,58,0.13);}
+  .service-icon{font-size:2.2rem;margin-bottom:14px;}
+  .service-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:8px;color:var(--navy);}
+  .service-card p{color:var(--gray);font-size:0.88rem;line-height:1.7;margin-bottom:14px;}
+  .service-time{background:var(--navy);color:var(--gold);font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:1.5px;padding:8px 16px;border-radius:50px;display:inline-block;}
+
+  /* EVENTS */
+  #events{background:var(--navy);}
+  .events-header{text-align:center;margin-bottom:50px;}
+  .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;max-width:1100px;margin:0 auto;}
+  .event-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);border-radius:6px;overflow:hidden;display:flex;transition:transform 0.3s;}
+  .event-card:hover{transform:translateY(-4px);}
+  .event-date{background:var(--gold);color:var(--navy);padding:20px 18px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-width:70px;}
+  .event-date .day{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;line-height:1;}
+  .event-date .month{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+  .event-body{padding:20px;}
+  .event-body h3{font-family:'Playfair Display',serif;color:#fff;font-size:1rem;margin-bottom:6px;}
+  .event-body p{color:#8a9bb0;font-size:0.83rem;line-height:1.6;}
+  .event-meta{display:flex;gap:14px;margin-top:12px;flex-wrap:wrap;}
+  .event-meta span{color:var(--gold);font-size:0.75rem;font-family:'Cinzel',serif;letter-spacing:1px;}
+
+  /* GALLERY */
+  #gallery{background:#f2ede5;text-align:center;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;max-width:1100px;margin:0 auto;}
+  .gallery-item{position:relative;overflow:hidden;border-radius:4px;aspect-ratio:4/3;cursor:pointer;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-overlay{position:absolute;inset:0;background:rgba(11,31,58,0.55);opacity:0;transition:opacity 0.3s;display:flex;align-items:center;justify-content:center;}
+  .gallery-item:hover .gallery-overlay{opacity:1;}
+  .gallery-overlay span{color:var(--gold);font-size:2rem;}
+
+  /* CONTACT */
+  #contact{background:var(--navy);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;max-width:1100px;margin:0 auto;align-items:start;}
+  .contact-info h2{font-family:'Playfair Display',serif;color:#fff;font-size:2rem;margin-bottom:24px;}
+  .contact-item{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start;}
+  .contact-icon{color:var(--gold);font-size:1.3rem;margin-top:2px;flex-shrink:0;}
+  .contact-item h4{color:#fff;font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:2px;margin-bottom:4px;}
+  .contact-item p{color:#8a9bb0;font-size:0.9rem;line-height:1.6;}
+  .social-links{display:flex;gap:12px;margin-top:28px;}
+  .social-link{width:40px;height:40px;border:1px solid rgba(201,168,76,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);text-decoration:none;font-size:0.9rem;transition:all 0.25s;}
+  .social-link:hover{background:var(--gold);color:var(--navy);}
+  .contact-form{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:6px;padding:36px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;color:#8a9bb0;font-size:0.75rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;font-family:'Cinzel',sans-serif;}
+  .form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.2);border-radius:3px;padding:12px 16px;color:#fff;font-family:'Lato',sans-serif;font-size:0.92rem;transition:border-color 0.25s;outline:none;}
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);}
+  .form-group textarea{height:110px;resize:vertical;}
+  .form-group select option{background:var(--navy);}
+  .btn-submit{width:100%;background:var(--gold);color:var(--navy);font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:2px;padding:15px;border:none;cursor:pointer;font-weight:700;border-radius:3px;transition:all 0.25s;}
+  .btn-submit:hover{background:var(--gold-light);}
+  .form-success{display:none;text-align:center;padding:20px;}
+  .form-success p{color:var(--gold);font-family:'Cinzel',serif;font-size:1rem;letter-spacing:1px;line-height:2;}
+
+  /* MAP */
+  #map-section{background:#0a1a30;padding:50px 40px;}
+  .map-container{max-width:1100px;margin:0 auto;}
+  .map-container h3{font-family:'Playfair Display',serif;color:#fff;font-size:1.4rem;margin-bottom:20px;text-align:center;}
+  .map-frame{border-radius:6px;overflow:hidden;border:2px solid rgba(201,168,76,0.3);}
+  .map-frame iframe{width:100%;height:340px;border:none;display:block;filter:grayscale(30%) contrast(1.1);}
+
+  /* FOOTER */
+  footer{background:#060f1e;border-top:2px solid rgba(201,168,76,0.3);padding:48px 40px 24px;}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:50px;max-width:1100px;margin:0 auto 40px;}
+  .footer-brand p{color:#6a7d90;font-size:0.88rem;line-height:1.8;margin-top:12px;}
+  .footer-col h4{font-family:'Cinzel',serif;color:var(--gold);font-size:0.72rem;letter-spacing:3px;margin-bottom:18px;text-transform:uppercase;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{margin-bottom:10px;}
+  .footer-col ul li a{color:#6a7d90;text-decoration:none;font-size:0.88rem;transition:color 0.2s;}
+  .footer-col ul li a:hover{color:var(--gold);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1100px;margin:0 auto;}
+  .footer-bottom p{color:#44566a;font-size:0.78rem;}
+  .footer-bottom a{color:var(--gold);text-decoration:none;}
+
+  /* LIGHTBOX */
+  .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:2000;align-items:center;justify-content:center;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border:2px solid rgba(201,168,76,0.4);border-radius:4px;}
+  .lightbox-close{position:absolute;top:24px;right:32px;color:var(--gold);font-size:2rem;cursor:pointer;}
+
+  /* BACK TO TOP */
+  .back-top{position:fixed;bottom:28px;right:28px;z-index:500;width:44px;height:44px;background:var(--gold);color:var(--navy);border:none;border-radius:50%;cursor:pointer;font-size:1.1rem;display:none;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(201,168,76,0.4);transition:all 0.25s;}
+  .back-top.show{display:flex;}
+  .back-top:hover{transform:translateY(-3px);}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    nav{padding:0 20px;}
+    .nav-links{display:none;flex-direction:column;position:absolute;top:72px;left:0;width:100%;background:rgba(11,31,58,0.98);padding:20px;}
+    .nav-links.open{display:flex;}
+    .hamburger{display:flex;}
+    .about-grid,.contact-grid,.footer-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .about-badge{right:10px;bottom:10px;}
+    section{padding:60px 20px;}
+    #map-section{padding:40px 20px;}
+    .footer-bottom{flex-direction:column;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-brand" href="#home">
+    <svg class="nav-logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ng" cx="42%" cy="38%" r="60%"><stop offset="0%" stop-color="#1a6bbf"/><stop offset="100%" stop-color="#071d5c"/></radialGradient>
+        <radialGradient id="ag" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#40e080"/><stop offset="100%" stop-color="#0d7a3a"/></radialGradient>
+        <clipPath id="gc"><circle cx="40" cy="36" r="24"/></clipPath>
+      </defs>
+      <circle cx="40" cy="36" r="24" fill="url(#ng)"/>
+      <g clip-path="url(#gc)" fill="none" stroke="#3a7abf" stroke-width="0.6" opacity="0.5">
+        <ellipse cx="40" cy="36" rx="24" ry="5"/><ellipse cx="40" cy="36" rx="24" ry="12"/><ellipse cx="40" cy="36" rx="24" ry="20"/>
+        <ellipse cx="40" cy="36" rx="6" ry="24"/><ellipse cx="40" cy="36" rx="14" ry="24"/>
+      </g>
+      <path d="M37 20c2-2 5-2.5 7-1.5s3 3 3.5 5 0 4 1.5 5.5 2 4.5 1 7-2 4-1.8 6.5-1.5 5.5-4 6.5-5 1-7-.5-3-4-3.5-6.5 0-5-1.2-7-1-5 1-7.5 2-6 3.5-8z" fill="url(#ag)" clip-path="url(#gc)"/>
+      <rect x="37.5" y="6" width="5" height="54" rx="1" fill="white" opacity="0.9"/>
+      <rect x="26" y="18" width="28" height="5" rx="1" fill="white" opacity="0.9"/>
+      <rect x="38.5" y="8" width="3" height="52" rx="1.5" fill="#33ff66" opacity="0.55"/>
+      <rect x="22" y="60" width="36" height="8" rx="2" fill="#c8a040"/>
+      <path d="M22 60 c7-3 14-4 18-4l0 8 c-4 0-11 1-18 0z" fill="#f5f0e0"/>
+      <path d="M58 60 c-7-3-14-4-18-4l0 8 c4 0 11 1 18 0z" fill="#f5f0e0"/>
+      <rect x="39" y="56" width="2" height="12" rx="1" fill="#c8a040"/>
+    </svg>
+    <div class="nav-brand-text">
+      <span>Gilgal Dominion</span>
+      <span>Center &middot; Est. 2010</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" class="active" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#pastors" onclick="closeMenu()">Pastors</a></li>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#events" onclick="closeMenu()">Events</a></li>
+    <li><a href="#gallery" onclick="closeMenu()">Gallery</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="slides">
+    <div class="slide slide-1 active"></div>
+    <div class="slide slide-2"></div>
+    <div class="slide slide-3"></div>
+    <div class="slide slide-4"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Welcome to</p>
+    <h1 class="hero-title">Gilgal <span>Dominion</span><br>Center</h1>
+    <p class="hero-sub">A place of worship, transformation, and divine encounter. Come as you are. Leave changed forever.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Join Us Sunday</a>
+      <a href="#about" class="btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="slide-dots">
+    <button class="dot active" onclick="goSlide(0)" aria-label="Slide 1"></button>
+    <button class="dot" onclick="goSlide(1)" aria-label="Slide 2"></button>
+    <button class="dot" onclick="goSlide(2)" aria-label="Slide 3"></button>
+    <button class="dot" onclick="goSlide(3)" aria-label="Slide 4"></button>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <img src="https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=700&q=80" alt="Church congregation in worship"/>
+      <div class="about-badge">
+        <span>14+</span>
+        <small>Years of<br>Grace</small>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="section-label">Who We Are</span>
+      <h2 class="section-title">Rooted in Faith,<br>Led by the Spirit</h2>
+      <div class="section-divider left"></div>
+      <p>Gilgal Dominion Center is a Spirit-filled Pentecostal church committed to preaching the undiluted Word of God. We are a community of believers passionate about worship, discipleship, and extending God's kingdom across Tanzania and beyond.</p>
+      <p>Our mission is simple: <strong>encounter God, grow in faith, and transform our world.</strong> From our vibrant Sunday services to midweek Bible studies, every gathering is designed to bring you closer to Christ.</p>
+      <div class="about-values">
+        <span class="value-pill">Faith</span>
+        <span class="value-pill">Prayer</span>
+        <span class="value-pill">Community</span>
+        <span class="value-pill">Outreach</span>
+        <span class="value-pill">Worship</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR PASTORS -->
+<section id="pastors">
+  <span class="section-label" style="display:block;text-align:center;">Spiritual Leadership</span>
+  <h2 class="section-title light" style="text-align:center;">Our Pastors</h2>
+  <div class="section-divider"></div>
+  <div class="pastors-grid">
+    <div class="pastor-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Pastor Hezron George"/>
+      <div class="pastor-info">
+        <h3>Pastor Hezron George</h3>
+        <span class="pastor-role">Senior Pastor</span>
+        <p class="pastor-bio">A seasoned man of God with over 20 years of ministry experience. Pastor Hezron carries a deep passion for souls and a prophetic anointing that transforms lives.</p>
+      </div>
+    </div>
+    <div class="pastor-card">
+      <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=500&q=80" alt="Assistant Pastor Samson"/>
+      <div class="pastor-info">
+        <h3>Asst. Pastor Samson</h3>
+        <span class="pastor-role">Assistant Pastor</span>
+        <p class="pastor-bio">Pastor Samson leads with humility and zeal. His gift in teaching and pastoral care has been a pillar of strength for the congregation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div style="text-align:center;margin-bottom:50px;">
+    <span class="section-label">Come Worship</span>
+    <h2 class="section-title">Service Times</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">&#128346;</div>
+      <h3>Sunday Morning</h3>
+      <p>Main worship service with praise, preaching of the Word and Holy Communion on the first Sunday.</p>
+      <span class="service-time">08:30 AM &ndash; 11:30 AM</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128214;</div>
+      <h3>Afternoon Service</h3>
+      <p>Evening praise, deeper Word study and intercession. All are welcome to join us.</p>
+      <span class="service-time">06:30 PM &ndash; 08:00 PM</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128293;</div>
+      <h3>Midweek Service</h3>
+      <p>Wednesday Bible study and prayer night. Deepen your knowledge of the Scriptures.</p>
+      <span class="service-time">Wed &middot; 06:00 PM &ndash; 08:00 PM</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">&#128591;</div>
+      <h3>Prayer &amp; Fasting</h3>
+      <p>Monthly corporate fast and prayer gathering seeking the face of God for breakthroughs.</p>
+      <span class="service-time">First Friday of Month</span>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="events-header">
+    <span class="section-label">What's Coming</span>
+    <h2 class="section-title light">Upcoming Events</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="events-grid">
+    <div class="event-card">
+      <div class="event-date"><span class="day">15</span><span class="month">Jun</span></div>
+      <div class="event-body">
+        <h3>Annual Dominion Conference 2026</h3>
+        <p>Three days of powerful preaching, worship and miracles. Guest ministers from across East Africa.</p>
+        <div class="event-meta"><span>&#128205; Main Sanctuary</span><span>&#8987; 6:00 PM</span></div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><span class="day">22</span><span class="month">Jun</span></div>
+      <div class="event-body">
+        <h3>Youth Outreach &mdash; Dar es Salaam</h3>
+        <p>Join our youth department as we take the Gospel to the streets and campuses of the city.</p>
+        <div class="event-meta"><span>&#128205; City Centre</span><span>&#8987; 9:00 AM</span></div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><span class="day">06</span><span class="month">Jul</span></div>
+      <div class="event-body">
+        <h3>Marriage Enrichment Seminar</h3>
+        <p>A special seminar for married couples and those preparing for marriage. Register early.</p>
+        <div class="event-meta"><span>&#128205; Fellowship Hall</span><span>&#8987; 10:00 AM</span></div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><span class="day">20</span><span class="month">Jul</span></div>
+      <div class="event-body">
+        <h3>Water Baptism Service</h3>
+        <p>Public declaration of faith. All new believers and those ready to take the step are invited.</p>
+        <div class="event-meta"><span>&#128205; Church Grounds</span><span>&#8987; 8:30 AM</span></div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><span class="day">03</span><span class="month">Aug</span></div>
+      <div class="event-body">
+        <h3>Children's Ministry Day</h3>
+        <p>A fun-filled day dedicated to our children with games, lessons, music and prizes.</p>
+        <div class="event-meta"><span>&#128205; Church Hall</span><span>&#8987; 9:00 AM</span></div>
+      </div>
+    </div>
+    <div class="event-card">
+      <div class="event-date"><span class="day">17</span><span class="month">Aug</span></div>
+      <div class="event-body">
+        <h3>Night of Worship 2026</h3>
+        <p>An all-night praise and worship experience. Come hungry, come expectant.</p>
+        <div class="event-meta"><span>&#128205; Main Sanctuary</span><span>&#8987; 10:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div style="text-align:center;margin-bottom:50px;">
+    <span class="section-label">Moments of Grace</span>
+    <h2 class="section-title">Photo Gallery</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=600&q=70" alt="Sunday worship"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600&q=70" alt="Praise and worship"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=70" alt="Bible study"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=70" alt="Church community"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=600&q=70" alt="Congregation fellowship"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1514286274099-3de602af7d49?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1514286274099-3de602af7d49?w=600&q=70" alt="Prayer meeting"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=600&q=70" alt="Outdoor outreach"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox('https://images.unsplash.com/photo-1507692049790-de58290a4334?w=1200&q=80')">
+      <img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&q=70" alt="Youth gathering"/>
+      <div class="gallery-overlay"><span>&#128269;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-label">Get In Touch</span>
+      <h2>We'd Love to<br>Hear From You</h2>
+      <div class="section-divider left" style="margin-top:16px;margin-bottom:32px;"></div>
+      <div class="contact-item">
+        <span class="contact-icon">&#128205;</span>
+        <div><h4>Address</h4><p>Gilgal Dominion Center<br>Dar es Salaam, Tanzania</p></div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">&#128222;</span>
+        <div><h4>Phone</h4><p>+255 700 000 000</p></div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">&#9993;</span>
+        <div><h4>Email</h4><p>info@gilgaldominion.org</p></div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">&#128336;</span>
+        <div><h4>Office Hours</h4><p>Mon &ndash; Fri: 9:00 AM &ndash; 5:00 PM<br>Saturday: 9:00 AM &ndash; 1:00 PM</p></div>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="YouTube">&#9654;</a>
+        <a href="#" class="social-link" aria-label="WhatsApp">&#9742;</a>
+        <a href="#" class="social-link" aria-label="Instagram">&#9711;</a>
+        <a href="#" class="social-link" aria-label="Twitter">X</a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;margin-bottom:24px;">Send a Message</h3>
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" id="fname" placeholder="John"/></div>
+          <div class="form-group"><label>Last Name</label><input type="text" id="lname" placeholder="Doe"/></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="femail" placeholder="john@example.com"/></div>
+        <div class="form-group"><label>Phone (Optional)</label><input type="tel" id="fphone" placeholder="+255 ..."/></div>
+        <div class="form-group">
+          <label>Subject</label>
+          <select id="fsubject">
+            <option value="">Select a topic...</option>
+            <option>General Enquiry</option>
+            <option>Prayer Request</option>
+            <option>Pastoral Counselling</option>
+            <option>Event Registration</option>
+            <option>Suggestion / Feedback</option>
+            <option>Partnership / Support</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea id="fmessage" placeholder="Type your message here..."></textarea></div>
+        <button class="btn-submit" onclick="submitForm()">SEND MESSAGE &rarr;</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <p>&#10004; Message received!<br>We'll get back to you shortly.<br><br>God bless you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section id="map-section">
+  <div class="map-container">
+    <h3>Find Us &mdash; Dar es Salaam, Tanzania</h3>
+    <div class="map-frame">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=39.1,-6.9,39.4,-6.7&layer=mapnik&marker=-6.8,39.28"
+        title="Gilgal Dominion Center Location"
+        loading="lazy"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span style="font-family:'Cinzel',serif;color:var(--gold);font-size:1.1rem;font-weight:700;letter-spacing:2px;">Gilgal Dominion Center</span>
+      <p>A Spirit-filled Pentecostal community in the heart of Dar es Salaam, Tanzania. Reaching the world, one soul at a time.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#pastors">Our Pastors</a></li>
+        <li><a href="#services">Service Times</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Facebook Page</a></li>
+        <li><a href="#">YouTube Channel</a></li>
+        <li><a href="#">WhatsApp Group</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Live Stream</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 <a href="#">Gilgal Dominion Center</a>. All rights reserved.</p>
+    <p>Photos &copy; <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> contributors &middot; <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash License</a></p>
+    <p>Designed with &#10084; for God's glory</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&#10005;</span>
+  <img id="lightboxImg" src="" alt="Gallery image"/>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&#8593;</button>
+
+<script>
+  // SLIDESHOW
+  let slideIdx=0;
+  const slides=document.querySelectorAll('.slide');
+  const dots=document.querySelectorAll('.dot');
+  function goSlide(n){
+    slides[slideIdx].classList.remove('active');
+    dots[slideIdx].classList.remove('active');
+    slideIdx=n;
+    slides[slideIdx].classList.add('active');
+    dots[slideIdx].classList.add('active');
+  }
+  setInterval(()=>goSlide((slideIdx+1)%slides.length),5000);
+
+  // NAVBAR
+  window.addEventListener('scroll',()=>{
+    document.getElementById('backTop').classList.toggle('show',window.scrollY>400);
+    const secs=['home','about','pastors','services','events','gallery','contact'];
+    let cur='home';
+    secs.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-100)cur=id;});
+    document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+  });
+
+  // MOBILE MENU
+  function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+  function closeMenu(){document.getElementById('navLinks').classList.remove('open');}
+
+  // FORM
+  function submitForm(){
+    const f=document.getElementById('fname').value.trim();
+    const e=document.getElementById('femail').value.trim();
+    const m=document.getElementById('fmessage').value.trim();
+    if(!f||!e||!m){alert('Please fill in your name, email and message.');return;}
+    document.getElementById('contactForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+  }
+
+  // LIGHTBOX
+  function openLightbox(src){
+    document.getElementById('lightboxImg').src=src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+
+  // FADE-IN ANIMATIONS
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.pastor-card,.service-card,.event-card,.gallery-item,.about-grid,.contact-grid').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(28px)';
+    el.style.transition='opacity 0.6s ease,transform 0.6s ease';
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gilgal Dominion Center — Tovuti Rasmi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --sky:#1A7FC1;--sky-deep:#0D5A8E;--sky-light:#5AB4E8;--sky-pale:#C8E8F8;--sky-bg:#EAF5FD;
+  --orange:#E8840A;--orange2:#F5A020;--orange3:#FAC040;--amber:#FFD060;
+  --green:#2A7A2A;--green2:#3DAA3D;--green3:#7DC87D;
+  --white:#FFFFFF;--cream:#FDF9F0;--ink:#0A1A2A;--charcoal:#1A2A3A;--mist:#D0E8F5;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--sky-bg);color:var(--ink);overflow-x:hidden;}
+
+/* CURSOR */
+.cursor{position:fixed;width:10px;height:10px;background:var(--orange);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1.5px solid var(--sky-light);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all 0.14s ease;opacity:0.7;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:26px 60px;transition:background 0.4s,padding 0.4s,box-shadow 0.4s;}
+nav.scrolled{background:rgba(13,90,142,0.97);backdrop-filter:blur(18px);padding:14px 60px;box-shadow:0 4px 30px rgba(26,127,193,0.25);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.logo-mark{width:40px;height:40px;}
+.logo-text strong{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--white);display:block;text-shadow:0 1px 8px rgba(0,0,0,0.3);}
+.logo-text span{font-family:'Space Mono',monospace;font-size:0.48rem;color:var(--orange3);letter-spacing:3px;text-transform:uppercase;margin-top:2px;display:block;}
+.nav-menu{display:flex;gap:0;list-style:none;align-items:center;}
+.nav-menu a{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,0.85);text-decoration:none;padding:8px 14px;position:relative;transition:color 0.2s;}
+.nav-menu a::after{content:'';position:absolute;bottom:2px;left:14px;right:14px;height:1.5px;background:var(--orange3);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.nav-menu a:hover{color:var(--orange3);}
+.nav-menu a:hover::after{transform:scaleX(1);}
+.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:10px 20px!important;font-weight:700!important;border-radius:2px!important;}
+.nav-cta:hover{background:var(--orange2)!important;}
+.nav-cta::after{display:none!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.hamburger span{display:block;width:26px;height:1.5px;background:var(--white);transition:all 0.3s;}
+
+/* HERO */
+#nyumbani{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+#nyumbani::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,#0D5A8E 0%,#1A7FC1 35%,#5AB4E8 65%,#85CCEE 100%);z-index:0;}
+#nyumbani::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 30% at 70% 30%,rgba(255,255,255,0.22) 0%,transparent 70%),radial-gradient(ellipse 40% 20% at 30% 60%,rgba(255,255,255,0.15) 0%,transparent 70%);z-index:1;}
+.hero-left{padding:160px 60px 80px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:5;}
+.hero-tag{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--orange3);margin-bottom:28px;display:flex;align-items:center;gap:12px;}
+.hero-tag::before{content:'';display:block;width:32px;height:1.5px;background:var(--orange3);}
+.hero-h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,5vw,5.2rem);font-weight:700;line-height:1.05;color:var(--white);margin-bottom:16px;text-shadow:0 2px 20px rgba(13,90,142,0.4);}
+.hero-h1 em{font-style:italic;color:var(--amber);display:block;font-weight:300;font-size:0.68em;}
+.hero-h1 span{display:block;font-size:0.62em;font-weight:300;color:rgba(255,255,255,0.8);letter-spacing:2px;}
+.hero-msemo{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--amber);font-size:1rem;margin-bottom:28px;border-left:3px solid var(--orange);padding-left:16px;line-height:1.7;}
+.hero-desc{font-size:0.98rem;color:rgba(255,255,255,0.85);line-height:1.8;max-width:420px;margin-bottom:44px;font-weight:300;}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+.btn-orange{display:inline-block;background:var(--orange);color:var(--white);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;padding:15px 34px;text-decoration:none;transition:all 0.3s;font-weight:700;box-shadow:0 6px 24px rgba(232,132,10,0.4);}
+.btn-orange:hover{background:var(--orange2);transform:translateY(-2px);}
+.btn-wazi{display:inline-block;border:1.5px solid rgba(255,255,255,0.7);color:var(--white);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;padding:13px 32px;text-decoration:none;transition:all 0.3s;}
+.btn-wazi:hover{background:rgba(255,255,255,0.15);}
+
+/* Doves */
+.dove-wrap{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden;}
+.dove{position:absolute;opacity:0;animation:doveFloat 8s ease-in-out infinite;}
+.dove svg{fill:white;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.15));}
+.dove-1{top:12%;right:10%;animation-delay:0s;animation-duration:9s;}
+.dove-2{top:26%;right:34%;animation-delay:1.5s;animation-duration:8s;}
+.dove-3{top:6%;right:50%;animation-delay:3s;animation-duration:10s;}
+.dove-4{top:44%;right:7%;animation-delay:2s;animation-duration:7.5s;}
+.dove-5{top:55%;right:26%;animation-delay:4.5s;animation-duration:9s;}
+@keyframes doveFloat{0%{opacity:0;transform:translateY(10px) translateX(-8px);}15%{opacity:0.9;}50%{opacity:0.7;transform:translateY(-14px) translateX(8px);}85%{opacity:0.8;}100%{opacity:0;transform:translateY(10px) translateX(-8px);}}
+.foliage-tl{position:absolute;top:0;left:0;width:160px;height:200px;background:radial-gradient(ellipse at top left,rgba(42,122,42,0.55) 0%,transparent 70%);z-index:2;pointer-events:none;}
+.foliage-br{position:absolute;bottom:0;right:0;width:200px;height:220px;background:radial-gradient(ellipse at bottom right,rgba(42,122,42,0.5) 0%,transparent 70%);z-index:2;pointer-events:none;}
+
+/* Hero right */
+.hero-right{position:relative;z-index:4;}
+.hero-img-frame{position:absolute;inset:40px 40px 40px 0;border:3px solid rgba(255,255,255,0.25);overflow:hidden;border-radius:3px;}
+.hero-img-frame img{width:100%;height:100%;object-fit:cover;opacity:0.85;transition:opacity 0.5s;}
+.hero-counter{position:absolute;bottom:60px;right:50px;z-index:10;text-align:right;}
+.hero-counter strong{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(255,255,255,0.85);line-height:1;}
+.hero-counter span{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:3px;color:var(--orange3);display:block;margin-top:4px;text-transform:uppercase;}
+.hero-dots{position:absolute;bottom:60px;left:0;display:flex;gap:10px;z-index:10;}
+.hdot{width:28px;height:2.5px;background:rgba(255,255,255,0.3);border:none;cursor:pointer;transition:all 0.3s;}
+.hdot.on{background:var(--orange3);width:54px;}
+.hero-scroll{position:absolute;bottom:32px;left:60px;z-index:10;display:flex;align-items:center;gap:14px;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.hero-scroll-bar{width:44px;height:1px;background:rgba(255,255,255,0.25);position:relative;overflow:hidden;}
+.hero-scroll-bar::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--orange3);animation:scan 2.2s ease infinite;}
+@keyframes scan{0%{left:-100%;}100%{left:100%;}}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--orange);padding:16px 0;overflow:hidden;}
+.marquee-track{display:flex;white-space:nowrap;animation:mq 26s linear infinite;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.mq-item{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:var(--white);padding:0 36px;}
+.mq-dot{color:rgba(255,255,255,0.6);padding:0 6px;}
+
+/* SECTIONS */
+.sec{padding:110px 60px;}
+.sec-lbl{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:4px;color:var(--orange);text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+.sec-lbl::after{content:'';flex:1;height:1px;background:var(--mist);max-width:70px;}
+.sec-lbl.light{color:var(--orange3);}
+.sec-lbl.light::after{background:rgba(255,255,255,0.2);}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,3.8vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:20px;color:var(--ink);}
+.sec-h em{font-style:italic;color:var(--sky);font-weight:300;}
+.sec-h.light{color:var(--white);}
+.sec-h.light em{color:var(--amber);}
+
+/* KUHUSU */
+#kuhusu{background:var(--white);}
+.kuhusu-grid{display:grid;grid-template-columns:5fr 7fr;gap:90px;align-items:start;max-width:1200px;margin:0 auto;}
+.kuhusu-visual{position:relative;}
+.kuhusu-img-a{width:100%;aspect-ratio:3/4;object-fit:cover;border:4px solid var(--sky-pale);}
+.kuhusu-img-b{position:absolute;bottom:-36px;right:-36px;width:56%;aspect-ratio:4/3;object-fit:cover;border:6px solid var(--white);box-shadow:0 8px 32px rgba(26,127,193,0.18);}
+.kuhusu-num{position:absolute;top:-18px;left:-18px;background:var(--orange);color:var(--white);font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;width:76px;height:76px;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:0 4px 20px rgba(232,132,10,0.35);}
+.kuhusu-content{padding-top:36px;}
+.kuhusu-content p{font-size:1rem;line-height:1.9;color:#444;margin-bottom:18px;font-weight:300;}
+.kuhusu-content p strong{font-weight:500;color:var(--sky-deep);}
+.nguzo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px;}
+.nguzo{border-left:3px solid var(--sky-light);padding:14px 18px;background:var(--sky-bg);}
+.nguzo h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--sky-deep);margin-bottom:4px;}
+.nguzo p{font-size:0.82rem;color:#666;line-height:1.6;}
+
+/* WACHUNGAJI */
+#wachungaji{background:linear-gradient(165deg,var(--sky-deep) 0%,var(--sky) 50%,#4AACE0 100%);position:relative;overflow:hidden;}
+#wachungaji::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(255,255,255,0.1) 0%,transparent 60%);pointer-events:none;}
+.foliage-p{position:absolute;z-index:1;pointer-events:none;}
+.foliage-p.l{bottom:0;left:0;width:180px;height:250px;background:radial-gradient(ellipse at bottom left,rgba(42,122,42,0.5) 0%,transparent 70%);}
+.foliage-p.r{bottom:0;right:0;width:180px;height:250px;background:radial-gradient(ellipse at bottom right,rgba(42,122,42,0.5) 0%,transparent 70%);}
+.wach-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;}
+.wach-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;}
+.wach-maneno{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,0.6);max-width:240px;text-align:right;line-height:1.6;}
+.wach-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.wcard{position:relative;overflow:hidden;cursor:pointer;}
+.wcard img{width:100%;height:500px;object-fit:cover;object-position:top;filter:saturate(0.8) brightness(0.8);transition:all 0.6s;}
+.wcard:hover img{filter:saturate(1) brightness(1);transform:scale(1.03);}
+.wcard-info{position:absolute;bottom:0;left:0;right:0;padding:36px 32px;background:linear-gradient(to top,rgba(13,90,142,0.95) 0%,rgba(13,90,142,0.6) 60%,transparent 100%);}
+.wcard-cheo{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange3);margin-bottom:8px;}
+.wcard-jina{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:8px;}
+.wcard-maelezo{font-size:0.83rem;color:rgba(255,255,255,0.75);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.4s ease;}
+.wcard:hover .wcard-maelezo{max-height:80px;}
+.wcard-mstari{width:32px;height:2px;background:var(--orange);margin-bottom:12px;}
+
+/* IBADA */
+#ibada{background:var(--sky-bg);}
+.ibada-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1200px;margin:0 auto 72px;}
+.ibada-intro p{font-size:1rem;line-height:1.9;color:#555;font-weight:300;}
+.ibada-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;max-width:1200px;margin:0 auto;}
+.icard{background:var(--white);padding:38px 28px;position:relative;overflow:hidden;transition:all 0.3s;border-bottom:3px solid transparent;}
+.icard:hover{border-bottom-color:var(--orange);box-shadow:0 8px 32px rgba(26,127,193,0.12);}
+.icard-nambari{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:var(--sky-pale);position:absolute;top:-12px;right:16px;line-height:1;transition:color 0.3s;}
+.icard:hover .icard-nambari{color:var(--mist);}
+.icard-icon{font-size:1.6rem;margin-bottom:18px;display:block;}
+.icard h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--sky-deep);margin-bottom:8px;position:relative;}
+.icard p{font-size:0.83rem;color:#666;line-height:1.7;margin-bottom:18px;position:relative;}
+.icard-muda{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:1.5px;color:var(--orange);text-transform:uppercase;position:relative;}
+
+/* MATUKIO */
+#matukio{background:var(--white);}
+.matukio-inner{max-width:1200px;margin:0 auto;}
+.matukio-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px;}
+.orodha-matukio{display:flex;flex-direction:column;}
+.tukio{display:grid;grid-template-columns:90px 1fr auto;align-items:center;gap:36px;padding:28px 0;border-top:1px solid var(--sky-pale);transition:all 0.3s;}
+.tukio:last-child{border-bottom:1px solid var(--sky-pale);}
+.tukio:hover{background:var(--sky-bg);margin:0 -20px;padding:28px 20px;}
+.tukio-tarehe{text-align:center;}
+.tukio-siku{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;line-height:1;color:var(--sky-deep);}
+.tukio-mwezi{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);}
+.tukio-body h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--ink);margin-bottom:5px;}
+.tukio-body p{font-size:0.83rem;color:#666;line-height:1.6;}
+.tukio-meta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;}
+.tukio-tag{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;background:var(--sky);color:var(--white);padding:5px 12px;}
+.tukio-mahali{font-size:0.75rem;color:#999;}
+
+/* PICHA */
+#picha{background:var(--sky-deep);padding:110px 0;}
+.picha-kichwa{padding:0 60px 52px;max-width:1200px;margin:0 auto;}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:300px 260px;gap:3px;max-width:1600px;margin:0 auto;}
+.gitem{overflow:hidden;cursor:pointer;position:relative;}
+.gitem img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s,filter 0.4s;filter:brightness(0.7) saturate(0.9);}
+.gitem:hover img{transform:scale(1.07);filter:brightness(1) saturate(1.1);}
+.g1{grid-column:span 5;}.g2{grid-column:span 4;}.g3{grid-column:span 3;}
+.g4{grid-column:span 3;}.g5{grid-column:span 5;}.g6{grid-column:span 4;}
+.gitem-lbl{position:absolute;bottom:14px;left:14px;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:2px;color:var(--amber);text-transform:uppercase;opacity:0;transition:opacity 0.3s;}
+.gitem:hover .gitem-lbl{opacity:1;}
+.gitem-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.gitem:hover .gitem-line{transform:scaleX(1);}
+
+/* WASILIANA */
+#wasiliana{background:linear-gradient(165deg,var(--sky) 0%,var(--sky-deep) 100%);position:relative;overflow:hidden;}
+#wasiliana::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 10% 50%,rgba(42,122,42,0.2) 0%,transparent 60%);pointer-events:none;}
+.wasiliana-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 7fr;gap:90px;align-items:start;position:relative;z-index:2;}
+.wasiliana-left p{font-size:1rem;line-height:1.9;color:rgba(255,255,255,0.8);margin-bottom:28px;font-weight:300;}
+.info-blk{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.12);}
+.info-blk:last-of-type{border-bottom:none;}
+.info-lbl{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange3);margin-bottom:5px;}
+.info-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);}
+.mitandao{display:flex;gap:10px;margin-top:30px;}
+.soc{width:38px;height:38px;border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--white);text-decoration:none;transition:all 0.25s;}
+.soc:hover{background:var(--orange);border-color:var(--orange);}
+.fomu-wrap{background:rgba(255,255,255,0.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.18);padding:52px;}
+.fomu-wrap h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--white);margin-bottom:36px;}
+.field{margin-bottom:22px;}
+.field label{display:block;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:7px;}
+.field input,.field textarea,.field select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.25);padding:10px 0;font-family:'DM Sans',sans-serif;font-size:0.95rem;color:var(--white);outline:none;transition:border-color 0.25s;}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,0.3);}
+.field input:focus,.field textarea:focus,.field select:focus{border-bottom-color:var(--orange3);}
+.field textarea{height:88px;resize:none;}
+.field select option{background:var(--sky-deep);color:#fff;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.btn-tuma{width:100%;background:var(--orange);color:var(--white);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;padding:18px;border:none;cursor:pointer;transition:background 0.3s;margin-top:10px;font-weight:700;}
+.btn-tuma:hover{background:var(--orange2);}
+.fomu-ok{display:none;text-align:center;padding:40px 20px;}
+.fomu-ok p{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:var(--amber);line-height:1.7;}
+
+/* RAMANI */
+#ramani{padding:0;}
+.ramani-frame iframe{width:100%;height:380px;border:none;display:block;filter:saturate(0.8) hue-rotate(5deg);}
+
+/* KIJACHINI */
+footer{background:var(--ink);padding:80px 60px 40px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky-deep),var(--sky),var(--orange),var(--green2),var(--sky));}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1200px;margin:0 auto 56px;}
+.footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--white);font-style:italic;}
+.footer-brand p{color:#4a6a7a;font-size:0.86rem;line-height:1.8;margin-top:12px;}
+.footer-col h5{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:18px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:9px;}
+.footer-col ul li a{color:#4a6a7a;text-decoration:none;font-size:0.86rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--orange3);}
+.footer-chini{border-top:1px solid #1a2a3a;padding-top:30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;max-width:1200px;margin:0 auto;}
+.footer-chini p{color:#344a5a;font-size:0.73rem;}
+.footer-chini a{color:var(--orange);text-decoration:none;}
+
+/* LIGHTBOX */
+.lbox{display:none;position:fixed;inset:0;background:rgba(10,26,42,0.96);z-index:5000;align-items:center;justify-content:center;}
+.lbox.on{display:flex;}
+.lbox img{max-width:88vw;max-height:88vh;object-fit:contain;border:2px solid rgba(255,255,255,0.15);}
+.lbox-x{position:absolute;top:22px;right:30px;color:var(--orange3);font-size:1.8rem;cursor:pointer;background:none;border:none;font-family:'Space Mono',monospace;}
+
+/* RUDI JUU */
+.btop{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--orange);color:var(--white);border:none;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.85rem;display:none;align-items:center;justify-content:center;z-index:500;transition:all 0.25s;box-shadow:0 4px 18px rgba(232,132,10,0.4);}
+.btop.on{display:flex;}
+.btop:hover{background:var(--sky-deep);}
+
+/* RESPONSIVE */
+@media(max-width:1060px){
+  nav{padding:20px 28px;}
+  nav.scrolled{padding:14px 28px;}
+  .sec{padding:80px 28px;}
+  #nyumbani{grid-template-columns:1fr;min-height:100vh;}
+  .hero-left{padding:140px 28px 80px;position:relative;z-index:5;}
+  .hero-right{position:absolute;inset:0;z-index:1;}
+  .hero-img-frame{inset:0;border:none;}
+  .kuhusu-grid,.wasiliana-grid{grid-template-columns:1fr;gap:56px;}
+  .kuhusu-img-b{display:none;}
+  .ibada-intro{grid-template-columns:1fr;gap:36px;}
+  .ibada-grid{grid-template-columns:1fr 1fr;gap:3px;}
+  .wach-grid{grid-template-columns:1fr;}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .g1,.g2,.g3,.g4,.g5,.g6{grid-column:span 1;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:36px;}
+  .footer-chini{flex-direction:column;text-align:center;}
+  .nav-menu{display:none;flex-direction:column;position:absolute;top:100%;left:0;width:100%;background:rgba(13,90,142,0.98);padding:20px 28px;border-top:1px solid rgba(255,255,255,0.15);}
+  .nav-menu.open{display:flex;}
+  .hamburger{display:flex;}
+  .tukio{grid-template-columns:70px 1fr;gap:20px;}
+  .tukio-meta{display:none;}
+  .wach-header{flex-direction:column;gap:12px;}
+  .wach-maneno{text-align:left;}
+}
+@media(max-width:600px){
+  .ibada-grid{grid-template-columns:1fr;}
+  .bento{display:flex;flex-direction:column;}
+  .gitem{height:230px;}
+  .field-row{grid-template-columns:1fr;}
+  .fomu-wrap{padding:30px 22px;}
+  footer{padding:56px 22px 32px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .hero-scroll,.hero-counter{display:none;}
+  .nguzo-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- URAMBAZAJI -->
+<nav id="nav">
+  <a class="nav-logo" href="#nyumbani">
+    <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ng" cx="42%" cy="38%" r="60%"><stop offset="0%" stop-color="#1A7FC1"/><stop offset="100%" stop-color="#0D5A8E"/></radialGradient>
+        <radialGradient id="ag" cx="35%" cy="30%" r="60%"><stop offset="0%" stop-color="#3DAA3D"/><stop offset="100%" stop-color="#2A7A2A"/></radialGradient>
+        <clipPath id="gc"><circle cx="20" cy="17" r="12"/></clipPath>
+      </defs>
+      <circle cx="20" cy="17" r="12" fill="url(#ng)"/>
+      <g clip-path="url(#gc)" fill="none" stroke="#5AB4E8" stroke-width="0.7" opacity="0.5">
+        <ellipse cx="20" cy="17" rx="12" ry="3"/><ellipse cx="20" cy="17" rx="12" ry="7"/>
+        <ellipse cx="20" cy="17" rx="3" ry="12"/><ellipse cx="20" cy="17" rx="8" ry="12"/>
+      </g>
+      <path d="M18.5 9c1-.8 2.8-1 3.8-.3s1.2 2 1.4 3-.1 2.1.7 2.9 1 2.5.4 3.7-1.1 2-1 3.5-.8 2.8-2 3.2-2.6.4-3.5-.5-1.5-2.2-1.6-3.4 0-2.5-.7-3.5-.6-2.5.4-3.8.8-3.2 1.6-4.8z" fill="url(#ag)" clip-path="url(#gc)"/>
+      <rect x="18.5" y="3" width="3" height="26" rx="0.8" fill="white" opacity="0.95"/>
+      <rect x="12" y="9.5" width="16" height="3" rx="0.8" fill="white" opacity="0.95"/>
+      <rect x="19.2" y="3.5" width="1.6" height="25" rx="0.8" fill="#7DC87D" opacity="0.6"/>
+      <rect x="10" y="29" width="20" height="5" rx="1.2" fill="#E8840A"/>
+      <path d="M10 29 c4-2.5 8-3 10-3l0 5 c-2 0-6 .5-10 0z" fill="#FDF9F0" opacity="0.9"/>
+      <path d="M30 29 c-4-2.5-8-3-10-3l0 5 c2 0 6 .5 10 0z" fill="#FDF9F0" opacity="0.9"/>
+      <rect x="19" y="26" width="2" height="8" rx="1" fill="#E8840A"/>
+    </svg>
+    <div class="logo-text">
+      <strong>Gilgal Dominion</strong>
+      <span>Kanisa &middot; DSM</span>
+    </div>
+  </a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#nyumbani" onclick="cN()">Nyumbani</a></li>
+    <li><a href="#kuhusu" onclick="cN()">Kuhusu</a></li>
+    <li><a href="#wachungaji" onclick="cN()">Wachungaji</a></li>
+    <li><a href="#ibada" onclick="cN()">Ibada</a></li>
+    <li><a href="#matukio" onclick="cN()">Matukio</a></li>
+    <li><a href="#picha" onclick="cN()">Picha</a></li>
+    <li><a href="#wasiliana" onclick="cN()" class="nav-cta">Wasiliana</a></li>
+  </ul>
+  <button class="hamburger" onclick="tN()" aria-label="Menyu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- SEHEMU YA KWANZA -->
+<section id="nyumbani">
+  <div class="foliage-tl"></div>
+  <div class="foliage-br"></div>
+  <div class="dove-wrap" aria-hidden="true">
+    <div class="dove dove-1"><svg width="64" height="42" viewBox="0 0 64 42"><path d="M32 10C20 6 8 12 4 20c4-2 10-3 14 0-6 2-12 8-14 16 6-6 12-10 18-8l4 10c2-6 4-12 6-16 2 4 4 10 6 16l4-10c6-2 12 2 18 8-2-8-8-14-14-16 4-3 10-2 14 0-4-8-16-14-28-10z"/></svg></div>
+    <div class="dove dove-2"><svg width="52" height="34" viewBox="0 0 64 42"><path d="M32 10C20 6 8 12 4 20c4-2 10-3 14 0-6 2-12 8-14 16 6-6 12-10 18-8l4 10c2-6 4-12 6-16 2 4 4 10 6 16l4-10c6-2 12 2 18 8-2-8-8-14-14-16 4-3 10-2 14 0-4-8-16-14-28-10z"/></svg></div>
+    <div class="dove dove-3"><svg width="72" height="48" viewBox="0 0 64 42"><path d="M32 10C20 6 8 12 4 20c4-2 10-3 14 0-6 2-12 8-14 16 6-6 12-10 18-8l4 10c2-6 4-12 6-16 2 4 4 10 6 16l4-10c6-2 12 2 18 8-2-8-8-14-14-16 4-3 10-2 14 0-4-8-16-14-28-10z"/></svg></div>
+    <div class="dove dove-4"><svg width="44" height="30" viewBox="0 0 64 42"><path d="M32 10C20 6 8 12 4 20c4-2 10-3 14 0-6 2-12 8-14 16 6-6 12-10 18-8l4 10c2-6 4-12 6-16 2 4 4 10 6 16l4-10c6-2 12 2 18 8-2-8-8-14-14-16 4-3 10-2 14 0-4-8-16-14-28-10z"/></svg></div>
+    <div class="dove dove-5"><svg width="58" height="38" viewBox="0 0 64 42"><path d="M32 10C20 6 8 12 4 20c4-2 10-3 14 0-6 2-12 8-14 16 6-6 12-10 18-8l4 10c2-6 4-12 6-16 2 4 4 10 6 16l4-10c6-2 12 2 18 8-2-8-8-14-14-16 4-3 10-2 14 0-4-8-16-14-28-10z"/></svg></div>
+  </div>
+  <div class="hero-left">
+    <div class="hero-tag">Dar es Salaam &bull; Tanzania &bull; Tangu 2010</div>
+    <h1 class="hero-h1">
+      <em>Mahali Ambapo</em>
+      Gilgal Dominion
+      <span>Center</span>
+    </h1>
+    <div class="hero-msemo">"Kwa maana ufalme ni wa Bwana, naye ndiye mtawala wa mataifa." &mdash; Zaburi 22:28</div>
+    <p class="hero-desc">Kanisa la Kipentekosti lililojaa Roho Mtakatifu, lililoundwa kwa ajili ya ibada, mabadiliko ya maisha, na kupanua ufalme wa Mungu Tanzania na duniani kote.</p>
+    <div class="hero-actions">
+      <a href="#ibada" class="btn-orange">Jiunge Nasi Jumapili</a>
+      <a href="#kuhusu" class="btn-wazi">Hadithi Yetu</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-frame">
+      <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1000&q=85" id="heroImg" alt="Ibada"/>
+    </div>
+    <div class="hero-counter">
+      <strong id="heroCount">01</strong>
+      <span>/ 04 &nbsp;slaidi</span>
+    </div>
+    <div class="hero-dots">
+      <button class="hdot on" onclick="sHS(0)" aria-label="Slaidi 1"></button>
+      <button class="hdot" onclick="sHS(1)" aria-label="Slaidi 2"></button>
+      <button class="hdot" onclick="sHS(2)" aria-label="Slaidi 3"></button>
+      <button class="hdot" onclick="sHS(3)" aria-label="Slaidi 4"></button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-bar"></div>
+    <span>Telezesha Chini</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="mq-item">Ibada ya Jumapili</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Sala na Kufunga</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Masomo ya Biblia</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Vijana</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Huduma ya Jamii</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Uinjilisti</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Mafunzo ya Kanisa</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Mahali Ambapo Mtu Anafaa</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Ibada ya Jumapili</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Sala na Kufunga</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Masomo ya Biblia</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Vijana</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Huduma ya Jamii</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Uinjilisti</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Mafunzo ya Kanisa</span><span class="mq-dot">&#9670;</span>
+    <span class="mq-item">Mahali Ambapo Mtu Anafaa</span><span class="mq-dot">&#9670;</span>
+  </div>
+</div>
+
+<!-- KUHUSU -->
+<section id="kuhusu" class="sec">
+  <div class="kuhusu-grid">
+    <div class="kuhusu-visual" data-ani>
+      <img class="kuhusu-img-a" src="https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=700&q=80" alt="Jumuiya ya kanisa"/>
+      <img class="kuhusu-img-b" src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=500&q=80" alt="Ibada"/>
+      <div class="kuhusu-num">14</div>
+    </div>
+    <div class="kuhusu-content" data-ani>
+      <div class="sec-lbl">Hadithi Yetu</div>
+      <h2 class="sec-h">Imara katika <em>Imani,</em><br>Ikiongozwa na Roho</h2>
+      <p>Gilgal Dominion Center ilianzishwa kwa imani kwamba <strong>kila maisha yanaweza kubadilishwa na mkutano wa kweli na Mungu.</strong> Kwa zaidi ya miaka 14, tumekuwa taa ya tumaini, uponyaji, na utakatifu katikati ya Dar es Salaam.</p>
+      <p>Tunaamini kikamilifu katika injili yote, karama za Roho Mtakatifu, na nguvu ya sala kubadilisha kila hali. Kama umekuwa ukitembea kwa imani kwa miaka mingi au unatafuta kwa mara ya kwanza &mdash; karibu kwetu.</p>
+      <div class="nguzo-grid">
+        <div class="nguzo"><h4>Neno la Mungu</h4><p>Mafundisho ya Biblia yasiyokompromisha, ya vitendo, yanayotoa uzima.</p></div>
+        <div class="nguzo"><h4>Sala</h4><p>Utamaduni wa uombezi unaosimamia kila tunachofanya pamoja.</p></div>
+        <div class="nguzo"><h4>Jumuiya</h4><p>Uhusiano wa kweli unaobeba mwenzako katika kila msimu wa maisha.</p></div>
+        <div class="nguzo"><h4>Misheni</h4><p>Kupeleka Injili nje ya kuta zetu hadi Tanzania na ulimwengu wote.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WACHUNGAJI -->
+<section id="wachungaji" class="sec">
+  <div class="wach-inner">
+    <div class="foliage-p l"></div>
+    <div class="foliage-p r"></div>
+    <div class="wach-header" data-ani>
+      <div>
+        <div class="sec-lbl light">Uongozi wa Kiroho</div>
+        <h2 class="sec-h light">Wachungaji <em>Wetu</em></h2>
+      </div>
+      <p class="wach-maneno">"Wachungaji wanaoongoza kwa mfano, kwa upendo na imara."</p>
+    </div>
+    <div class="wach-grid" data-ani>
+      <div class="wcard">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Mchungaji Hezron George"/>
+        <div class="wcard-info">
+          <div class="wcard-mstari"></div>
+          <div class="wcard-cheo">Mchungaji Mkuu</div>
+          <div class="wcard-jina">Mchungaji Hezron George</div>
+          <p class="wcard-maelezo">Zaidi ya miaka 20 ya huduma. Anabeba mafuta ya unabii na shauku kubwa ya roho zinazobadilisha kila maisha anayoyagusa.</p>
+        </div>
+      </div>
+      <div class="wcard">
+        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=800&q=80" alt="Mchungaji Msaidizi Samson"/>
+        <div class="wcard-info">
+          <div class="wcard-mstari"></div>
+          <div class="wcard-cheo">Mchungaji Msaidizi</div>
+          <div class="wcard-jina">Mchungaji Msaidizi Samson</div>
+          <p class="wcard-maelezo">Mwalimu na mchungaji wa moyo. Kipawa chake cha kuchunga na kufundisha Neno kimekuwa nguzo kwa kanisa lote.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IBADA -->
+<section id="ibada" class="sec">
+  <div class="ibada-intro" data-ani>
+    <div>
+      <div class="sec-lbl">Ibada Nasi</div>
+      <h2 class="sec-h">Nyakati za <em>Ibada</em></h2>
+    </div>
+    <p>Kila mkusanyiko umebuniwa kwa lengo moja &mdash; kukuleta kwenye mkutano wa kweli na Mungu aliye hai. Njoo ubadilishwe.</p>
+  </div>
+  <div class="ibada-grid" data-ani>
+    <div class="icard">
+      <div class="icard-nambari">01</div>
+      <span class="icard-icon">&#9728;&#65039;</span>
+      <h3>Jumapili Asubuhi</h3>
+      <p>Ibada kuu, sifa, na mahubiri ya Neno. Komunyo ya Mtakatifu Jumapili ya kwanza ya kila mwezi.</p>
+      <div class="icard-muda">08:30 &ndash; 11:30 AM</div>
+    </div>
+    <div class="icard">
+      <div class="icard-nambari">02</div>
+      <span class="icard-icon">&#127752;</span>
+      <h3>Ibada ya Alhamisi</h3>
+      <p>Masomo ya kina ya Neno, uombezi na sifa za jioni. Wote wanakaribishwa.</p>
+      <div class="icard-muda">06:30 &ndash; 08:00 PM</div>
+    </div>
+    <div class="icard">
+      <div class="icard-nambari">03</div>
+      <span class="icard-icon">&#128214;</span>
+      <h3>Masomo ya Biblia</h3>
+      <p>Masomo ya Biblia na sala usiku wa Jumatano. Kaza ujuzi wako wa Neno la Mungu.</p>
+      <div class="icard-muda">Jumatano &middot; 06:00 &ndash; 08:00 PM</div>
+    </div>
+    <div class="icard">
+      <div class="icard-nambari">04</div>
+      <span class="icard-icon">&#128591;</span>
+      <h3>Sala na Kufunga</h3>
+      <p>Mkutano wa pamoja wa sala na kufunga kila mwezi kwa ajili ya mapumziko na ufufuo.</p>
+      <div class="icard-muda">Ijumaa ya Kwanza ya Mwezi</div>
+    </div>
+  </div>
+</section>
+
+<!-- MATUKIO -->
+<section id="matukio" class="sec">
+  <div class="matukio-inner">
+    <div class="matukio-header" data-ani>
+      <div>
+        <div class="sec-lbl">Kalenda 2026</div>
+        <h2 class="sec-h">Matukio <em>Yajayo</em></h2>
+      </div>
+      <a href="#wasiliana" style="display:inline-block;border:1.5px solid var(--sky);color:var(--sky);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;padding:12px 26px;text-decoration:none;transition:all 0.3s;white-space:nowrap;" onmouseover="this.style.background='var(--sky)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--sky)'">Jiandikishe &rarr;</a>
+    </div>
+    <div class="orodha-matukio" data-ani>
+      <div class="tukio">
+        <div class="tukio-tarehe"><div class="tukio-siku">15</div><div class="tukio-mwezi">Jun</div></div>
+        <div class="tukio-body"><h3>Mkutano wa Kila Mwaka wa Dominion 2026</h3><p>Siku tatu za mahubiri makubwa, sifa na miujiza. Wahubiri wageni kutoka Afrika Mashariki yote.</p></div>
+        <div class="tukio-meta"><span class="tukio-tag">Mkutano</span><span class="tukio-mahali">&#128205; Kanisa Kuu &middot; 6:00 PM</span></div>
+      </div>
+      <div class="tukio">
+        <div class="tukio-tarehe"><div class="tukio-siku">22</div><div class="tukio-mwezi">Jun</div></div>
+        <div class="tukio-body"><h3>Uinjilisti Mitaani &mdash; Dar es Salaam</h3><p>Kupeleka Injili mitaani na vyuoni vya jiji pamoja na idara ya vijana.</p></div>
+        <div class="tukio-meta"><span class="tukio-tag">Uinjilisti</span><span class="tukio-mahali">&#128205; Kituo cha Mji &middot; 9:00 AM</span></div>
+      </div>
+      <div class="tukio">
+        <div class="tukio-tarehe"><div class="tukio-siku">06</div><div class="tukio-mwezi">Jul</div></div>
+        <div class="tukio-body"><h3>Semina ya Maisha ya Ndoa</h3><p>Kwa wanandoa na wanaotayarisha ndoa. Nafasi ni chache &mdash; jiandikishe mapema.</p></div>
+        <div class="tukio-meta"><span class="tukio-tag">Semina</span><span class="tukio-mahali">&#128205; Ukumbi wa Ushirika &middot; 10:00 AM</span></div>
+      </div>
+      <div class="tukio">
+        <div class="tukio-tarehe"><div class="tukio-siku">20</div><div class="tukio-mwezi">Jul</div></div>
+        <div class="tukio-body"><h3>Ibada ya Ubatizo wa Maji</h3><p>Kutangaza imani hadharani kwa waamini wapya wote wanaotaka kuchukua hatua hii ya utii.</p></div>
+        <div class="tukio-meta"><span class="tukio-tag">Ubatizo</span><span class="tukio-mahali">&#128205; Uwanja wa Kanisa &middot; 8:30 AM</span></div>
+      </div>
+      <div class="tukio">
+        <div class="tukio-tarehe"><div class="tukio-siku">17</div><div class="tukio-mwezi">Ago</div></div>
+        <div class="tukio-body"><h3>Usiku wa Ibada 2026</h3><p>Usiku wote wa sifa na ibada. Njoo na njaa ya Mungu, njoo ukitegemea.</p></div>
+        <div class="tukio-meta"><span class="tukio-tag">Usiku wa Ibada</span><span class="tukio-mahali">&#128205; Kanisa Kuu &middot; 10:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PICHA -->
+<section id="picha">
+  <div class="picha-kichwa" data-ani>
+    <div class="sec-lbl light">&#8212; Nyakati za Neema</div>
+    <h2 class="sec-h light">Ukumbusho wa <em>Picha</em></h2>
+  </div>
+  <div class="bento" data-ani>
+    <div class="gitem g1" onclick="lb('https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?w=800&q=75" alt="Ibada ya Jumapili"/>
+      <span class="gitem-lbl">Ibada ya Jumapili</span><div class="gitem-line"></div>
+    </div>
+    <div class="gitem g2" onclick="lb('https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=700&q=75" alt="Usiku wa Sifa"/>
+      <span class="gitem-lbl">Usiku wa Sifa</span><div class="gitem-line"></div>
+    </div>
+    <div class="gitem g3" onclick="lb('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=600&q=75" alt="Masomo ya Biblia"/>
+      <span class="gitem-lbl">Masomo ya Biblia</span><div class="gitem-line"></div>
+    </div>
+    <div class="gitem g4" onclick="lb('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=75" alt="Jumuiya"/>
+      <span class="gitem-lbl">Jumuiya</span><div class="gitem-line"></div>
+    </div>
+    <div class="gitem g5" onclick="lb('https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1560195413-5c6aa5d4a4d0?w=800&q=75" alt="Mkutano wa Kanisa"/>
+      <span class="gitem-lbl">Mkutano wa Kanisa</span><div class="gitem-line"></div>
+    </div>
+    <div class="gitem g6" onclick="lb('https://images.unsplash.com/photo-1514286274099-3de602af7d49?w=1400&q=85')">
+      <img src="https://images.unsplash.com/photo-1514286274099-3de602af7d49?w=700&q=75" alt="Mkutano wa Sala"/>
+      <span class="gitem-lbl">Mkutano wa Sala</span><div class="gitem-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WASILIANA -->
+<section id="wasiliana" class="sec">
+  <div class="wasiliana-grid">
+    <div class="wasiliana-left" data-ani>
+      <div class="sec-lbl light">Pata Mawasiliano</div>
+      <h2 class="sec-h light">Wasiliana<br>Na <em>Sisi</em></h2>
+      <p>Kama una maswali, unahitaji sala, au unataka kujua zaidi kuhusu jumuiya yetu &mdash; tungependa kusikia kutoka kwako. Milango na mioyo yetu daima iko wazi.</p>
+      <div class="info-blk">
+        <div class="info-lbl">Anwani</div>
+        <div class="info-val">Gilgal Dominion Center<br>Dar es Salaam, Tanzania</div>
+      </div>
+      <div class="info-blk">
+        <div class="info-lbl">Simu</div>
+        <div class="info-val">+255 700 000 000</div>
+      </div>
+      <div class="info-blk">
+        <div class="info-lbl">Barua Pepe</div>
+        <div class="info-val">info@gilgaldominion.org</div>
+      </div>
+      <div class="info-blk">
+        <div class="info-lbl">Masaa ya Ofisi</div>
+        <div class="info-val">Jumatatu &ndash; Ijumaa &nbsp;9:00 AM &ndash; 5:00 PM</div>
+      </div>
+      <div class="mitandao">
+        <a href="#" class="soc" aria-label="Facebook">Fb</a>
+        <a href="#" class="soc" aria-label="YouTube">Yt</a>
+        <a href="#" class="soc" aria-label="WhatsApp">Wa</a>
+        <a href="#" class="soc" aria-label="Instagram">Ig</a>
+        <a href="#" class="soc" aria-label="Twitter">X</a>
+      </div>
+    </div>
+    <div class="fomu-wrap" data-ani>
+      <h3>Tuma Ujumbe</h3>
+      <div id="cForm">
+        <div class="field-row">
+          <div class="field"><label>Jina la Kwanza</label><input type="text" id="fn" placeholder="Juma"/></div>
+          <div class="field"><label>Jina la Familia</label><input type="text" id="ln" placeholder="Mwangi"/></div>
+        </div>
+        <div class="field"><label>Barua Pepe</label><input type="email" id="em" placeholder="wewe@mfano.com"/></div>
+        <div class="field"><label>Mada</label>
+          <select id="tp">
+            <option value="">Chagua...</option>
+            <option>Swali la Jumla</option>
+            <option>Ombi la Sala</option>
+            <option>Ushauri wa Kichungaji</option>
+            <option>Kujiandikisha kwa Tukio</option>
+            <option>Maoni na Mapendekezo</option>
+          </select>
+        </div>
+        <div class="field"><label>Ujumbe</label><textarea id="msg" placeholder="Andika ujumbe wako hapa..."></textarea></div>
+        <button class="btn-tuma" onclick="sendMsg()">Tuma Ujumbe &rarr;</button>
+      </div>
+      <div class="fomu-ok" id="fOk">
+        <p>"Asante &mdash; ujumbe wako umepokelewa!<br>Tutawasiliana nawe hivi karibuni.<br>Mungu akubariki."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RAMANI -->
+<section id="ramani">
+  <div class="ramani-frame">
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=39.1,-6.9,39.4,-6.7&layer=mapnik&marker=-6.8,39.28" title="Mahali pa Gilgal Dominion Center" loading="lazy" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- KIJACHINI -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Gilgal Dominion Center</div>
+      <p>Kanisa la Kipentekosti lililojaa Roho Mtakatifu katikati ya Dar es Salaam, Tanzania. Kufikia dunia, roho moja kwa wakati &mdash; tangu 2010.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Viungo</h5>
+      <ul>
+        <li><a href="#nyumbani">Nyumbani</a></li>
+        <li><a href="#kuhusu">Kuhusu Sisi</a></li>
+        <li><a href="#wachungaji">Wachungaji</a></li>
+        <li><a href="#ibada">Nyakati za Ibada</a></li>
+        <li><a href="#matukio">Matukio</a></li>
+        <li><a href="#picha">Picha</a></li>
+        <li><a href="#wasiliana">Wasiliana</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Nyakati za Ibada</h5>
+      <ul>
+        <li><a href="#ibada">Jumapili 8:30 AM</a></li>
+        <li><a href="#ibada">Alhamisi 6:30 PM</a></li>
+        <li><a href="#ibada">Jumatano 6 PM</a></li>
+        <li><a href="#ibada">Kufunga &mdash; Ijumaa ya 1</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Mitandao ya Kijamii</h5>
+      <ul>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">WhatsApp</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Matangazo ya Moja kwa Moja</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-chini">
+    <p>&copy; 2026 <a href="#">Gilgal Dominion Center</a>. Haki zote zimehifadhiwa.</p>
+    <p>Picha &copy; <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> &middot; <a href="https://unsplash.com/license" target="_blank" rel="noopener">Leseni ya Unsplash</a></p>
+    <p>Imetengenezwa kwa moyo wote kwa utukufu wa Mungu</p>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lbox" id="lbox" onclick="cLb()">
+  <button class="lbox-x" onclick="cLb()">&#10005;</button>
+  <img id="lbImg" src="" alt="Picha ya Matukio"/>
+</div>
+<button class="btop" id="btop" onclick="scrollTo({top:0,behavior:'smooth'})" aria-label="Rudi Juu">&#8593;</button>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+if(!('ontouchstart' in window)){
+  document.addEventListener('mousemove',e=>{
+    cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+    setTimeout(()=>{curR.style.left=e.clientX+'px';curR.style.top=e.clientY+'px';},60);
+  });
+}else{cur.style.display='none';curR.style.display='none';}
+
+// HERO SLIDESHOW
+const hImgs=[
+  'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1000&q=85',
+  'https://images.unsplash.com/photo-1438032005730-c779502df39b?w=1000&q=85',
+  'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1000&q=85',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1000&q=85'
+];
+let hi=0;
+const hImg=document.getElementById('heroImg');
+const hCount=document.getElementById('heroCount');
+const hDots=document.querySelectorAll('.hdot');
+hImg.style.transition='opacity 0.5s';
+function sHS(n){hImg.style.opacity='0';setTimeout(()=>{hi=n;hImg.src=hImgs[hi];hCount.textContent=String(hi+1).padStart(2,'0');hDots.forEach((d,i)=>d.classList.toggle('on',i===hi));hImg.style.opacity='1';},400);}
+setInterval(()=>sHS((hi+1)%4),5500);
+
+// NAV
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  navEl.classList.toggle('scrolled',scrollY>60);
+  document.getElementById('btop').classList.toggle('on',scrollY>500);
+  const ids=['nyumbani','kuhusu','wachungaji','ibada','matukio','picha','wasiliana'];
+  let ac='nyumbani';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&scrollY>=el.offsetTop-100)ac=id;});
+  document.querySelectorAll('.nav-menu a').forEach(a=>{a.style.color=a.getAttribute('href')==='#'+ac?'var(--amber)':'';});
+});
+function tN(){document.getElementById('navMenu').classList.toggle('open');}
+function cN(){document.getElementById('navMenu').classList.remove('open');}
+
+// FORM
+function sendMsg(){
+  const f=document.getElementById('fn').value.trim();
+  const e=document.getElementById('em').value.trim();
+  const m=document.getElementById('msg').value.trim();
+  if(!f||!e||!m){alert('Tafadhali jaza jina, barua pepe na ujumbe wako.');return;}
+  document.getElementById('cForm').style.display='none';
+  document.getElementById('fOk').style.display='block';
+}
+
+// LIGHTBOX
+function lb(src){document.getElementById('lbImg').src=src;document.getElementById('lbox').classList.add('on');document.body.style.overflow='hidden';}
+function cLb(){document.getElementById('lbox').classList.remove('on');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cLb();});
+
+// FADE-IN ANIMATIONS
+const io=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+},{threshold:0.08});
+document.querySelectorAll('[data-ani]').forEach(el=>{
+  el.style.cssText+='opacity:0;transform:translateY(36px);transition:opacity 0.85s ease,transform 0.85s ease;';
+  io.observe(el);
+});
+</script>
+</body>
+</html>

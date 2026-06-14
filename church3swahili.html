@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gilgal Dominion Center | Mahali Ambapo kila Mtu Anafaa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-light: #F0C842;
+    --gold-dark: #A07810;
+    --sky: #1a6fb5;
+    --sky-deep: #0d4a82;
+    --sky-bright: #3a9bd5;
+    --white: #FEFEFE;
+    --cream: #FDF6E3;
+    --dark: #0a1628;
+    --nav-h: 80px;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Raleway', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    background: rgba(10, 22, 40, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 160, 23, 0.3);
+    transition: all 0.4s;
+  }
+  nav.scrolled { background: rgba(10, 22, 40, 0.98); box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+  .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px rgba(212,160,23,0.3), 0 0 20px rgba(212,160,23,0.2);
+    flex-shrink: 0;
+  }
+  .nav-logo img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .nav-title { font-family: 'Cinzel Decorative', serif; font-size: 13px; color: var(--gold-light); line-height: 1.3; letter-spacing: 1px; }
+  .nav-title span { display: block; font-size: 10px; color: rgba(255,255,255,0.6); letter-spacing: 2px; font-family: 'Raleway', sans-serif; font-weight: 300; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: rgba(255,255,255,0.8);
+    font-size: 13px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; transition: color 0.3s;
+    position: relative; padding-bottom: 4px;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 100%;
+    height: 1px; background: var(--gold); transition: right 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { right: 0; }
+  .nav-give {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--dark); padding: 10px 24px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(212,160,23,0.3);
+  }
+  .nav-give:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(212,160,23,0.5); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { width: 26px; height: 2px; background: var(--gold); display: block; transition: all 0.3s; }
+
+  /* HERO */
+  #nyumbani { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: url('WhatsApp Image 2026-06-06 at 13.56.22.jpeg') center/cover no-repeat; }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(13,74,130,0.88) 0%, rgba(10,22,40,0.92) 60%, rgba(10,22,40,0.98) 100%);
+  }
+  .dove-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .dove { position: absolute; width: 80px; opacity: 0.15; animation: floatDove 12s ease-in-out infinite; }
+  .dove:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; width: 60px; }
+  .dove:nth-child(2) { top: 25%; right: 12%; animation-delay: 3s; width: 90px; }
+  .dove:nth-child(3) { top: 55%; left: 20%; animation-delay: 6s; width: 50px; }
+  .dove:nth-child(4) { top: 10%; right: 30%; animation-delay: 1.5s; width: 70px; }
+  @keyframes floatDove { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-20px) rotate(5deg); } }
+  .rays {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-conic-gradient(from 0deg at 50% 30%, rgba(212,160,23,0.04) 0deg, transparent 5deg, transparent 30deg);
+    animation: spinRays 60s linear infinite;
+  }
+  @keyframes spinRays { to { transform: rotate(360deg); } }
+  .hero-content {
+    position: relative; z-index: 2; text-align: center; padding: 2rem; max-width: 900px;
+    animation: heroEntrance 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes heroEntrance { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-badge {
+    display: inline-block; border: 1px solid rgba(212,160,23,0.5);
+    padding: 6px 20px; border-radius: 30px; font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 1.5rem; background: rgba(212,160,23,0.08);
+  }
+  .hero-cross {
+    font-size: 3rem; color: var(--gold); margin-bottom: 1rem;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%,100% { text-shadow: 0 0 20px rgba(212,160,23,0.4); }
+    50% { text-shadow: 0 0 60px rgba(212,160,23,0.9), 0 0 100px rgba(212,160,23,0.4); }
+  }
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.4rem, 6vw, 5rem); font-weight: 900; line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, var(--gold-light) 50%, #fff 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 0.8rem; letter-spacing: 2px;
+  }
+  .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 2.5vw, 1.6rem); font-style: italic; color: rgba(255,255,255,0.75); margin-bottom: 0.5rem; letter-spacing: 2px; }
+  .hero-swahili { font-family: 'Cinzel Decorative', serif; font-size: clamp(0.9rem, 2vw, 1.2rem); color: var(--gold); letter-spacing: 3px; margin-bottom: 2.5rem; text-transform: uppercase; }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--dark); padding: 16px 40px; border-radius: 4px;
+    font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; box-shadow: 0 8px 30px rgba(212,160,23,0.4);
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(212,160,23,0.6); }
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.4); color: var(--white);
+    padding: 16px 40px; border-radius: 4px; font-size: 13px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; transition: all 0.3s; background: rgba(255,255,255,0.05); display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(212,160,23,0.1); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.4); font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .hero-scroll::after { content: ''; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(212,160,23,0.8), transparent); }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
+
+  /* SECTION COMMON */
+  section { padding: 7rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before, .section-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); }
+  .section-label.center { justify-content: center; }
+  .section-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; }
+  .section-title.light { color: var(--white); }
+  .section-title.gold { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .gold-line { width: 60px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); margin-bottom: 2rem; }
+  .gold-line.center { margin-left: auto; margin-right: auto; }
+  .text-muted { color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.8; }
+
+  /* ABOUT */
+  #kuhusu { background: linear-gradient(180deg, rgba(13,74,130,0.12) 0%, var(--dark) 100%); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-img-wrap { position: relative; }
+  .about-img-frame { width: 100%; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden; border: 2px solid rgba(212,160,23,0.3); box-shadow: 0 30px 80px rgba(0,0,0,0.5); position: relative; }
+  .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .about-img-accent { position: absolute; bottom: -20px; right: -20px; width: 200px; height: 200px; border-radius: 6px; overflow: hidden; border: 3px solid var(--gold); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+  .about-img-accent img { width: 100%; height: 100%; object-fit: cover; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+  .stat-box { background: rgba(212,160,23,0.08); border: 1px solid rgba(212,160,23,0.2); border-radius: 8px; padding: 1.2rem; text-align: center; transition: all 0.3s; }
+  .stat-box:hover { background: rgba(212,160,23,0.15); border-color: var(--gold); transform: translateY(-3px); }
+  .stat-num { font-family: 'Cinzel Decorative', serif; font-size: 2rem; color: var(--gold); font-weight: 900; line-height: 1; }
+  .stat-lbl { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-top: 4px; }
+
+  /* SLIDESHOW */
+  .slideshow-section { background: var(--sky-deep); padding: 0; position: relative; overflow: hidden; height: 500px; }
+  .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; display: flex; align-items: center; justify-content: center; }
+  .slide.active { opacity: 1; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; }
+  .slide-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.2) 100%); display: flex; align-items: center; padding: 4rem; }
+  .slide-text { max-width: 500px; }
+  .slide-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3vw, 2.2rem); font-style: italic; color: var(--white); line-height: 1.5; margin-bottom: 1rem; }
+  .slide-ref { font-size: 13px; color: var(--gold); letter-spacing: 2px; }
+  .slide-dots { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s; border: none; }
+  .dot.active { background: var(--gold); transform: scale(1.4); }
+  .slide-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(212,160,23,0.2); border: 1px solid rgba(212,160,23,0.4);
+    color: var(--gold-light); width: 48px; height: 48px; border-radius: 50%;
+    font-size: 20px; cursor: pointer; transition: all 0.3s; z-index: 10;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .slide-arrow:hover { background: var(--gold); color: var(--dark); }
+  .slide-arrow.prev { left: 2rem; }
+  .slide-arrow.next { right: 2rem; }
+
+  /* PASTORS */
+  #wachungaji { background: linear-gradient(180deg, var(--dark) 0%, rgba(13,74,130,0.15) 100%); text-align: center; }
+  .pastors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; margin-top: 4rem; }
+  .pastor-item { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .pastor-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,160,23,0.15); border-radius: 12px; overflow: hidden; transition: all 0.4s; position: relative; width: 100%; max-width: 350px; }
+  .pastor-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(212,160,23,0.05), transparent); opacity: 0; transition: opacity 0.4s; }
+  .pastor-card:hover { transform: translateY(-10px); border-color: rgba(212,160,23,0.5); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+  .pastor-card:hover::before { opacity: 1; }
+  .pastor-img-wrap { position: relative; width: 100%; overflow: hidden; }
+  .pastor-img-wrap img { width: 100%; height: auto; display: block; object-fit: contain; transition: transform 0.6s; }
+  .pastor-card:hover .pastor-img-wrap img { transform: scale(1.05); }
+  .pastor-body { padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,160,23,0.15); border-radius: 12px; width: 100%; max-width: 350px; }
+  .pastor-role { font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+  .pastor-name { font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.8rem; }
+  .pastor-bio { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .pastor-social { display: flex; gap: 10px; margin-top: 1rem; justify-content: center; }
+  .pastor-social a { width: 34px; height: 34px; border-radius: 50%; border: 1px solid rgba(212,160,23,0.3); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--gold); text-decoration: none; transition: all 0.3s; }
+  .pastor-social a:hover { background: var(--gold); color: var(--dark); }
+
+  /* SERVICE TIMES */
+  #ibada { background: var(--sky-deep); position: relative; overflow: hidden; }
+  #ibada::before { content: ''; position: absolute; inset: 0; background: url('WhatsApp Image 2026-06-06 at 13.56.28.jpeg') center/cover; opacity: 0.1; }
+  .services-inner { position: relative; z-index: 1; }
+  .times-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .time-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,160,23,0.2); border-top: 3px solid var(--gold); border-radius: 8px; padding: 2rem; text-align: center; transition: all 0.3s; }
+  .time-card:hover { background: rgba(212,160,23,0.1); transform: translateY(-5px); }
+  .time-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .time-name { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .time-day { font-size: 0.85rem; letter-spacing: 2px; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-bottom: 0.8rem; }
+  .time-hours { font-size: 1.1rem; font-weight: 600; color: var(--white); }
+
+  /* EVENTS */
+  #matukio { background: linear-gradient(180deg, rgba(13,74,130,0.08) 0%, var(--dark) 100%); }
+  .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem; }
+  .event-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(212,160,23,0.12); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; transition: all 0.4s; }
+  .event-card:hover { transform: translateY(-8px); border-color: rgba(212,160,23,0.4); box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+  .event-img { height: 180px; overflow: hidden; position: relative; }
+  .event-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .event-card:hover .event-img img { transform: scale(1.08); }
+  .event-date-badge { position: absolute; top: 12px; left: 12px; background: var(--gold); color: var(--dark); border-radius: 6px; padding: 6px 12px; text-align: center; font-size: 11px; font-weight: 700; }
+  .event-date-badge span { display: block; font-size: 20px; font-weight: 900; line-height: 1; }
+  .event-body { padding: 1.5rem; flex: 1; }
+  .event-cat { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 6px; }
+  .event-title { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--white); margin-bottom: 0.6rem; line-height: 1.4; }
+  .event-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .event-time { font-size: 0.8rem; color: var(--gold); margin-top: 0.8rem; }
+
+  /* GALLERY */
+  #picha { background: var(--dark); }
+  .gallery-masonry { columns: 3; column-gap: 1rem; margin-top: 4rem; }
+  .gallery-item { break-inside: avoid; margin-bottom: 1rem; position: relative; overflow: hidden; border-radius: 8px; cursor: pointer; }
+  .gallery-item img { width: 100%; display: block; transition: transform 0.5s; border-radius: 8px; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item::after { content: '\2295'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--gold); background: rgba(10,22,40,0.6); opacity: 0; transition: opacity 0.3s; border-radius: 8px; }
+  .gallery-item:hover::after { opacity: 1; }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 99999; background: rgba(10,22,40,0.97); align-items: center; justify-content: center; flex-direction: column; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 80vh; border-radius: 8px; border: 2px solid rgba(212,160,23,0.4); }
+  .lightbox-close { position: absolute; top: 2rem; right: 2rem; background: var(--gold); color: var(--dark); width: 40px; height: 40px; border-radius: 50%; border: none; font-size: 20px; cursor: pointer; font-weight: 900; }
+
+  /* CONTACT */
+  #mawasiliano { background: linear-gradient(180deg, var(--dark) 0%, rgba(13,74,130,0.2) 100%); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+  .contact-info-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .contact-icon { width: 44px; height: 44px; flex-shrink: 0; background: rgba(212,160,23,0.1); border: 1px solid rgba(212,160,23,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+  .contact-info-item h4 { font-size: 12px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+  .contact-info-item p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.6; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-form input, .contact-form textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,160,23,0.2); border-radius: 6px; padding: 14px 16px; color: var(--white); font-family: 'Raleway', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .contact-form textarea { min-height: 130px; resize: vertical; }
+  .contact-form button { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--dark); border: none; padding: 16px; border-radius: 6px; font-family: 'Raleway', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; box-shadow: 0 6px 20px rgba(212,160,23,0.3); }
+  .contact-form button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,160,23,0.5); }
+  .map-frame { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(212,160,23,0.2); margin-top: 2rem; height: 200px; background: rgba(13,74,130,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 0.9rem; }
+  .map-placeholder { text-align: center; }
+
+  /* SOCIAL + FOOTER */
+  .social-strip { background: rgba(212,160,23,0.08); border-top: 1px solid rgba(212,160,23,0.15); border-bottom: 1px solid rgba(212,160,23,0.15); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .social-strip p { font-size: 12px; letter-spacing: 3px; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+  .social-link { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(212,160,23,0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; text-decoration: none; transition: all 0.3s; }
+  .social-link:hover { background: var(--gold); color: var(--dark); transform: scale(1.1); }
+  footer { background: rgba(0,0,0,0.6); padding: 2.5rem 2rem; text-align: center; }
+  .footer-logo { font-family: 'Cinzel Decorative', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+  .footer-copy a { color: rgba(212,160,23,0.6); text-decoration: none; }
+  #btt { position: fixed; bottom: 2rem; right: 2rem; z-index: 9998; background: var(--gold); color: var(--dark); width: 44px; height: 44px; border-radius: 50%; border: none; font-size: 20px; cursor: pointer; opacity: 0; pointer-events: none; transition: all 0.3s; box-shadow: 0 4px 20px rgba(212,160,23,0.4); }
+  #btt.show { opacity: 1; pointer-events: all; }
+  #btt:hover { transform: scale(1.1); }
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ANNOUNCE */
+  .announce { background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark)); padding: 10px 2rem; text-align: center; font-size: 13px; font-weight: 600; color: var(--dark); letter-spacing: 1px; position: relative; z-index: 10000; }
+  .announce a { color: var(--dark); font-weight: 900; text-decoration: underline; }
+
+  /* MOBILE MENU */
+  .mobile-menu { display: none; position: fixed; inset: 0; z-index: 9998; background: rgba(10,22,40,0.98); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; color: var(--white); text-decoration: none; letter-spacing: 2px; transition: color 0.3s; }
+  .mobile-menu a:hover { color: var(--gold); }
+  .mobile-close { position: absolute; top: 2rem; right: 2rem; background: none; border: 1px solid rgba(212,160,23,0.4); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links, .nav-give { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .about-img-accent { display: none; }
+    .gallery-masonry { columns: 2; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 5rem 1.2rem; }
+    .gallery-masonry { columns: 1; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .slide-arrow { display: none; }
+    .slide-overlay { padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announce">
+  🕊️ &nbsp; Jiunge nasi Jumapili hii — Ibada mbili zenye nguvu! &nbsp; <a href="#ibada">Angalia Nyakati ↓</a>
+</div>
+
+<nav id="mainNav">
+  <a href="#nyumbani" class="nav-brand">
+    <div class="nav-logo"><img src="WhatsApp Image 2026-06-06 at 13.55.59.jpeg" alt="Gilgal Dominion Center Logo"/></div>
+    <div class="nav-title">Gilgal Dominion Center<span>Mahali Ambapo Mtu Anafaa</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#nyumbani">Nyumbani</a></li>
+    <li><a href="#kuhusu">Kuhusu</a></li>
+    <li><a href="#matukio">Matukio</a></li>
+    <li><a href="#ibada">Ibada</a></li>
+    <li><a href="#picha">Picha</a></li>
+    <li><a href="#mawasiliano">Wasiliana</a></li>
+  </ul>
+  <a href="#mawasiliano" class="nav-give">Toa Mtandaoni</a>
+  <button class="hamburger" onclick="openMobile()" aria-label="Fungua menyu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="#nyumbani" onclick="closeMobile()">Nyumbani</a>
+  <a href="#kuhusu" onclick="closeMobile()">Kuhusu</a>
+  <a href="#matukio" onclick="closeMobile()">Matukio</a>
+  <a href="#ibada" onclick="closeMobile()">Ibada</a>
+  <a href="#picha" onclick="closeMobile()">Picha</a>
+  <a href="#mawasiliano" onclick="closeMobile()">Wasiliana</a>
+  <a href="#mawasiliano" onclick="closeMobile()" style="color:var(--gold);font-size:1rem;border:1px solid var(--gold);padding:14px 32px;border-radius:4px;margin-top:1rem">Toa Mtandaoni</a>
+</div>
+
+<!-- HERO -->
+<section id="nyumbani">
+  <div class="hero-bg"></div>
+  <div class="rays"></div>
+  <div class="dove-overlay" aria-hidden="true">
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Ilianzishwa · Dodoma, Tanzania</div>
+    <div class="hero-cross">✟</div>
+    <h1 class="hero-title">Gilgal Dominion<br>Center</h1>
+    <p class="hero-sub">"Mahali Ambapo Kila Mtu Anafaa"</p>
+    <p class="hero-swahili">A Place Where Every Person Belongs</p>
+    <div class="hero-btns">
+      <a href="#ibada" class="btn-primary">Jiunge Nasi Jumapili</a>
+      <a href="#kuhusu" class="btn-secondary">Hadithi Yetu</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Tembeza</div>
+</section>
+
+<!-- SCRIPTURE SLIDESHOW -->
+<div class="slideshow-section" id="slideshow" role="region" aria-label="Maandiko ya Biblia">
+  <div class="slide active">
+    <img src="WhatsApp Image 2026-06-06 at 13.56.06.jpeg" alt="Ibada ya Kanisa"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Kwa maana najua mipango ninayofikiri juu yenu, asema Bwana, mipango ya amani wala si ya mabaya, kuwapa ninyi tumaini na mustakabali."</p>
+        <p class="slide-ref">Yeremia 29:11</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="WhatsApp Image 2026-06-06 at 13.56.07.jpeg" alt="Ibada ya Asubuhi"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Njoni kwangu, ninyi nyote msumbukao na wenye mzigo mzito, nami nitawapumzisha."</p>
+        <p class="slide-ref">Mathayo 11:28</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="" alt="Maombi ya Pamoja"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Mtumainie Bwana kwa moyo wako wote, wala usitegemee ufahamu wako mwenyewe; katika njia zako zote mkubali, naye ataziongoza njia zako."</p>
+        <p class="slide-ref">Mithali 3:5-6</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="WhatsApp Image 2026-06-06 at 13.56.22.jpeg" alt="Nuru ya Imani"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Naweza kufanya mambo yote katika yeye aniyenipa nguvu."</p>
+        <p class="slide-ref">Wafilipi 4:13</p>
+      </div>
+    </div>
+  </div>
+  <button class="slide-arrow prev" onclick="changeSlide(-1)" aria-label="Slidi iliyopita">&#8592;</button>
+  <button class="slide-arrow next" onclick="changeSlide(1)" aria-label="Slidi inayofuata">&#8594;</button>
+  <div class="slide-dots" id="dots" role="tablist" aria-label="Urambazaji wa slidi"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="kuhusu">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <div class="about-img-frame">
+          <img src="WhatsApp Image 2026-06-06 at 13.56.23.jpeg" alt="Ibada ya Gilgal Dominion Center"/>
+        </div>
+      
+        <div class="about-stats">
+          <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">Miaka ya Huduma</div></div>
+          <div class="stat-box"><div class="stat-num">500+</div><div class="stat-lbl">Wanachama</div></div>
+          <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl">Ibada za Jumapili</div></div>
+          <div class="stat-box"><div class="stat-num">∞</div><div class="stat-lbl">Neema ya Mungu</div></div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.2s">
+        <div class="section-label">Hadithi Yetu</div>
+        <h2 class="section-title light">Mahali Ambapo<br><span style="color:var(--gold)">Kila Mtu Anafaa</span></h2>
+        <div class="gold-line"></div>
+        <p class="text-muted" style="margin-bottom:1.2rem">Gilgal Dominion Center ni kanisa lenye nguvu na lililojaa Roho, lililopo katikati ya mji wa Dodoma, Tanzania. Lilianzishwa juu ya Neno la Mungu lisilotikisika, sisi ni jamii ambayo imani inawaka moto, maisha yanabadilika, na kila mtu anapata mahali pake.</p>
+        <p class="text-muted" style="margin-bottom:1.2rem">Jina letu linahusu mahali patakatifu pa mwanzo mpya. Kama vile Gilgal lilikuwa mahali ambapo aibu ya Misri iliondolewa kwa Israeli, tunaamini hapa ndipo mizigo inavyoondolewa, aibu inaposafishwa, na mipango inayofunguliwa kwa nguvu za Yesu Kristo.</p>
+        <p class="text-muted" style="margin-bottom:2rem">Kama ni mgeni wa mara ya kwanza au mwanachama wa muda mrefu, utapata familia ya upendo inayongojea kukutembea pamoja nawe katika safari yako ya imani.</p>
+        <a href="#mawasiliano" class="btn-primary">Panga Ziara Yako ✟</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASTORS -->
+<section id="wachungaji">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Uongozi</div>
+      <h2 class="section-title light">Kujua <span style="color:var(--gold)">Wachungaji Wetu</span></h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:600px;margin:0 auto">Wakiongozwa na wanaume na wanawake wa Mungu waliowekwa wakfu kwa Neno, Roho, na watu waliowekwa chini ya uangalizi wao.</p>
+    </div>
+    <div class="pastors-grid fade-up" style="transition-delay:0.2s">
+      <div class="pastor-item">
+        <div class="pastor-card">
+          <div class="pastor-img-wrap">
+            <img src="WhatsApp Image 2026-06-06 at 13.56.23.jpeg" alt="Mchungaji Hezrom George"/>
+          </div>
+        </div>
+        <div class="pastor-body">
+          <div class="pastor-role">Mchungaji Mkuu</div>
+          <div class="pastor-name">Mchungaji Hezrom George</div>
+          <p class="pastor-bio">Mtumishi wa Mungu mwenye shauku inayowaka kwa Neno na moyo wa mataifa. Mchungaji Hezrom anaongoza kwa hekima, unyenyekevu, na ufahamu wa kinabii, akiwaongoza waumini katika vipimo vya kina vya imani na madhumuni.</p>
+          <div class="pastor-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="#" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+      </div>
+      <div class="pastor-item">
+        <div class="pastor-card">
+          <div class="pastor-img-wrap">
+            <img src="Pasted image (2).png" alt="Mchungaji Msaidizi Samson"/>
+          </div>
+        </div>
+        <div class="pastor-body">
+          <div class="pastor-role">Mchungaji Msaidizi</div>
+          <div class="pastor-name">Mchungaji Samson</div>
+          <p class="pastor-bio">Mwalimu na mchungaji mwenye nguvu aliyejitolea kulea wanafunzi wanaogusa jamii zao. Mchungaji Samson analeta nguvu, uwazi, na shauku inayomlenga Kristo inayowatia moyo wote wanaokutana na huduma yake.</p>
+          <div class="pastor-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="#" aria-label="Instagram">ig</a>
+          </div>
+        </div>
+      </div>
+    
+          
+</section>
+
+<!-- SERVICE TIMES -->
+<section id="ibada">
+  <div class="services-inner container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Abudu Pamoja Nasi</div>
+      <h2 class="section-title gold">Nyakati za Ibada</h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:550px;margin:0 auto">Wote wanakaribika. Kuja kama unavyokuwa na upate uwepo wa Mungu katika familia inayokupenda.</p>
+    </div>
+    <div class="times-grid fade-up" style="transition-delay:0.2s">
+      <div class="time-card"><div class="time-icon">🌅</div><div class="time-name">Jumapili</div><div class="time-day">Muda wa Ibada</div><div class="time-hours">08:30 AM – 11:30 AM</div></div>
+      <div class="time-card"><div class="time-icon">🌙</div><div class="time-name">Alhamisi</div><div class="time-day">Masomo ya Biblia na Maombi</div><div class="time-hours">06:30 PM – 08:00 PM</div></div>
+    </div>
+    <div class="fade-up" style="text-align:center;margin-top:3rem;transition-delay:0.3s">
+      <p class="text-muted" style="margin-bottom:1rem;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.2rem">"Kwa maana walipokusanyika wawili au watatu kwa jina langu, niko hapo katikati yao." — Mathayo 18:20</p>
+      <a href="#mawasiliano" class="btn-primary">Pata Maelekezo</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="matukio">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Kinachoendelea</div>
+      <h2 class="section-title light">Matukio <span style="color:var(--gold)">Yanayokuja</span></h2>
+      <div class="gold-line center"></div>
+    </div>
+    <div class="events-grid fade-up" style="transition-delay:0.15s">
+      <div class="event-card">
+        <div class="event-img">
+          <img src="WhatsApp Image 2026-06-06 at 13.55.59.jpeg" alt="Mlima wa Maombi"/>
+          <div class="event-date-badge"><span>15</span>JUL</div>
+        </div>
+        <div class="event-body">
+          <div class="event-cat">Maombi ya Pamoja</div>
+          <div class="event-title">Mlima wa Maombi — Kesha la Usiku</div>
+          <p class="event-desc">Kuja upate kukutana na Mungu katika usiku wenye nguvu wa ibada, uombezi, na huduma ya kinabii. Mabasi yanaondoka saa 2:00 usiku.</p>
+          <div class="event-time">🕐 Saa 2:00 usiku – Saa 12:00 asubuhi</div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img">
+          <img src="WhatsApp Image 2026-06-06 at 13.56.17 (1).jpeg" alt="Mkutano"/>
+          <div class="event-date-badge"><span>20</span>JUL</div>
+        </div>
+        <div class="event-body">
+          <div class="event-cat">Mkutano wa Mwaka</div>
+          <div class="event-title">Mkutano wa Dominion 2026</div>
+          <p class="event-desc">Siku tatu za huduma kali, mafundisho ya ufunuo, na makutano ya miujiza. Wasemaji kutoka Afrika Mashariki yote. Usajili umefunguliwa sasa.</p>
+          <div class="event-time">🕐 Siku 3 — 20–22 Julai 2026</div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-img">
+          <img src="WhatsApp Image 2026-06-06 at 13.56.27.jpeg" alt="Kambi ya Vijana"/>
+          <div class="event-date-badge"><span>2</span>AGO</div>
+        </div>
+        <div class="event-body">
+          <div class="event-cat">Huduma ya Vijana</div>
+          <div class="event-title">Kambi ya Vijana: Moto na Madhumuni</div>
+          <p class="event-desc">Makao ya siku 4 ya vijana yaliyoundwa kuwasha kizazi kipya kwa maono, utambulisho, na nguvu za Roho Mtakatifu.</p>
+          <div class="event-time">🕐 2–5 Agosti 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="picha">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Maisha ya Kanisa</div>
+      <h2 class="section-title light">Picha <span style="color:var(--gold)">Zetu</span></h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:500px;margin:0 auto">Nyakati za ibada, ushirika, na uaminifu wa Mungu zilizopigwa picha katika safari yetu pamoja.</p>
+    </div>
+    <div class="gallery-masonry fade-up" style="transition-delay:0.2s" role="list" aria-label="Matunzio ya picha">
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.06.jpeg" alt="Ibada ya Jumapili"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.07.jpeg" alt="Sifa na Ibada"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.19.jpeg" alt="Maombi ya Jioni"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.22.jpeg" alt="Ushirika wa Vijana"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.23.jpeg" alt="Huduma ya Jamii"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.23 (1).jpeg" alt="Ibada ya Ubatizo"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.24.jpeg" alt="Sala ya Asubuhi"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.25.jpeg" alt="Kanisa Nje"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="WhatsApp Image 2026-06-06 at 13.56.26.jpeg" alt="Tukio la Mkutano"/></div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Mtazamaji wa picha" aria-modal="true">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Funga">✕</button>
+  <img id="lightboxImg" src="" alt="Picha ya matunzio"/>
+</div>
+
+<!-- CONTACT -->
+<section id="mawasiliano">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;margin-bottom:4rem">
+      <div class="section-label center">Wasiliana Nasi</div>
+      <h2 class="section-title light">Mawasiliano <span style="color:var(--gold)">&amp; Tupate</span></h2>
+      <div class="gold-line center"></div>
+    </div>
+    <div class="contact-grid fade-up">
+      <div>
+        <div class="contact-info-item"><div class="contact-icon">📍</div><div><h4>Mahali</h4><p>Gilgal Dominion Center<br>Dodoma, Tanzania</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📞</div><div><h4>Simu</h4><p>+255 700 000 000<br>+255 754 000 000</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">✉️</div><div><h4>Barua Pepe</h4><p>info@gilgaldominion.org<br>prayer@gilgaldominion.org</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">🕐</div><div><h4>Masaa ya Ofisi</h4><p>Jumatatu – Ijumaa: 9:00 AM – 5:00 PM<br>Jumamosi: 10:00 AM – 2:00 PM</p></div></div>
+        <div class="map-frame" role="img" aria-label="Ramani - Mahali pa Dodoma">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.123456789!2d35.7456789!3d-6.1634567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDgnMDQuNCJTIDM1wrA0NCc0NC41IkU!5e0!3m2!1sen!2stz!4v1234567890!5m2!1sen!2stz" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.2s">
+        <h3 style="font-family:'Cinzel Decorative',serif;font-size:1.2rem;color:var(--gold);margin-bottom:0.5rem">Tuma Ujumbe</h3>
+        <p class="text-muted" style="margin-bottom:1.5rem;font-size:0.9rem">Una swali, ombi la maombi, au mapendekezo? Tungependa kusikia kutoka kwako.</p>
+        <form class="contact-form" onsubmit="handleSubmit(event)" novalidate>
+          <input type="text" placeholder="Jina Lako Kamili" required aria-label="Jina kamili"/>
+          <input type="email" placeholder="Anwani Yako ya Barua Pepe" required aria-label="Barua pepe"/>
+          <input type="tel" placeholder="Namba ya Simu (si lazima)" aria-label="Namba ya simu"/>
+          <input type="text" placeholder="Mada" aria-label="Mada ya ujumbe"/>
+          <textarea placeholder="Ujumbe wako au ombi la maombi..." required aria-label="Ujumbe"></textarea>
+          <button type="submit">Tuma Ujumbe ✟</button>
+        </form>
+        <div id="formMsg" style="display:none;margin-top:1rem;padding:12px 16px;background:rgba(212,160,23,0.1);border:1px solid rgba(212,160,23,0.3);border-radius:6px;color:var(--gold);font-size:0.9rem;text-align:center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="social-strip">
+  <p>Tufuate</p>
+  <a href="https://www.facebook.com/share/1BDe3NVSS4/" class="social-link" aria-label="Facebook">f</a>
+  <a href="https://youtube.com/@revhezromgeorge-gdcdodoma" class="social-link" aria-label="YouTube">&#9654;</a>
+  <a href="https://www.instagram.com/gilgaldominion_centre/" class="social-link" aria-label="Instagram">ig</a>
+  <a href="+255755664387" class="social-link" aria-label="WhatsApp">💬</a>
+</div>
+
+<footer>
+  <div class="footer-logo">✟ Gilgal Dominion Center</div>
+  <p class="footer-copy" style="margin-bottom:0.4rem;font-style:italic;font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,0.4)">"Mahali Ambapo Mtu Anafaa" — A Place Where People Belong</p>
+  <p class="footer-copy">&copy; 2026 Gilgal Dominion Center. Haki Zote Zimehifadhiwa. &nbsp;|&nbsp; <a href="#">Sera ya Faragha</a> &nbsp;|&nbsp; <a href="#">Imani Yetu</a></p>
+  <p class="footer-copy" style="margin-top:0.4rem;font-size:10px">Maandiko yote yanachukuliwa kutoka Biblia Takatifu, Toleo la Kiswahili. Picha za ndani.</p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Rudi juu">&#8593;</button>
+
+<script>
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('btt').classList.toggle('show', window.scrollY > 300);
+  });
+  function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow=''; }
+
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dotsEl = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i===0?' active':'');
+    d.setAttribute('role', 'tab');
+    d.setAttribute('aria-label', 'Slidi ' + (i+1));
+    d.addEventListener('click', () => goSlide(i));
+    dotsEl.appendChild(d);
+  });
+  function goSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dotsEl.children[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dotsEl.children[currentSlide].classList.add('active');
+  }
+  function changeSlide(dir) { goSlide(currentSlide + dir); }
+  setInterval(() => changeSlide(1), 6000);
+
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxImg').alt = img.alt;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('lightbox').addEventListener('click', function(e) { if(e.target===this) closeLightbox(); });
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  fadeEls.forEach(el => obs.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const msg = document.getElementById('formMsg');
+    msg.style.display = 'block';
+    msg.textContent = '🙏 Asante! Ujumbe wako umepokelewa. Tutawasiliana nawe hivi karibuni. Mungu akubariki!';
+    e.target.reset();
+    setTimeout(() => { msg.style.display='none'; }, 6000);
+  }
+</script>
+</body>
+</html>
