@@ -1,8 +1,9 @@
 # Gilgal Dominion Center
 
 A Django website for **Gilgal Dominion Center** ("Mahali Ambapo Mtu Anafaa"),
-built from the original `church5.html` single-page design. The static page has
-been turned into a proper, scalable, security-hardened Django project.
+built from the original `church3swahili.html` single-page design (Swahili). The
+static page has been turned into a proper, scalable, security-hardened Django
+project. The site's local photos are bundled under `static/img/`.
 
 ## Highlights
 
@@ -12,8 +13,9 @@ been turned into a proper, scalable, security-hardened Django project.
   — no secrets in source control.
 - **Apps live under `apps/`** (`apps.pages`) so new sections/features can be
   added as independent apps.
-- **Static assets** (`static/css/main.css`, `static/js/main.js`) served by
-  [WhiteNoise](https://whitenoise.readthedocs.io/) with hashed, compressed files.
+- **Static assets** (`static/css/main.css`, `static/js/main.js`, `static/img/`)
+  served by [WhiteNoise](https://whitenoise.readthedocs.io/) with hashed,
+  compressed files.
 - **Real backend feature**: the contact form is a Django `ModelForm` with
   server-side validation, CSRF protection, a honeypot anti-spam field, and an
   admin to review submissions.

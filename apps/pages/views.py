@@ -17,19 +17,19 @@ class HomeView(FormView):
     form_class = ContactForm
 
     def get_success_url(self):
-        return f"{reverse('pages:home')}#contact"
+        return f"{reverse('pages:home')}#mawasiliano"
 
     def form_valid(self, form):
         form.save()
         messages.success(
             self.request,
-            "Message sent! God bless you — we'll be in touch soon.",
+            "Ujumbe umetumwa! Mungu akubariki — tutawasiliana nawe hivi karibuni.",
         )
         return super().form_valid(form)
 
     def form_invalid(self, form):
         messages.error(
             self.request,
-            "Please correct the errors below and try again.",
+            "Tafadhali rekebisha makosa hapa chini kisha ujaribu tena.",
         )
         return super().form_invalid(form)
