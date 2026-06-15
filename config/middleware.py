@@ -13,11 +13,12 @@ the external JS file and drop ``'unsafe-inline'`` from ``script-src``.
 CSP_POLICY = "; ".join(
     [
         "default-src 'self'",
-        "img-src 'self' data: https://images.unsplash.com",
+        "img-src 'self' data:",
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
         "font-src 'self' https://fonts.gstatic.com",
         "script-src 'self' 'unsafe-inline'",
         "connect-src 'self'",
+        "frame-src https://www.google.com",
         "frame-ancestors 'none'",
         "base-uri 'self'",
         "form-action 'self'",

@@ -2,927 +2,341 @@
 {% load static %}
 
 {% block content %}
-<!-- ══ NAVBAR ══ -->
-<nav>
-  <a href="#" class="nav-logo">
-    <div class="cross"></div>
-    <div class="nav-logo-text">
-      Gilgal Dominion Center
-      <span>Mahali Ambapo Mtu Anafaa</span>
-    </div>
+<div class="announce">
+  🕊️ &nbsp; Jiunge nasi Jumapili hii — Ibada mbili zenye nguvu! &nbsp; <a href="#ibada">Angalia Nyakati ↓</a>
+</div>
+
+<nav id="mainNav">
+  <a href="#nyumbani" class="nav-brand">
+    <div class="nav-logo"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-55-59.jpeg' %}" alt="Gilgal Dominion Center Logo"/></div>
+    <div class="nav-title">Gilgal Dominion Center<span>Mahali Ambapo Mtu Anafaa</span></div>
   </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#welcome">About</a></li>
-    <li><a href="#ministries">Ministries</a></li>
-    <li><a href="#pastor">Pastor</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#give" onclick="setTimeout(()=>openPage('givePage'),400)">Give</a></li>
-    <li><a href="#contact" class="nav-cta" onclick="setTimeout(()=>openPage('joinPage'),400)">Join Us</a></li>
+  <ul class="nav-links">
+    <li><a href="#nyumbani">Nyumbani</a></li>
+    <li><a href="#kuhusu">Kuhusu</a></li>
+    <li><a href="#matukio">Matukio</a></li>
+    <li><a href="#ibada">Ibada</a></li>
+    <li><a href="#picha">Picha</a></li>
+    <li><a href="#mawasiliano">Wasiliana</a></li>
   </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+  <a href="#mawasiliano" class="nav-give">Toa Mtandaoni</a>
+  <button class="hamburger" onclick="openMobile()" aria-label="Fungua menyu">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
 
-<!-- ══ HERO ══ -->
-<section class="hero" id="home">
-
-  <!-- Slideshow Background -->
-  <div class="hero-slideshow" id="heroSlideshow">
-    <div class="slide slide-1 active"></div>
-    <div class="slide slide-2"></div>
-    <div class="slide slide-3"></div>
-    <div class="slide slide-4"></div>
-    <div class="slide slide-5"></div>
-  </div>
-
-  <!-- Slide Arrows -->
-  <div class="slide-arrows">
-    <div class="slide-arrow" onclick="changeSlide(-1)" aria-label="Previous slide">
-      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-    </div>
-    <div class="slide-arrow" onclick="changeSlide(1)" aria-label="Next slide">
-      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-    </div>
-  </div>
-
-  <!-- Slide Dots -->
-  <div class="slide-dots" id="slideDots">
-    <div class="slide-dot active" onclick="goToSlide(0)"></div>
-    <div class="slide-dot" onclick="goToSlide(1)"></div>
-    <div class="slide-dot" onclick="goToSlide(2)"></div>
-    <div class="slide-dot" onclick="goToSlide(3)"></div>
-    <div class="slide-dot" onclick="goToSlide(4)"></div>
-  </div>
-
-  <div class="hero-sky"></div>
-  <div class="hero-clouds">
-    <div class="cloud cloud-1"></div>
-    <div class="cloud cloud-2"></div>
-    <div class="cloud cloud-3"></div>
-    <div class="cloud cloud-4"></div>
-  </div>
-
-  <!-- Decorative doves -->
-  <div class="dove-fly dove-1">
-    <svg width="60" height="45" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
-  </div>
-  <div class="dove-fly dove-2">
-    <svg width="50" height="38" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
-  </div>
-  <div class="dove-fly dove-3">
-    <svg width="45" height="34" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
-  </div>
-  <div class="dove-fly dove-4">
-    <svg width="55" height="42" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
-  </div>
-  <div class="dove-fly dove-5">
-    <svg width="40" height="30" viewBox="0 0 60 45"><path d="M30 10 Q20 5 5 15 Q15 12 20 20 Q10 18 0 25 Q15 22 22 28 Q18 35 25 40 Q28 30 30 28 Q32 30 35 40 Q42 35 38 28 Q45 22 60 25 Q50 18 40 20 Q45 12 55 15 Q40 5 30 10Z"/></svg>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Welcome to the House of God</div>
-    <h1 class="hero-title">
-      <span class="gold">Gilgal</span> Dominion<br>Center
-    </h1>
-    <p class="hero-subtitle">Kanisa la Nguvu na Imani</p>
-    <p class="hero-tagline"><strong>Mahali Ambapo Mtu Anafaa</strong> — A Place Where Every Person Belongs</p>
-    <div class="hero-buttons">
-      <a href="#welcome" class="btn-primary">Discover Our Mission</a>
-      <a href="#contact" class="btn-outline" onclick="setTimeout(()=>openPage('joinPage'),400)">Plan Your Visit</a>
-    </div>
-  </div>
-
-  <div class="hero-scroll">
-    <div class="scroll-arrow"></div>
-    Scroll Down
-  </div>
-</section>
-
-<!-- ══ SERVICE TIMES STRIP ══ -->
-<div class="service-strip">
-  <div class="service-item">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-    <span>Sunday Service — 8:00 AM &amp; 10:30 AM</span>
-  </div>
-  <div class="service-item">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-    <span>Wednesday Prayer — 6:30 PM</span>
-  </div>
-  <div class="service-item">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a3d6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-    <span>Friday Youth — 5:00 PM</span>
-  </div>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobile()">✕</button>
+  <a href="#nyumbani" onclick="closeMobile()">Nyumbani</a>
+  <a href="#kuhusu" onclick="closeMobile()">Kuhusu</a>
+  <a href="#matukio" onclick="closeMobile()">Matukio</a>
+  <a href="#ibada" onclick="closeMobile()">Ibada</a>
+  <a href="#picha" onclick="closeMobile()">Picha</a>
+  <a href="#mawasiliano" onclick="closeMobile()">Wasiliana</a>
+  <a href="#mawasiliano" onclick="closeMobile()" style="color:var(--gold);font-size:1rem;border:1px solid var(--gold);padding:14px 32px;border-radius:4px;margin-top:1rem">Toa Mtandaoni</a>
 </div>
 
-<!-- ══ WELCOME ══ -->
-<section class="welcome" id="welcome">
-  <div class="welcome-inner">
-    <div class="welcome-image fade-up">
-      <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=800&q=80" alt="Church Worship Service" loading="lazy">
-      <div class="welcome-badge">
-        <span class="yr">2026</span>
-        <span class="lbl">Est. in<br>Faith</span>
+<!-- HERO -->
+<section id="nyumbani">
+  <div class="hero-bg"></div>
+  <div class="rays"></div>
+  <div class="dove-overlay" aria-hidden="true">
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+    <svg class="dove" viewBox="0 0 100 70" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M50 35 C30 15,5 20,2 35 C5 28,20 30,30 38 L10 55 C20 50,35 45,45 48 C50 50,55 52,65 48 C75 44,90 48,98 38 C95 25,70 15,50 35Z"/></svg>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Ilianzishwa · Dodoma, Tanzania</div>
+    <div class="hero-cross">✟</div>
+    <h1 class="hero-title">Gilgal Dominion<br>Center</h1>
+    <p class="hero-sub">"Mahali Ambapo Kila Mtu Anafaa"</p>
+    <p class="hero-swahili">A Place Where Every Person Belongs</p>
+    <div class="hero-btns">
+      <a href="#ibada" class="btn-primary">Jiunge Nasi Jumapili</a>
+      <a href="#kuhusu" class="btn-secondary">Hadithi Yetu</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Tembeza</div>
+</section>
+
+<!-- SCRIPTURE SLIDESHOW -->
+<div class="slideshow-section" id="slideshow" role="region" aria-label="Maandiko ya Biblia">
+  <div class="slide active">
+    <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-06.jpeg' %}" alt="Ibada ya Kanisa"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Kwa maana najua mipango ninayofikiri juu yenu, asema Bwana, mipango ya amani wala si ya mabaya, kuwapa ninyi tumaini na mustakabali."</p>
+        <p class="slide-ref">Yeremia 29:11</p>
       </div>
     </div>
-    <div class="fade-up">
-      <div class="section-label">About Us</div>
-      <h2 class="section-title">A Heavenly Place<br>on Earth</h2>
-      <div class="divider-gold"></div>
-      <p class="section-desc">
-        Gilgal Dominion Center is a Spirit-filled, Bible-based church community rooted in the love of God and empowered by the Holy Spirit. We are committed to transforming lives, restoring families, and releasing God's people into their divine destiny.
-      </p>
-      <br>
-      <p class="section-desc">
-        Founded on the principle that every person — regardless of background, tribe, or station in life — belongs in God's house. We worship, pray, grow, and serve together as one family united in Christ Jesus.
-      </p>
-      <div class="welcome-verse">
-        "For I know the plans I have for you, declares the Lord — plans to prosper you and not to harm you, plans to give you hope and a future."
-        <cite>— Jeremiah 29:11</cite>
+  </div>
+  <div class="slide">
+    <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-07.jpeg' %}" alt="Ibada ya Asubuhi"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Njoni kwangu, ninyi nyote msumbukao na wenye mzigo mzito, nami nitawapumzisha."</p>
+        <p class="slide-ref">Mathayo 11:28</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-19.jpeg' %}" alt="Maombi ya Pamoja"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Mtumainie Bwana kwa moyo wako wote, wala usitegemee ufahamu wako mwenyewe; katika njia zako zote mkubali, naye ataziongoza njia zako."</p>
+        <p class="slide-ref">Mithali 3:5-6</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-22.jpeg' %}" alt="Nuru ya Imani"/>
+    <div class="slide-overlay">
+      <div class="slide-text">
+        <p class="slide-quote">"Naweza kufanya mambo yote katika yeye aniyenipa nguvu."</p>
+        <p class="slide-ref">Wafilipi 4:13</p>
+      </div>
+    </div>
+  </div>
+  <button class="slide-arrow prev" onclick="changeSlide(-1)" aria-label="Slidi iliyopita">&#8592;</button>
+  <button class="slide-arrow next" onclick="changeSlide(1)" aria-label="Slidi inayofuata">&#8594;</button>
+  <div class="slide-dots" id="dots" role="tablist" aria-label="Urambazaji wa slidi"></div>
+</div>
+
+<!-- ABOUT -->
+<section id="kuhusu">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <div class="about-img-frame">
+          <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-23.jpeg' %}" alt="Ibada ya Gilgal Dominion Center"/>
+        </div>
+      
+        <div class="about-stats">
+          <div class="stat-box"><div class="stat-num">10+</div><div class="stat-lbl">Miaka ya Huduma</div></div>
+          <div class="stat-box"><div class="stat-num">500+</div><div class="stat-lbl">Wanachama</div></div>
+          <div class="stat-box"><div class="stat-num">2</div><div class="stat-lbl">Ibada za Jumapili</div></div>
+          <div class="stat-box"><div class="stat-num">∞</div><div class="stat-lbl">Neema ya Mungu</div></div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:0.2s">
+        <div class="section-label">Hadithi Yetu</div>
+        <h2 class="section-title light">Mahali Ambapo<br><span style="color:var(--gold)">Kila Mtu Anafaa</span></h2>
+        <div class="gold-line"></div>
+        <p class="text-muted" style="margin-bottom:1.2rem">Gilgal Dominion Center ni kanisa lenye nguvu na lililojaa Roho, lililopo katikati ya mji wa Dodoma, Tanzania. Lilianzishwa juu ya Neno la Mungu lisilotikisika, sisi ni jamii ambayo imani inawaka moto, maisha yanabadilika, na kila mtu anapata mahali pake.</p>
+        <p class="text-muted" style="margin-bottom:1.2rem">Jina letu linahusu mahali patakatifu pa mwanzo mpya. Kama vile Gilgal lilikuwa mahali ambapo aibu ya Misri iliondolewa kwa Israeli, tunaamini hapa ndipo mizigo inavyoondolewa, aibu inaposafishwa, na mipango inayofunguliwa kwa nguvu za Yesu Kristo.</p>
+        <p class="text-muted" style="margin-bottom:2rem">Kama ni mgeni wa mara ya kwanza au mwanachama wa muda mrefu, utapata familia ya upendo inayongojea kukutembea pamoja nawe katika safari yako ya imani.</p>
+        <a href="#mawasiliano" class="btn-primary">Panga Ziara Yako ✟</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ MINISTRIES ══ -->
-<section class="ministries" id="ministries">
-  <div class="ministries-inner">
-    <div class="ministries-header fade-up">
-      <div class="section-label">What We Do</div>
-      <h2 class="section-title">Our Ministries</h2>
-      <div class="divider-gold" style="margin: 1.5rem auto;"></div>
-      <p class="section-desc" style="margin: 0 auto; text-align: center;">
-        Every ministry arm is designed to meet you where you are and bring you closer to who God created you to be.
-      </p>
+<!-- PASTORS -->
+<section id="wachungaji">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Uongozi</div>
+      <h2 class="section-title light">Kujua <span style="color:var(--gold)">Wachungaji Wetu</span></h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:600px;margin:0 auto">Wakiongozwa na wanaume na wanawake wa Mungu waliowekwa wakfu kwa Neno, Roho, na watu waliowekwa chini ya uangalizi wao.</p>
     </div>
-    <div class="ministries-grid">
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1545128485-c400e7702796?w=600&q=80" alt="Worship" loading="lazy">
-        </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+    <div class="pastors-grid fade-up" style="transition-delay:0.2s">
+      <div class="pastor-item">
+        <div class="pastor-card">
+          <div class="pastor-img-wrap">
+            <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-23.jpeg' %}" alt="Mchungaji Hezrom George"/>
           </div>
-          <div class="ministry-title">Worship &amp; Arts</div>
-          <p class="ministry-desc">Our worship team leads the congregation into the presence of God through Spirit-filled music, dance, and creative arts that glorify the Lord.</p>
+        </div>
+        <div class="pastor-body">
+          <div class="pastor-role">Mchungaji Mkuu</div>
+          <div class="pastor-name">Mchungaji Hezrom George</div>
+          <p class="pastor-bio">Mtumishi wa Mungu mwenye shauku inayowaka kwa Neno na moyo wa mataifa. Mchungaji Hezrom anaongoza kwa hekima, unyenyekevu, na ufahamu wa kinabii, akiwaongoza waumini katika vipimo vya kina vya imani na madhumuni.</p>
+          <div class="pastor-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="#" aria-label="Instagram">ig</a>
+          </div>
         </div>
       </div>
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="Youth Ministry" loading="lazy">
-        </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      <div class="pastor-item">
+        <div class="pastor-card">
+          <div class="pastor-img-wrap">
+            <img src="{% static 'img/pasted-image-2.png' %}" alt="Mchungaji Msaidizi Samson"/>
           </div>
-          <div class="ministry-title">Youth &amp; Teens</div>
-          <p class="ministry-desc">Raising a generation of bold, fearless, and faith-driven young people who will impact their schools, cities, and nations for Christ.</p>
+        </div>
+        <div class="pastor-body">
+          <div class="pastor-role">Mchungaji Msaidizi</div>
+          <div class="pastor-name">Mchungaji Samson</div>
+          <p class="pastor-bio">Mwalimu na mchungaji mwenye nguvu aliyejitolea kulea wanafunzi wanaogusa jamii zao. Mchungaji Samson analeta nguvu, uwazi, na shauku inayomlenga Kristo inayowatia moyo wote wanaokutana na huduma yake.</p>
+          <div class="pastor-social">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="#" aria-label="Instagram">ig</a>
+          </div>
         </div>
       </div>
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=600&q=80" alt="Prayer Ministry" loading="lazy">
+    
+          
+</section>
+
+<!-- SERVICE TIMES -->
+<section id="ibada">
+  <div class="services-inner container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Abudu Pamoja Nasi</div>
+      <h2 class="section-title gold">Nyakati za Ibada</h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:550px;margin:0 auto">Wote wanakaribika. Kuja kama unavyokuwa na upate uwepo wa Mungu katika familia inayokupenda.</p>
+    </div>
+    <div class="times-grid fade-up" style="transition-delay:0.2s">
+      <div class="time-card"><div class="time-icon">🌅</div><div class="time-name">Jumapili</div><div class="time-day">Muda wa Ibada</div><div class="time-hours">08:30 AM – 11:30 AM</div></div>
+      <div class="time-card"><div class="time-icon">🌙</div><div class="time-name">Alhamisi</div><div class="time-day">Masomo ya Biblia na Maombi</div><div class="time-hours">06:30 PM – 08:00 PM</div></div>
+    </div>
+    <div class="fade-up" style="text-align:center;margin-top:3rem;transition-delay:0.3s">
+      <p class="text-muted" style="margin-bottom:1rem;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.2rem">"Kwa maana walipokusanyika wawili au watatu kwa jina langu, niko hapo katikati yao." — Mathayo 18:20</p>
+      <a href="#mawasiliano" class="btn-primary">Pata Maelekezo</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="matukio">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Kinachoendelea</div>
+      <h2 class="section-title light">Matukio <span style="color:var(--gold)">Yanayokuja</span></h2>
+      <div class="gold-line center"></div>
+    </div>
+    <div class="events-grid fade-up" style="transition-delay:0.15s">
+      <div class="event-card">
+        <div class="event-img">
+          <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-55-59.jpeg' %}" alt="Mlima wa Maombi"/>
+          <div class="event-date-badge"><span>15</span>JUL</div>
         </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          </div>
-          <div class="ministry-title">Prayer &amp; Intercession</div>
-          <p class="ministry-desc">Our intercessors stand in the gap for individuals, families, and nations. Prayer is the foundation and heartbeat of everything we do at Gilgal.</p>
+        <div class="event-body">
+          <div class="event-cat">Maombi ya Pamoja</div>
+          <div class="event-title">Mlima wa Maombi — Kesha la Usiku</div>
+          <p class="event-desc">Kuja upate kukutana na Mungu katika usiku wenye nguvu wa ibada, uombezi, na huduma ya kinabii. Mabasi yanaondoka saa 2:00 usiku.</p>
+          <div class="event-time">🕐 Saa 2:00 usiku – Saa 12:00 asubuhi</div>
         </div>
       </div>
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1588072432836-e10032774350?w=600&q=80" alt="Children Ministry" loading="lazy">
+      <div class="event-card">
+        <div class="event-img">
+          <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-17-1.jpeg' %}" alt="Mkutano"/>
+          <div class="event-date-badge"><span>20</span>JUL</div>
         </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
-          </div>
-          <div class="ministry-title">Children's Ministry</div>
-          <p class="ministry-desc">Creating a fun, safe, and Jesus-centered environment where children learn about God's love and grow in faith from their youngest years.</p>
-        </div>
-      </div>
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&q=80" alt="Outreach" loading="lazy">
-        </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          </div>
-          <div class="ministry-title">Missions &amp; Outreach</div>
-          <p class="ministry-desc">Taking the Gospel beyond the church walls into our communities, streets, and nations — showing God's love through action and compassion.</p>
+        <div class="event-body">
+          <div class="event-cat">Mkutano wa Mwaka</div>
+          <div class="event-title">Mkutano wa Dominion 2026</div>
+          <p class="event-desc">Siku tatu za huduma kali, mafundisho ya ufunuo, na makutano ya miujiza. Wasemaji kutoka Afrika Mashariki yote. Usajili umefunguliwa sasa.</p>
+          <div class="event-time">🕐 Siku 3 — 20–22 Julai 2026</div>
         </div>
       </div>
-      <div class="ministry-card fade-up">
-        <div class="ministry-img-wrap">
-          <img class="ministry-img" src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=600&q=80" alt="Women Ministry" loading="lazy">
+      <div class="event-card">
+        <div class="event-img">
+          <img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-27.jpeg' %}" alt="Kambi ya Vijana"/>
+          <div class="event-date-badge"><span>2</span>AGO</div>
         </div>
-        <div class="ministry-body">
-          <div class="ministry-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-          </div>
-          <div class="ministry-title">Women of Dominion</div>
-          <p class="ministry-desc">Empowering and equipping women to walk in divine purpose, godly character, and kingdom influence in every sphere of life.</p>
+        <div class="event-body">
+          <div class="event-cat">Huduma ya Vijana</div>
+          <div class="event-title">Kambi ya Vijana: Moto na Madhumuni</div>
+          <p class="event-desc">Makao ya siku 4 ya vijana yaliyoundwa kuwasha kizazi kipya kwa maono, utambulisho, na nguvu za Roho Mtakatifu.</p>
+          <div class="event-time">🕐 2–5 Agosti 2026</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ PASTOR ══ -->
-<section class="pastor" id="pastor">
-  <div class="pastor-inner">
-    <div class="pastor-image-wrap fade-up">
-      <img class="pastor-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Senior Pastor" loading="lazy">
-      <div class="pastor-quote-box">
-        You are not here by accident. God has a specific plan just for you.
-      </div>
+<!-- GALLERY -->
+<section id="picha">
+  <div class="container">
+    <div class="fade-up" style="text-align:center">
+      <div class="section-label center">Maisha ya Kanisa</div>
+      <h2 class="section-title light">Picha <span style="color:var(--gold)">Zetu</span></h2>
+      <div class="gold-line center"></div>
+      <p class="text-muted" style="max-width:500px;margin:0 auto">Nyakati za ibada, ushirika, na uaminifu wa Mungu zilizopigwa picha katika safari yetu pamoja.</p>
     </div>
-    <div class="pastor-text fade-up">
-      <div class="section-label">Leadership</div>
-      <h2 class="section-title">Meet Our Pastor</h2>
-      <div class="divider-gold"></div>
-      <div class="pastor-name">Pst. David Mwangi</div>
-      <div class="pastor-role">Senior Pastor &amp; Founder — Gilgal Dominion Center</div>
-      <p class="pastor-bio">
-        With a burning passion for souls and a prophetic voice that shakes nations, Pastor David has dedicated his life to seeing people discover their God-given identity and walk in true freedom. Ordained and anointed, he carries a mantle of healing, deliverance, and apostolic authority that transforms every service into a divine encounter.
-      </p>
-      <br>
-      <p class="pastor-bio">
-        Together with his beloved wife and family, he leads Gilgal Dominion Center with love, wisdom, and an uncompromising commitment to the Word of God. His vision: a church that is a refuge for the broken and a launching pad for champions.
-      </p>
-      <div class="pastor-stats">
-        <div class="stat">
-          <span class="stat-num">15+</span>
-          <span class="stat-label">Years in Ministry</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">3K+</span>
-          <span class="stat-label">Lives Touched</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">12</span>
-          <span class="stat-label">Nations Reached</span>
-        </div>
-      </div>
+    <div class="gallery-masonry fade-up" style="transition-delay:0.2s" role="list" aria-label="Matunzio ya picha">
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-06.jpeg' %}" alt="Ibada ya Jumapili"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-07.jpeg' %}" alt="Sifa na Ibada"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-19.jpeg' %}" alt="Maombi ya Jioni"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-22.jpeg' %}" alt="Ushirika wa Vijana"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-23.jpeg' %}" alt="Huduma ya Jamii"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-23-1.jpeg' %}" alt="Ibada ya Ubatizo"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-24.jpeg' %}" alt="Sala ya Asubuhi"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-25.jpeg' %}" alt="Kanisa Nje"/></div>
+      <div class="gallery-item" onclick="openLightbox(this)" role="listitem"><img src="{% static 'img/whatsapp-image-2026-06-06-at-13-56-26.jpeg' %}" alt="Tukio la Mkutano"/></div>
     </div>
   </div>
 </section>
 
-<!-- ══ EVENTS ══ -->
-<section class="events" id="events">
-  <div class="events-inner">
-    <div class="events-header">
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Mtazamaji wa picha" aria-modal="true">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Funga">✕</button>
+  <img id="lightboxImg" src="" alt="Picha ya matunzio"/>
+</div>
+
+<!-- CONTACT -->
+<section id="mawasiliano">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;margin-bottom:4rem">
+      <div class="section-label center">Wasiliana Nasi</div>
+      <h2 class="section-title light">Mawasiliano <span style="color:var(--gold)">&amp; Tupate</span></h2>
+      <div class="gold-line center"></div>
+    </div>
+    <div class="contact-grid fade-up">
       <div>
-        <div class="section-label">What's Coming</div>
-        <h2 class="section-title">Upcoming Events</h2>
-      </div>
-      <a href="#contact" class="btn-primary" style="font-size:0.75rem; padding: 0.75rem 1.8rem;">View All Events</a>
-    </div>
-    <div class="events-grid">
-      <div class="event-card fade-up">
-        <div class="event-date">
-          <span class="day">15</span>
-          <span class="month">Jun 2026</span>
-        </div>
-        <div class="event-info">
-          <h3>Dominion Sunday — Annual Thanksgiving</h3>
-          <div class="event-meta">
-            <span>⏰ 8:00 AM</span>
-            <span>📍 Main Sanctuary</span>
-          </div>
-          <p class="event-desc">A powerful celebration service of gratitude, worship, and the goodness of God in our lives and community.</p>
+        <div class="contact-info-item"><div class="contact-icon">📍</div><div><h4>Mahali</h4><p>Gilgal Dominion Center<br>Dodoma, Tanzania</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📞</div><div><h4>Simu</h4><p>+255 700 000 000<br>+255 754 000 000</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">✉️</div><div><h4>Barua Pepe</h4><p>info@gilgaldominion.org<br>prayer@gilgaldominion.org</p></div></div>
+        <div class="contact-info-item"><div class="contact-icon">🕐</div><div><h4>Masaa ya Ofisi</h4><p>Jumatatu – Ijumaa: 9:00 AM – 5:00 PM<br>Jumamosi: 10:00 AM – 2:00 PM</p></div></div>
+        <div class="map-frame" role="img" aria-label="Ramani - Mahali pa Dodoma">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3927.123456789!2d35.7456789!3d-6.1634567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDgnMDQuNCJTIDM1wrA0NCc0NC41IkU!5e0!3m2!1sen!2stz!4v1234567890!5m2!1sen!2stz" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
-      <div class="event-card fade-up">
-        <div class="event-date">
-          <span class="day">22</span>
-          <span class="month">Jun 2026</span>
-        </div>
-        <div class="event-info">
-          <h3>3-Day Healing &amp; Miracle Revival</h3>
-          <div class="event-meta">
-            <span>⏰ 6:00 PM</span>
-            <span>📍 Church Grounds</span>
-          </div>
-          <p class="event-desc">Three nights of signs, wonders, and the miraculous power of God. Bring your family, neighbours, and friends.</p>
-        </div>
-      </div>
-      <div class="event-card fade-up">
-        <div class="event-date">
-          <span class="day">5</span>
-          <span class="month">Jul 2026</span>
-        </div>
-        <div class="event-info">
-          <h3>Youth Encounter Conference</h3>
-          <div class="event-meta">
-            <span>⏰ 10:00 AM</span>
-            <span>📍 Youth Hall</span>
-          </div>
-          <p class="event-desc">An electrifying weekend for young people to encounter God, build friendships, and discover their purpose.</p>
-        </div>
-      </div>
-      <div class="event-card fade-up">
-        <div class="event-date">
-          <span class="day">19</span>
-          <span class="month">Jul 2026</span>
-        </div>
-        <div class="event-info">
-          <h3>Women of Dominion Summit</h3>
-          <div class="event-meta">
-            <span>⏰ 9:00 AM</span>
-            <span>📍 Conference Hall</span>
-          </div>
-          <p class="event-desc">A day of empowerment, mentorship, and divine impartation for women called to lead, serve, and shine.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ GALLERY ══ -->
-<section class="gallery" id="gallery">
-  <div class="gallery-inner">
-    <div class="gallery-header fade-up">
-      <div class="section-label">Life at Gilgal</div>
-      <h2 class="section-title">Our Gallery</h2>
-      <div class="divider-gold"></div>
-      <p class="section-desc" style="margin: 0 auto; text-align: center;">Moments of grace, worship, and community captured through our journey together.</p>
-    </div>
-    <div class="gallery-grid fade-up">
-      <div class="g-item g-1">
-        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=900&q=80" alt="Church Worship" loading="lazy">
-      </div>
-      <div class="g-item g-2">
-        <img src="https://images.unsplash.com/photo-1523803326055-9b756a935e0f?w=500&q=80" alt="Prayer" loading="lazy">
-      </div>
-      <div class="g-item g-3">
-        <img src="https://images.unsplash.com/photo-1499652848871-1527a310b13a?w=500&q=80" alt="Community" loading="lazy">
-      </div>
-      <div class="g-item g-4">
-        <img src="https://images.unsplash.com/photo-1609234656388-0ff363383899?w=500&q=80" alt="Fellowship" loading="lazy">
-      </div>
-      <div class="g-item g-5">
-        <img src="https://images.unsplash.com/photo-1536623975707-c4b3b2af565d?w=500&q=80" alt="Service" loading="lazy">
-      </div>
-      <div class="g-item g-6">
-        <img src="https://images.unsplash.com/photo-1502920514313-52581002a659?w=500&q=80" alt="Praise" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ GIVE ══ -->
-<section class="give" id="give">
-  <div class="give-inner">
-    <div class="fade-up">
-      <div class="section-label" style="justify-content:center;"><div style="width:40px;height:2px;background:var(--gold);border-radius:2px;display:inline-block;margin-right:0.8rem;"></div>Kingdom Giving</div>
-      <h2 class="section-title">Support the Vision</h2>
-      <div class="divider-gold" style="margin: 1.5rem auto;"></div>
-      <p class="section-desc" style="margin: 0 auto; text-align: center;">
-        Your generosity fuels our mission to reach the lost, feed the poor, and plant the Word of God across nations. Every seed you sow carries eternal fruit.
-      </p>
-    </div>
-    <div class="give-cards">
-      <div class="give-card fade-up">
-        <div class="give-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>
-        </div>
-        <h3>Tithe &amp; Offering</h3>
-        <p>Honor God with your first fruits. Tithing is an act of faith and a covenant with heaven's blessing.</p>
-      </div>
-      <div class="give-card fade-up">
-        <div class="give-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        </div>
-        <h3>Building Fund</h3>
-        <p>Partner with us to build a house of prayer that will stand as a beacon for generations to come.</p>
-      </div>
-      <div class="give-card fade-up">
-        <div class="give-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13H7v-2h10v2zm0-4H7V9h10v2z"/></svg>
-        </div>
-        <h3>Missions Fund</h3>
-        <p>Send the Gospel to unreached communities and nations. Every shilling is a soul invested for eternity.</p>
-      </div>
-      <div class="give-card fade-up">
-        <div class="give-card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM17.25 19.128l-.001.144a2.25 2.25 0 01-.233.96 10.088 10.088 0 005.06-1.01.75.75 0 00.42-.643 4.875 4.875 0 00-6.957-4.611 8.586 8.586 0 011.71 5.157v.003z"/></svg>
-        </div>
-        <h3>Community Care</h3>
-        <p>Help us feed the hungry, clothe the poor, and support the vulnerable in our city and beyond.</p>
-      </div>
-    </div>
-    <div style="margin-top:3rem;">
-      <button onclick="openPage('givePage')" class="btn-primary" style="border:none;cursor:pointer;">Give Online Now ✦</button>
-    </div>
-  </div>
-</section>
-
-<!-- ══ CONTACT ══ -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-info fade-up">
-      <div class="section-label">Find Us</div>
-      <h2 class="section-title">Come &amp; Experience<br>God's Presence</h2>
-      <div class="divider-gold"></div>
-      <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1rem;">
-        Our doors are open to everyone. Whether you are seeking God for the first time or looking for a church family to grow with — you are welcome here.
-      </p>
-      <ul class="contact-details">
-        <li>
-          <div class="icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          </div>
-          <div>
-            <strong>Address</strong>
-            Gilgal Dominion Center<br>Dar es Salaam, Tanzania
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-          </div>
-          <div>
-            <strong>Phone</strong>
-            +255 700 000 000<br>+255 711 000 000
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </div>
-          <div>
-            <strong>Email</strong>
-            info@gilgaldominion.org<br>pastor@gilgaldominion.org
-          </div>
-        </li>
-        <li>
-          <div class="icon">
-            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-          </div>
-          <div>
-            <strong>Live Stream</strong>
-            Watch online every Sunday<br>via YouTube &amp; Facebook Live
-          </div>
-        </li>
-      </ul>
-    </div>
-    <div class="contact-form fade-up">
-      <h3>Plan Your Visit or Send a Message</h3>
-      {% if messages %}
-        {% for message in messages %}
-          <div class="form-flash form-flash-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-      <form method="post" action="{% url 'pages:home' %}#contact" novalidate>
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="{{ form.name.id_for_label }}">Full Name</label>
+      <div class="fade-up" style="transition-delay:0.2s">
+        <h3 style="font-family:'Cinzel Decorative',serif;font-size:1.2rem;color:var(--gold);margin-bottom:0.5rem">Tuma Ujumbe</h3>
+        <p class="text-muted" style="margin-bottom:1.5rem;font-size:0.9rem">Una swali, ombi la maombi, au mapendekezo? Tungependa kusikia kutoka kwako.</p>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="form-flash form-flash-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+        <form class="contact-form" method="post" action="{% url 'pages:home' %}#mawasiliano" novalidate>
+          {% csrf_token %}
           {{ form.name }}
           {% for error in form.name.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-        </div>
-        <div class="form-group">
-          <label for="{{ form.email.id_for_label }}">Email Address</label>
           {{ form.email }}
           {% for error in form.email.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-        </div>
-        <div class="form-group">
-          <label for="{{ form.phone.id_for_label }}">Phone Number</label>
           {{ form.phone }}
           {% for error in form.phone.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-        </div>
-        <div class="form-group">
-          <label for="{{ form.subject.id_for_label }}">I am interested in...</label>
           {{ form.subject }}
           {% for error in form.subject.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-        </div>
-        <div class="form-group">
-          <label for="{{ form.message.id_for_label }}">Your Message</label>
           {{ form.message }}
           {% for error in form.message.errors %}<small class="field-error">{{ error }}</small>{% endfor %}
-        </div>
-        {{ form.website }}
-        <button class="form-submit" type="submit">Send Message ✦</button>
-      </form>
+          {{ form.website }}
+          <button type="submit">Tuma Ujumbe ✟</button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══ MAP ══ -->
-<div class="map-section">
-  <div class="map-pin">
-    <svg width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-    <div>
-      <div style="font-family:'Cinzel',serif; font-size:1.1rem; letter-spacing:0.12em; color:var(--gold-light);">Gilgal Dominion Center</div>
-      <div style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-top:4px; letter-spacing:0.08em;">Dar es Salaam, Tanzania — Come and Be Blessed</div>
-    </div>
-  </div>
+<div class="social-strip">
+  <p>Tufuate</p>
+  <a href="https://www.facebook.com/share/1BDe3NVSS4/" class="social-link" aria-label="Facebook">f</a>
+  <a href="https://youtube.com/@revhezromgeorge-gdcdodoma" class="social-link" aria-label="YouTube">&#9654;</a>
+  <a href="https://www.instagram.com/gilgaldominion_centre/" class="social-link" aria-label="Instagram">ig</a>
+  <a href="+255755664387" class="social-link" aria-label="WhatsApp">💬</a>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="logo-text">Gilgal Dominion Center</div>
-      <div class="logo-sub">Mahali Ambapo Mtu Anafaa</div>
-      <p>A Spirit-filled, Bible-believing community where every person is welcomed, loved, and released into their God-given destiny. We are one church, one family, one mission.</p>
-      <div class="social-links">
-        <a href="#" class="social-link" aria-label="Facebook">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="#" class="social-link" aria-label="YouTube">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="#" class="social-link" aria-label="Instagram">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="#" class="social-link" aria-label="WhatsApp">
-          <svg width="16" height="16" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#welcome">About Us</a></li>
-        <li><a href="#ministries">Ministries</a></li>
-        <li><a href="#pastor">Our Pastor</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#give">Give</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Service Times</h4>
-      <ul>
-        <li><a href="#">Sunday 8:00 AM</a></li>
-        <li><a href="#">Sunday 10:30 AM</a></li>
-        <li><a href="#">Wednesday 6:30 PM</a></li>
-        <li><a href="#">Friday Youth 5:00 PM</a></li>
-        <li><a href="#">Online — Always Live</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Ministries</h4>
-      <ul>
-        <li><a href="#">Worship &amp; Arts</a></li>
-        <li><a href="#">Youth &amp; Teens</a></li>
-        <li><a href="#">Children's Ministry</a></li>
-        <li><a href="#">Prayer &amp; Intercession</a></li>
-        <li><a href="#">Women of Dominion</a></li>
-        <li><a href="#">Missions &amp; Outreach</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>&copy; 2026 Gilgal Dominion Center. All rights reserved.</span>
-    <span>Designed with <span style="color:var(--gold-light)">✦</span> for the Glory of God &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></span>
-  </div>
+  <div class="footer-logo">✟ Gilgal Dominion Center</div>
+  <p class="footer-copy" style="margin-bottom:0.4rem;font-style:italic;font-family:'Cormorant Garamond',serif;color:rgba(255,255,255,0.4)">"Mahali Ambapo Mtu Anafaa" — A Place Where People Belong</p>
+  <p class="footer-copy">&copy; 2026 Gilgal Dominion Center. Haki Zote Zimehifadhiwa. &nbsp;|&nbsp; <a href="#">Sera ya Faragha</a> &nbsp;|&nbsp; <a href="#">Imani Yetu</a></p>
+  <p class="footer-copy" style="margin-top:0.4rem;font-size:10px">Maandiko yote yanachukuliwa kutoka Biblia Takatifu, Toleo la Kiswahili. Picha za ndani.</p>
 </footer>
 
-
-
-<!-- ══════════════════════════════════════
-     GIVE PAGE OVERLAY
-══════════════════════════════════════ -->
-<div class="fullpage-overlay" id="givePage">
-  <div class="fullpage-inner">
-    <button class="close-page" onclick="closePage('givePage')" aria-label="Close">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-    </button>
-
-    <div class="fp-hero">
-      <div class="fp-hero-overlay"></div>
-      <div class="fp-hero-content">
-        <div class="fp-eyebrow">Kingdom Generosity</div>
-        <h1 class="fp-title"><span class="gold">Give</span> to the Vision</h1>
-        <p class="fp-subtitle">Every seed you plant carries eternal fruit</p>
-      </div>
-    </div>
-
-    <div class="fp-body">
-
-      <!-- Why Give -->
-      <div class="fp-section">
-        <div class="fp-section-header">
-          <div class="section-label" style="color:var(--gold);">Why We Give</div>
-          <h2 class="fp-section-title">Sowing into God's Kingdom</h2>
-        </div>
-        <p class="fp-desc">At Gilgal Dominion Center, giving is not just a financial act — it is a spiritual discipline and an act of worship. When you give, you are partnering with God's mission to transform lives, restore families, and reach the nations with the Gospel of Jesus Christ.</p>
-        <div class="give-verse-box">
-          <p>"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."</p>
-          <cite>— 2 Corinthians 9:7</cite>
-        </div>
-      </div>
-
-      <!-- Give Categories -->
-      <div class="fp-section">
-        <div class="fp-section-header">
-          <div class="section-label" style="color:var(--gold);">Where Your Gift Goes</div>
-          <h2 class="fp-section-title">Choose Your Area of Impact</h2>
-        </div>
-        <div class="give-categories">
-          <div class="give-cat-card active-cat" onclick="selectCategory(this, 'Tithe & Offering')">
-            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-            </div>
-            <h3>Tithe &amp; Offering</h3>
-            <p>Your first fruits back to God — the foundation of covenant blessing and kingdom partnership.</p>
-          </div>
-          <div class="give-cat-card" onclick="selectCategory(this, 'Building Fund')">
-            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-            </div>
-            <h3>Building Fund</h3>
-            <p>Help us build a permanent house of prayer that will stand as a beacon of hope for generations.</p>
-          </div>
-          <div class="give-cat-card" onclick="selectCategory(this, 'Missions Fund')">
-            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-            </div>
-            <h3>Missions Fund</h3>
-            <p>Send the Gospel beyond our borders. Reach unreached communities across Tanzania and beyond.</p>
-          </div>
-          <div class="give-cat-card" onclick="selectCategory(this, 'Community Care')">
-            <div class="give-cat-icon" style="background:linear-gradient(135deg,#0a3d6b,#1a6fa8)">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#F5C842"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-            </div>
-            <h3>Community Care</h3>
-            <p>Feed the hungry, clothe the vulnerable, and demonstrate God's love through tangible action.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Give Form -->
-      <div class="fp-section give-form-section">
-        <div class="fp-section-header">
-          <div class="section-label" style="color:var(--gold);">Make Your Gift</div>
-          <h2 class="fp-section-title">Give Today</h2>
-        </div>
-        <div class="give-form-wrap">
-          <div class="give-form-left">
-            <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;">Selected fund: <strong id="selectedFund" style="color:var(--sky-deep);">Tithe &amp; Offering</strong></p>
-            <div class="give-amounts">
-              <button class="amount-btn" data-amount="5000">TSh 5,000</button>
-              <button class="amount-btn" data-amount="10000">TSh 10,000</button>
-              <button class="amount-btn" data-amount="20000">TSh 20,000</button>
-              <button class="amount-btn" data-amount="50000">TSh 50,000</button>
-              <button class="amount-btn" data-amount="100000">TSh 100,000</button>
-              <button class="amount-btn" data-amount="custom">Custom Amount</button>
-            </div>
-            <input type="number" id="customAmount" placeholder="Enter amount in TSh" style="display:none;width:100%;margin-top:1rem;padding:0.9rem 1rem;border:1.5px solid var(--gold);border-radius:6px;font-size:1rem;font-family:'Lato',sans-serif;outline:none;">
-          </div>
-          <div class="give-form-right">
-            <div class="give-field-group">
-              <label class="give-label">Full Name</label>
-              <input type="text" class="give-input" placeholder="Your full name">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Phone Number</label>
-              <input type="tel" class="give-input" placeholder="+255 700 000 000">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Payment Method</label>
-              <select class="give-input">
-                <option>M-Pesa</option>
-                <option>Tigo Pesa</option>
-                <option>Airtel Money</option>
-                <option>Bank Transfer</option>
-                <option>Cash at Church</option>
-              </select>
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Give as (optional)</label>
-              <input type="text" class="give-input" placeholder="Anonymous / Your name">
-            </div>
-            <button class="give-submit-btn" onclick="submitGive(this)">Give Now ✦</button>
-          </div>
-        </div>
-
-        <!-- Bank Info -->
-        <div class="bank-info">
-          <h4>💳 Bank Details for Direct Transfer</h4>
-          <div class="bank-grid">
-            <div><strong>Bank:</strong> CRDB Bank Tanzania</div>
-            <div><strong>Account Name:</strong> Gilgal Dominion Center</div>
-            <div><strong>Account No:</strong> 0150123456789</div>
-            <div><strong>Branch:</strong> Dar es Salaam</div>
-            <div><strong>M-Pesa Paybill:</strong> 400200 — Ref: GILGAL</div>
-            <div><strong>Tigo Pesa:</strong> 0714 000 000</div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /fp-body -->
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     JOIN US PAGE OVERLAY
-══════════════════════════════════════ -->
-<div class="fullpage-overlay" id="joinPage">
-  <div class="fullpage-inner">
-    <button class="close-page" onclick="closePage('joinPage')" aria-label="Close">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-    </button>
-
-    <div class="fp-hero" style="background-image:url('https://images.unsplash.com/photo-1499652848871-1527a310b13a?w=1600&q=80')">
-      <div class="fp-hero-overlay"></div>
-      <div class="fp-hero-content">
-        <div class="fp-eyebrow">You Belong Here</div>
-        <h1 class="fp-title">Join Our <span class="gold">Family</span></h1>
-        <p class="fp-subtitle">Mahali Ambapo Mtu Anafaa</p>
-      </div>
-    </div>
-
-    <div class="fp-body">
-
-      <!-- Why Join -->
-      <div class="fp-section">
-        <div class="fp-section-header">
-          <div class="section-label" style="color:var(--gold);">A Place to Belong</div>
-          <h2 class="fp-section-title">Why Join Gilgal Dominion Center?</h2>
-        </div>
-        <div class="join-reasons">
-          <div class="join-reason">
-            <div class="join-reason-icon">🕊️</div>
-            <h3>Spirit-Filled Worship</h3>
-            <p>Experience God's presence every Sunday in powerful, anointed worship services that transform hearts.</p>
-          </div>
-          <div class="join-reason">
-            <div class="join-reason-icon">📖</div>
-            <h3>Bible-Based Teaching</h3>
-            <p>Grow in the Word through strong, relevant, and life-changing preaching every week.</p>
-          </div>
-          <div class="join-reason">
-            <div class="join-reason-icon">🤝</div>
-            <h3>Loving Community</h3>
-            <p>Be part of a warm, welcoming family that walks with you through every season of life.</p>
-          </div>
-          <div class="join-reason">
-            <div class="join-reason-icon">🌍</div>
-            <h3>Kingdom Purpose</h3>
-            <p>Discover your God-given gifts and be deployed to make a real difference in your world.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- How to Join — Steps -->
-      <div class="fp-section">
-        <div class="fp-section-header">
-          <div class="section-label" style="color:var(--gold);">The Journey</div>
-          <h2 class="fp-section-title">How to Connect with Us</h2>
-        </div>
-
-        <!-- Step indicators -->
-        <div class="step-indicators">
-          <div class="step-indicator active">1</div>
-          <div class="step-connector"></div>
-          <div class="step-indicator">2</div>
-          <div class="step-connector"></div>
-          <div class="step-indicator">3</div>
-          <div class="step-connector"></div>
-          <div class="step-indicator">✓</div>
-        </div>
-
-        <!-- Step 1: About You -->
-        <div class="join-step" id="joinStep1">
-          <h3 class="step-title">Tell us about yourself</h3>
-          <div class="join-form-grid">
-            <div class="give-field-group">
-              <label class="give-label">First Name</label>
-              <input type="text" class="give-input" placeholder="Your first name">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Last Name</label>
-              <input type="text" class="give-input" placeholder="Your last name">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Phone Number</label>
-              <input type="tel" class="give-input" placeholder="+255 700 000 000">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Email Address</label>
-              <input type="email" class="give-input" placeholder="your@email.com">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Date of Birth</label>
-              <input type="date" class="give-input">
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Marital Status</label>
-              <select class="give-input">
-                <option>Single</option>
-                <option>Married</option>
-                <option>Widowed</option>
-                <option>Prefer not to say</option>
-              </select>
-            </div>
-          </div>
-          <button class="give-submit-btn" onclick="nextJoinStep(2)">Continue →</button>
-        </div>
-
-        <!-- Step 2: Your Faith -->
-        <div class="join-step" id="joinStep2" style="display:none;">
-          <h3 class="step-title">Your faith journey</h3>
-          <div class="faith-questions">
-            <div class="give-field-group">
-              <label class="give-label">How long have you been a Christian?</label>
-              <select class="give-input">
-                <option>I'm exploring faith</option>
-                <option>Less than 1 year</option>
-                <option>1–5 years</option>
-                <option>5–10 years</option>
-                <option>More than 10 years</option>
-              </select>
-            </div>
-            <div class="give-field-group">
-              <label class="give-label">Have you been baptised?</label>
-              <select class="give-input">
-                <option>Yes — in water</option>
-                <option>Yes — in the Holy Spirit</option>
-                <option>Both water and Holy Spirit</option>
-                <option>Not yet</option>
-              </select>
-            </div>
-            <div class="give-field-group" style="grid-column:1/-1;">
-              <label class="give-label">What are you looking for at Gilgal?</label>
-              <select class="give-input">
-                <option>Spiritual growth &amp; discipleship</option>
-                <option>A church family &amp; community</option>
-                <option>Ministry opportunities to serve</option>
-                <option>Prayer and healing</option>
-                <option>All of the above</option>
-              </select>
-            </div>
-            <div class="give-field-group" style="grid-column:1/-1;">
-              <label class="give-label">Anything you'd like us to pray for you about?</label>
-              <textarea class="give-input" rows="3" placeholder="Share your heart..."></textarea>
-            </div>
-          </div>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-            <button class="give-submit-btn" style="background:var(--sky);flex:1;" onclick="nextJoinStep(1)">← Back</button>
-            <button class="give-submit-btn" style="flex:2;" onclick="nextJoinStep(3)">Continue →</button>
-          </div>
-        </div>
-
-        <!-- Step 3: Ministry Interest -->
-        <div class="join-step" id="joinStep3" style="display:none;">
-          <h3 class="step-title">Where would you like to serve?</h3>
-          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1.5rem;">Select all that interest you. You can always change this later.</p>
-          <div class="ministry-checkboxes">
-            <label class="ministry-check"><input type="checkbox"> <span>🎵 Worship &amp; Music</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>🙏 Prayer &amp; Intercession</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>👶 Children's Ministry</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>🔥 Youth Ministry</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>💃 Women of Dominion</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>🌍 Missions &amp; Outreach</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>📺 Media &amp; Livestream</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>🤝 Welcome &amp; Ushering</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>📚 Bible Study &amp; Teaching</span></label>
-            <label class="ministry-check"><input type="checkbox"> <span>🏗️ Administration</span></label>
-          </div>
-          <div class="give-field-group" style="margin-top:1.5rem;">
-            <label class="give-label">How did you hear about us?</label>
-            <select class="give-input">
-              <option>Facebook / Social Media</option>
-              <option>A friend or family member</option>
-              <option>WhatsApp Group</option>
-              <option>YouTube</option>
-              <option>Walked in / Passed by</option>
-              <option>Our website</option>
-            </select>
-          </div>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
-            <button class="give-submit-btn" style="background:var(--sky);flex:1;" onclick="nextJoinStep(2)">← Back</button>
-            <button class="give-submit-btn" style="flex:2;" onclick="submitJoin(this)">Complete Registration ✦</button>
-          </div>
-        </div>
-
-        <!-- Step 4: Welcome! -->
-        <div class="join-step" id="joinStep4" style="display:none;">
-          <div class="welcome-success">
-            <div class="success-dove">🕊️</div>
-            <h2 style="font-family:'Cinzel Decorative',serif;color:var(--sky-deep);font-size:2rem;margin-bottom:1rem;">Welcome to the Family!</h2>
-            <p style="font-size:1.1rem;color:var(--text-muted);max-width:500px;margin:0 auto 2rem;line-height:1.8;">We are so excited to have you join us at Gilgal Dominion Center. Our team will reach out to you soon. In the meantime, join us this Sunday!</p>
-            <div class="success-actions">
-              <a href="#events" class="give-submit-btn" style="display:inline-block;text-decoration:none;" onclick="closePage('joinPage')">See Upcoming Events</a>
-              <button class="give-submit-btn" style="background:var(--sky);" onclick="closePage('joinPage')">Back to Home</button>
-            </div>
-            <div class="success-service-box">
-              <strong style="font-family:'Cinzel',serif;color:var(--gold-dark);font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;">Join Us This Sunday</strong>
-              <p style="margin-top:0.5rem;font-size:0.95rem;color:var(--text-dark);">🗓️ Sunday 8:00 AM &amp; 10:30 AM<br>📍 Gilgal Dominion Center, Dar es Salaam</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Rudi juu">&#8593;</button>
 {% endblock %}
